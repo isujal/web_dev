@@ -1,6 +1,6 @@
 # The Ducktators · FRC 11745 website
 
-Static site: `index.html`, `css/style.css`, `js/main.js`, with GSAP + ScrollTrigger and Lenis vendored in `vendor/` (no build step).
+Static site: `index.html`, `css/style.css`, `js/main.js`, with GSAP + ScrollTrigger and Lenis vendored in `vendor/` (no build step). It also works by double-clicking `index.html`.
 
 Run locally:
 

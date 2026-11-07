@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>The Ducktators · FRC 11745</title>
   <meta name="description" content="The Ducktators are FRC team 11745, a student-led FIRST Robotics Competition rookie team from Cathedral and John Connon School, Mumbai, registered for the Istanbul Regional in the 2026–27 season.">
-  <meta name="theme-color" content="#05020a">
+  <meta name="theme-color" content="#000000">
   <meta property="og:title" content="The Ducktators · FRC 11745">
   <meta property="og:description" content="A rookie regiment of builders from CAJCS Mumbai. First season 2026–27. Destination: the Istanbul Regional.">
   <meta property="og:image" content="assets/og.jpg">
@@ -14,445 +14,442 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500&family=Michroma&family=Orbitron:wght@500;700;800&family=Outfit:wght@200;300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..900&family=Geist+Mono:wght@400..600&family=Michroma&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/lenis.css">
   <link rel="stylesheet" href="css/style.css">
   <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-  <!-- Liquid-glass refraction filter (Chromium applies it through backdrop-filter; others fall back to blur) -->
   <svg class="sr-only" aria-hidden="true" focusable="false" width="0" height="0">
     <filter id="liquid" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
       <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="11" result="n"/>
       <feGaussianBlur in="n" stdDeviation="2" result="nb"/>
-      <feDisplacementMap in="SourceGraphic" in2="nb" scale="38" xChannelSelector="R" yChannelSelector="G" result="d"/>
-      <feGaussianBlur in="d" stdDeviation="6"/>
+      <feDisplacementMap in="SourceGraphic" in2="nb" scale="34" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="5"/>
     </filter>
     <symbol id="star" viewBox="0 0 24 24"><path d="M12 1.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 16.3 6.1 19.6l1.3-6.6L2.5 8.4l6.6-.8z"/></symbol>
   </svg>
 
-  <a class="skip" href="#briefing">Skip to content</a>
+  <a class="skip" href="#story">Skip to content</a>
 
-  <!-- ============ CHROME ============ -->
+  <!-- Intro: counter rolls up to the team number, then the cap band wipes away -->
+  <div class="loader" data-loader aria-hidden="true">
+    <div class="loader__num" data-loader-num>00000</div>
+    <div class="loader__label">FRC · Reporting for duty</div>
+    <div class="loader__bar"><span data-loader-bar></span></div>
+  </div>
+
+  <div class="progress" aria-hidden="true"><span data-progress></span></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"></span></div>
+
   <header class="nav" data-nav>
     <a class="nav__brand" href="#top" aria-label="The Ducktators, back to top">
-      <img src="assets/badge.webp" alt="" width="40" height="40">
-      <span class="nav__name">Ducktators <b>11745</b></span>
+      <img src="assets/badge.webp" alt="" width="34" height="34">
+      <span>The Ducktators</span>
     </a>
     <nav class="nav__links" aria-label="Sections">
-      <a href="#briefing">FRC</a>
+      <a href="#frc">FRC</a>
       <a href="#season">Season</a>
-      <a href="#regiment">Regiment</a>
+      <a href="#divisions">Divisions</a>
       <a href="#robot">Robot</a>
-      <a href="#impact">Impact</a>
       <a href="#sponsors">Sponsors</a>
     </nav>
-    <a class="btn btn--primary btn--sm" href="#enlist">Enlist</a>
+    <a class="btn btn--brass btn--sm" href="#enlist" data-magnetic>Enlist</a>
     <button class="nav__menu" aria-expanded="false" aria-controls="drawer" data-menu>
       <span></span><span></span><span class="sr-only">Menu</span>
     </button>
   </header>
 
   <div class="drawer" id="drawer" hidden>
-    <a href="#briefing">What is FRC</a>
+    <a href="#frc">What is FRC</a>
     <a href="#season">The season</a>
-    <a href="#regiment">The regiment</a>
+    <a href="#divisions">Divisions</a>
     <a href="#robot">The robot</a>
     <a href="#impact">Impact</a>
     <a href="#sponsors">Sponsors</a>
     <a href="#enlist">Enlist</a>
   </div>
 
-  <!-- Running timecode: shows where you are in the reel -->
-  <div class="hud" aria-hidden="true">
-    <span class="hud__rec"></span>
-    <span class="hud__scene" data-hud-scene>SC 01 · TITLES</span>
-    <span class="hud__tc" data-hud-tc>00:00:00:00</span>
-  </div>
-
-  <div class="grain" aria-hidden="true"></div>
-
   <main id="top">
-    <!-- ============ SC 01 · TITLE SEQUENCE ============ -->
-    <section class="hero" data-scene="SC 01 · TITLES" aria-labelledby="hero-title">
-      <div class="hero__stage">
-        <div class="hero__beam" aria-hidden="true"></div>
-        <div class="hero__orb hero__orb--a" aria-hidden="true"></div>
-        <div class="hero__orb hero__orb--b" aria-hidden="true"></div>
-        <div class="hero__numerals" aria-hidden="true"><span>11745</span></div>
-        <canvas class="terrain" data-terrain aria-hidden="true"></canvas>
-        <div class="letterbox letterbox--top" aria-hidden="true"></div>
-        <div class="letterbox letterbox--bottom" aria-hidden="true"></div>
+    <!-- ================= HERO ================= -->
+    <section class="hero" aria-labelledby="hero-title" data-theme="dark">
+      <canvas class="aurora" data-aurora aria-hidden="true"></canvas>
+      <div class="hero__grid" aria-hidden="true"></div>
 
-        <div class="hero__content">
-          <p class="hero__program"><i>FIRST</i>® Robotics Competition</p>
-          <svg class="stars" viewBox="0 0 84 24" aria-hidden="true"><use href="#star" width="24" height="24"/><use href="#star" x="30" width="24" height="24"/><use href="#star" x="60" width="24" height="24"/></svg>
+      <div class="hero__inner">
+        <p class="logotype" data-scramble>The Ducktators · FRC 11745</p>
 
-          <div class="badge" data-badge>
-            <div class="badge__ring" aria-hidden="true"></div>
-            <div class="badge__glow" aria-hidden="true"></div>
-            <img src="assets/badge.webp" alt="The Ducktators badge: a stern duck officer in a white peaked cap with a purple band, a monocle and a purple collar with stars, above the number 11745" width="800" height="800">
-            <span class="badge__glint" aria-hidden="true"></span>
-          </div>
+        <h1 class="hero__title" id="hero-title">
+          <span class="line"><span>Order in</span></span>
+          <span class="line"><span>the <em>ranks.</em></span></span>
+        </h1>
 
-          <h1 class="hero__title" id="hero-title">
-            <span class="hero__the">The</span>
-            <span class="hero__name" data-split>Ducktators</span>
-          </h1>
-          <p class="hero__number">FRC&nbsp;&nbsp;11745</p>
-          <p class="hero__lede">A rookie regiment of builders from Cathedral &amp; John Connon School, Mumbai. First season. Destination: the Istanbul Regional.</p>
-
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="#enlist">Enlist in engineering</a>
-            <a class="btn btn--glass glass" href="#sponsors">Back the regiment</a>
-          </div>
-
-          <ul class="hero__chips" aria-label="Season status">
-            <li class="chip glass"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><small>Registered for</small>Istanbul Regional</span></li>
-            <li class="chip glass"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span><small>Season game</small>Sealed until Kickoff</span></li>
-          </ul>
+        <div class="hero__badge" data-tilt>
+          <div class="hero__ring" aria-hidden="true"></div>
+          <div class="hero__halo" aria-hidden="true"></div>
+          <img src="assets/badge.webp" alt="The Ducktators badge: a stern duck officer in a white peaked cap with a purple band, a monocle and a purple collar with stars, above the number 11745" width="800" height="800">
+          <span class="hero__glare" aria-hidden="true"></span>
         </div>
 
-        <p class="hero__scroll" aria-hidden="true"><span></span>Roll film</p>
+        <p class="hero__lede">A rookie <i>FIRST</i>&nbsp;Robotics team from Cathedral &amp;&nbsp;John&nbsp;Connon School, Mumbai. Season&nbsp;one. Next&nbsp;stop:&nbsp;Istanbul.</p>
+
+        <div class="hero__actions">
+          <a class="btn btn--light" href="#enlist" data-magnetic>Join the team</a>
+          <a class="btn btn--glass glass" href="#sponsors" data-magnetic>Sponsor us <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
+      <div class="hero__meta" aria-label="Season status">
+        <p><span class="dot dot--live"></span>Registered · Istanbul Regional</p>
+        <p><span class="dot"></span>2027 game · sealed until Kickoff</p>
       </div>
     </section>
 
-    <!-- ============ SC 02 · BRIEFING ============ -->
-    <section class="briefing" id="briefing" data-scene="SC 02 · BRIEFING" aria-labelledby="briefing-title">
+    <!-- ================= TICKER ================= -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track" data-ticker>
+        <span>Order in the ranks</span><svg><use href="#star" width="24" height="24"/></svg>
+        <span>FRC 11745</span><svg><use href="#star" width="24" height="24"/></svg>
+        <span>Road to Istanbul</span><svg><use href="#star" width="24" height="24"/></svg>
+        <span>Built different. Built purple.</span><svg><use href="#star" width="24" height="24"/></svg>
+        <span>Quack the code</span><svg><use href="#star" width="24" height="24"/></svg>
+      </div>
+    </div>
+
+    <!-- ================= STORY (light) ================= -->
+    <section class="story light" id="story" aria-label="Who we are" data-theme="light">
+      <p class="story__text" data-fill>
+        We are a brand-new robotics team from Mumbai. <b>Ten students.</b> <b>Seven divisions.</b> <b>Two mentors.</b>
+        One robot built from scratch, and a first match waiting in Istanbul.
+      </p>
+    </section>
+
+    <!-- ================= WHAT IS FRC (light bento) ================= -->
+    <section class="frc light" id="frc" aria-labelledby="frc-title" data-theme="light">
       <div class="wrap">
-        <h2 class="display" id="briefing-title">What is FRC, in one breath.</h2>
-        <p class="script" data-script>
-          Every January, <i>FIRST</i> reveals a <em>brand-new game</em> to thousands of high-school teams on the same day.
-          From then, students have <em data-count="8">about 8 weeks</em> to design, build and program a robot
-          of up to <em>~125&nbsp;lb</em> from scratch. At events, robots play in <em>alliances of 3&nbsp;v&nbsp;3</em>,
-          teaming up with strangers in one match and facing them in the next, across <em>2&nbsp;min&nbsp;30&nbsp;s</em> matches:
-          a short autonomous period where the code drives alone, then the drivers take over.
-        </p>
-        <p class="script script--quiet" data-script>
-          It is the closest thing school students get to a real engineering company: deadlines, budgets, sponsors, a pit crew and a crowd.
-          <i>FIRST</i> calls the spirit of it <strong>Gracious Professionalism</strong>: compete hard, help your rivals anyway.
-        </p>
-        <div class="briefing__foot">
-          <svg class="stars stars--sm" viewBox="0 0 84 24" aria-hidden="true"><use href="#star" width="24" height="24"/><use href="#star" x="30" width="24" height="24"/><use href="#star" x="60" width="24" height="24"/></svg>
-          <p>Rules change each season; the figures above are typical of recent games. The 2027 game manual is the final word.</p>
+        <h2 class="h2" id="frc-title">FRC is a varsity sport<br>for the mind.</h2>
+        <p class="sub">Every January, <i>FIRST</i> reveals a brand-new game to thousands of high-school teams worldwide on the same day. Then the clock starts.</p>
+
+        <div class="bento">
+          <article class="tile tile--weeks" data-reveal>
+            <p class="tile__big"><span data-count="8">8</span><small>weeks</small></p>
+            <p class="tile__text">From game reveal to first competition, roughly. Design, build, wire and code a robot in that window.</p>
+            <div class="weeks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </article>
+
+          <article class="tile tile--dark tile--alliance" data-reveal>
+            <p class="tile__big">3<small>v</small>3</p>
+            <p class="tile__text">Robots play in alliances of three. Your partner in one match is your opponent in the next.</p>
+            <div class="alliance" aria-hidden="true">
+              <span class="r"></span><span class="r"></span><span class="r"></span>
+              <b>vs</b>
+              <span class="b"></span><span class="b"></span><span class="b"></span>
+            </div>
+          </article>
+
+          <article class="tile tile--clock" data-reveal>
+            <p class="tile__big" data-clock>2:30</p>
+            <p class="tile__text">per match. A short autonomous period where the code drives alone, then the drivers take over.</p>
+          </article>
+
+          <article class="tile tile--weight" data-reveal>
+            <p class="tile__big">~<span data-count="125">125</span><small>lb</small></p>
+            <p class="tile__text">Typical robot weight limit in recent games, before bumpers and battery.</p>
+            <div class="scale" aria-hidden="true"><span data-scale></span></div>
+          </article>
+
+          <article class="tile tile--purple tile--gp" data-reveal>
+            <p class="tile__quote">“Compete like crazy. Help your rivals anyway.”</p>
+            <p class="tile__text"><i>FIRST</i> calls it Gracious Professionalism. It is the whole point.</p>
+          </article>
         </div>
+        <p class="fine">Rules change every season. Figures are typical of recent games; the 2027 game manual is the final word.</p>
       </div>
     </section>
 
-    <!-- ============ SC 03 · SEASON REEL (horizontal filmstrip) ============ -->
-    <section class="reel" id="season" data-scene="SC 03 · SEASON REEL" aria-labelledby="season-title">
-      <div class="reel__head wrap">
-        <h2 class="display" id="season-title">Season one, frame by frame.</h2>
-        <p class="lede">We were formed in 2026. This is the whole plan, from the first meeting to the first match. Frames still developing are marked; they fill in as the season happens.</p>
-      </div>
-
-      <div class="reel__viewport" data-reel>
-        <ol class="strip" data-strip>
-          <li class="frame">
-            <div class="frame__still frame__still--photo">
-              <span class="undeveloped">Team photo<br>developing</span>
-            </div>
-            <div class="frame__meta"><time>2026</time><span class="tag tag--done">Done</span></div>
+    <!-- ================= SEASON (horizontal) ================= -->
+    <section class="season" id="season" aria-labelledby="season-title" data-theme="dark">
+      <div class="season__pin" data-season>
+        <div class="season__head wrap">
+          <h2 class="h2" id="season-title">Season one.<br><span class="muted">Frame by frame.</span></h2>
+          <div class="season__progress" aria-hidden="true"><span data-season-bar></span></div>
+        </div>
+        <ol class="track" data-track>
+          <li class="card">
+            <span class="card__no">01</span>
+            <div class="card__art card__art--photo"><span>Team photo<br>coming soon</span></div>
+            <p class="card__when">2026 <span class="pill pill--done">Done</span></p>
             <h3>The regiment forms</h3>
-            <p>Students and mentors at the CAJCS Maker Lab sign up for <i>FIRST</i> Robotics Competition as team 11745.</p>
+            <p>Students and mentors at the CAJCS Maker Lab register as <i>FIRST</i> Robotics Competition team 11745.</p>
           </li>
-          <li class="frame">
-            <div class="frame__still frame__still--grid" aria-hidden="true">
-              <span>154</span>
-            </div>
-            <div class="frame__meta"><time>Autumn 2026</time><span class="tag tag--live">Now showing</span></div>
+          <li class="card">
+            <span class="card__no">02</span>
+            <div class="card__art card__art--grid"><span>154</span></div>
+            <p class="card__when">Autumn 2026 <span class="pill pill--live">Now</span></p>
             <h3>Basic training</h3>
-            <p>A 154-task skills library across seven divisions, at Minimum, Intermediate and Advanced levels. Everyone earns their stripes before Kickoff.</p>
+            <p>A 154-task skills library across seven divisions, from Minimum to Advanced. Everyone earns their stripes before Kickoff.</p>
           </li>
-          <li class="frame frame--sealed">
-            <div class="frame__still frame__still--sealed">
+          <li class="card card--sealed">
+            <span class="card__no">03</span>
+            <div class="card__art card__art--sealed">
               <div class="sealed" aria-label="Season game details are sealed until Kickoff">
-                <p>Game&nbsp;<span class="redact" aria-hidden="true"></span></p>
-                <p>Field&nbsp;<span class="redact redact--s" aria-hidden="true"></span></p>
-                <p>Scoring&nbsp;<span class="redact redact--l" aria-hidden="true"></span></p>
-                <strong class="sealed__stamp">Sealed</strong>
+                <p>Game <span class="redact"></span></p>
+                <p>Field <span class="redact redact--s"></span></p>
+                <p>Scoring <span class="redact redact--l"></span></p>
+                <strong>Sealed</strong>
               </div>
             </div>
-            <div class="frame__meta"><time>Jan 2027</time><span class="tag">Date TBA</span></div>
-            <h3>Kickoff: orders unsealed</h3>
-            <p><i>FIRST</i> reveals the 2027 game worldwide. We read the manual, break it down and choose a strategy in the first week.</p>
+            <p class="card__when">Jan 2027 <span class="pill">Date TBA</span></p>
+            <h3>Kickoff</h3>
+            <p><i>FIRST</i> reveals the 2027 game worldwide. We read the manual, break it down and choose a strategy in week one.</p>
           </li>
-          <li class="frame">
-            <div class="frame__still frame__still--build" aria-hidden="true">
-              <svg viewBox="0 0 200 120"><g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 100h160M30 100V60h50v40M80 75h40v25M120 50h50v50"/><path d="M45 60V35h20v25M135 50V20h20v30" stroke-dasharray="3 3"/><circle cx="40" cy="104" r="6"/><circle cx="70" cy="104" r="6"/><circle cx="130" cy="104" r="6"/><circle cx="160" cy="104" r="6"/></g></svg>
+          <li class="card">
+            <span class="card__no">04</span>
+            <div class="card__art card__art--build" aria-hidden="true">
+              <svg viewBox="0 0 200 120"><g fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 100h160M30 100V60h50v40M80 75h40v25M120 50h50v50"/><path d="M45 60V35h20v25M135 50V20h20v30" stroke-dasharray="3 3"/><circle cx="40" cy="104" r="6"/><circle cx="70" cy="104" r="6"/><circle cx="130" cy="104" r="6"/><circle cx="160" cy="104" r="6"/></g></svg>
             </div>
-            <div class="frame__meta"><time>Jan – Feb 2027</time><span class="tag">Planned</span></div>
+            <p class="card__when">Jan – Feb 2027 <span class="pill">Planned</span></p>
             <h3>Build season</h3>
-            <p>Concept, CAD, prototype, build, tune. Programming starts driving the robot the day the drivetrain rolls.</p>
+            <p>Concept, CAD, prototype, build, tune. Programming starts driving the day the drivetrain rolls.</p>
           </li>
-          <li class="frame frame--hero">
-            <div class="frame__still frame__still--route" aria-hidden="true">
-              <svg viewBox="0 0 240 120"><path class="route" d="M200 96 C 160 20, 70 10, 36 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="4 5"/><circle cx="200" cy="96" r="4" fill="currentColor"/><circle cx="36" cy="40" r="5" fill="#fff"/><text x="200" y="114" text-anchor="middle">BOM</text><text x="36" y="28" text-anchor="middle">IST</text></svg>
+          <li class="card card--brass">
+            <span class="card__no">05</span>
+            <div class="card__art card__art--route" aria-hidden="true">
+              <svg viewBox="0 0 240 120"><path class="route" d="M200 96 C 160 20, 70 10, 36 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-dasharray="4 5"/><circle cx="200" cy="96" r="4" fill="currentColor"/><circle cx="36" cy="40" r="5" fill="#fff"/><text x="200" y="114" text-anchor="middle">BOM</text><text x="36" y="28" text-anchor="middle">IST</text></svg>
             </div>
-            <div class="frame__meta"><time>Mar 2027</time><span class="tag">Dates TBA</span></div>
-            <h3>The Istanbul Regional</h3>
-            <p>Our first competition, around 4,800&nbsp;km from Mumbai. The 2026 edition ran over three days in early March with 34 teams.</p>
+            <p class="card__when">Mar 2027 <span class="pill">Dates TBA</span></p>
+            <h3>Istanbul Regional</h3>
+            <p>Our first competition, about 4,800&nbsp;km from Mumbai. The 2026 edition ran over three days in early March with 34 teams.</p>
           </li>
-          <li class="frame">
-            <div class="frame__still frame__still--next" aria-hidden="true"><span>Year&nbsp;2</span></div>
-            <div class="frame__meta"><time>2027 →</time><span class="tag">To be written</span></div>
-            <h3>After the credits</h3>
-            <p>Off-season events, outreach, a better robot and a bigger regiment. The sequel starts here.</p>
-          </li>
-        </ol>
-      </div>
-
-      <div class="countdown wrap glass" data-countdown data-target="">
-        <p class="countdown__label">Kickoff 2027</p>
-        <p class="countdown__value" data-countdown-value>Date to be announced by <i>FIRST</i></p>
-        <p class="countdown__note">Kickoff has fallen in the first half of January in recent seasons. We will start the clock the moment <i>FIRST</i> confirms the date.</p>
-      </div>
-    </section>
-
-    <!-- ============ SC 04 · THE REGIMENT ============ -->
-    <section class="regiment" id="regiment" data-scene="SC 04 · THE REGIMENT" aria-labelledby="regiment-title">
-      <div class="wrap regiment__grid">
-        <div class="regiment__aside">
-          <h2 class="display" id="regiment-title">Seven divisions. One robot.</h2>
-          <p class="lede">Students run the team. Each division owns part of the robot or the organisation, and every member picks a main division plus extras.</p>
-          <div class="lens glass" aria-hidden="true">
-            <svg class="lens__icon" viewBox="0 0 24 24" data-lens-icon><path d="M8 6 2 12l6 6M16 6l6 6-6 6"/></svg>
-            <span class="lens__label" data-lens-label>Programming</span>
-          </div>
-        </div>
-
-        <ol class="divisions" data-divisions>
-          <li class="div" style="--c:#8B3DFF" data-icon="M8 6 2 12l6 6M16 6l6 6-6 6">
-            <button class="div__head" aria-expanded="true">
-              <span class="div__name">Programming</span>
-              <span class="div__motto">Quack the code.</span>
-            </button>
-            <div class="div__body">
-              <p>Robot code in Java, autonomous routines, vision, sensors and control loops. You make 125&nbsp;lb of aluminium do exactly what it is told.</p>
-              <ul><li>Java &amp; WPILib</li><li>Autonomous paths</li><li>Vision &amp; sensors</li><li>PID tuning</li></ul>
-            </div>
-          </li>
-          <li class="div" style="--c:#7A3BD9" data-icon="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1">
-            <button class="div__head" aria-expanded="false">
-              <span class="div__name">Mechanical</span>
-              <span class="div__motto">Built different. Built purple.</span>
-            </button>
-            <div class="div__body">
-              <p>Fabrication, prototyping and assembly: drivetrain, intakes, arms, elevators and climbers. If it moves, it went through your hands.</p>
-              <ul><li>Fabrication</li><li>Prototyping</li><li>Drivetrain</li><li>Mechanisms</li></ul>
-            </div>
-          </li>
-          <li class="div" style="--c:#5B47FF" data-icon="M13 2 4 14h7l-1 8 9-12h-7z">
-            <button class="div__head" aria-expanded="false">
-              <span class="div__name">Electrical</span>
-              <span class="div__motto">Power to the ranks.</span>
-            </button>
-            <div class="div__body">
-              <p>Wiring, power distribution, CAN bus, batteries, the roboRIO and the radio. A clean electrical board wins matches nobody notices.</p>
-              <ul><li>Wiring &amp; crimping</li><li>CAN &amp; power</li><li>Batteries</li><li>roboRIO &amp; radio</li></ul>
-            </div>
-          </li>
-          <li class="div" style="--c:#BF94FF" data-icon="M12 2 3 7v10l9 5 9-5V7zM3 7l9 5 9-5M12 12v10">
-            <button class="div__head" aria-expanded="false">
-              <span class="div__name">CAD</span>
-              <span class="div__motto">Measure twice. Model once.</span>
-            </button>
-            <div class="div__body">
-              <p>The whole robot is designed in 3D before metal is cut: assemblies, drawings, 3D printing and renders for the portfolio.</p>
-              <ul><li>3D modelling</li><li>Assemblies</li><li>Drawings</li><li>3D printing</li></ul>
-            </div>
-          </li>
-          <li class="div" style="--c:#9C7BE0" data-icon="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zM12 11a1 1 0 1 0 0 2 1 1 0 0 0 0-2z">
-            <button class="div__head" aria-expanded="false">
-              <span class="div__name">Strategy &amp; Scouting</span>
-              <span class="div__motto">Know the field before you take it.</span>
-            </button>
-            <div class="div__body">
-              <p>Game analysis, scouting data, match strategy and alliance selection. You decide what the robot should be good at, and who we pick.</p>
-              <ul><li>Game analysis</li><li>Scouting data</li><li>Match strategy</li><li>Drive team</li></ul>
-            </div>
-          </li>
-          <li class="div" style="--c:#C9A6FF" data-icon="M3 10v4h4l7 5V5L7 10zM18 8a5 5 0 0 1 0 8">
-            <button class="div__head" aria-expanded="false">
-              <span class="div__name">Business &amp; Outreach</span>
-              <span class="div__motto">Leading from the front.</span>
-            </button>
-            <div class="div__body">
-              <p>Sponsors, budgets, community outreach, the Impact Award and team documentation. The division that keeps the regiment funded and known.</p>
-              <ul><li>Sponsorship</li><li>Outreach</li><li>Impact Award</li><li>Budget</li></ul>
-            </div>
-          </li>
-          <li class="div" style="--c:#8E5BD6" data-icon="M2 9a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zM12 10a4 4 0 1 0 0 8 4 4 0 0 0 0-8z">
-            <button class="div__head" aria-expanded="false">
-              <span class="div__name">Media</span>
-              <span class="div__motto">Lights. Camera. Robot.</span>
-            </button>
-            <div class="div__body">
-              <p>Photos, video, social media, graphics and branding. You are the reason anyone outside the Maker Lab knows what happened inside it.</p>
-              <ul><li>Photo &amp; video</li><li>Social media</li><li>Design</li><li>Branding</li></ul>
-            </div>
+          <li class="card">
+            <span class="card__no">06</span>
+            <div class="card__art card__art--next" aria-hidden="true"><span>Year 2</span></div>
+            <p class="card__when">2027 → <span class="pill">To be written</span></p>
+            <h3>The sequel</h3>
+            <p>Off-season events, outreach, a better robot and a bigger regiment.</p>
           </li>
         </ol>
       </div>
+    </section>
 
-      <!-- Ranks / officers -->
-      <div class="wrap officers">
-        <h3 class="title">Officers on deck</h3>
-        <div class="officers__row">
-          <article class="officer">
-            <div class="officer__mono" aria-hidden="true">SP</div>
-            <div>
-              <h4>Sujal Patil</h4>
-              <p>Programming mentor</p>
-            </div>
-          </article>
-          <article class="officer">
-            <div class="officer__mono" aria-hidden="true">SM</div>
-            <div>
-              <h4>Suyog Mestry</h4>
-              <p>Mechanical mentor · Drive coach</p>
-            </div>
-          </article>
-          <div class="ranks">
-            <p>Student ranks this season</p>
-            <ul>
-              <li>Captain</li><li>Vice-Captain</li><li>Driver</li><li>Operator</li><li>Drive Coach</li><li>Pit Crew</li>
-            </ul>
-          </div>
+    <!-- ================= KICKOFF COUNTDOWN ================= -->
+    <section class="kickoff" aria-labelledby="kickoff-title" data-theme="dark">
+      <div class="wrap kickoff__inner">
+        <h2 class="kickoff__title" id="kickoff-title">Orders sealed<br>until Kickoff.</h2>
+        <div class="clock" data-countdown aria-live="off">
+          <div><span data-cd="d">--</span><small>Days</small></div>
+          <div><span data-cd="h">--</span><small>Hours</small></div>
+          <div><span data-cd="m">--</span><small>Minutes</small></div>
+          <div><span data-cd="s">--</span><small>Seconds</small></div>
         </div>
-        <p class="officers__note">Our student roster appears here once every family has signed the photo and name consent form. Until then, the cast stays off-screen.</p>
+        <p class="kickoff__note" data-countdown-note><i>FIRST</i> has not announced the 2027 Kickoff date yet. It has fallen in the first half of January in recent seasons; the clock starts the moment it is confirmed.</p>
       </div>
     </section>
 
-    <!-- ============ SC 05 · THE ROBOT ============ -->
-    <section class="robot" id="robot" data-scene="SC 05 · THE ROBOT" aria-labelledby="robot-title">
-      <div class="wrap robot__grid">
-        <div class="robot__view">
-          <canvas data-robot aria-label="Rotating wireframe of a generic robot chassis, a placeholder until our robot is designed" role="img"></canvas>
-          <span class="robot__stamp">In pre-production</span>
+    <!-- ================= DIVISIONS (stacking cards) ================= -->
+    <section class="divisions" id="divisions" aria-labelledby="div-title" data-theme="dark">
+      <div class="wrap">
+        <h2 class="h2" id="div-title">Seven divisions.<br><span class="muted">One robot.</span></h2>
+        <p class="sub sub--dark">Students run the team. Every member picks a main division plus extras, and every division owns a piece of the robot or the organisation.</p>
+      </div>
+
+      <div class="stack wrap">
+        <article class="dcard" style="--c1:#8B3DFF;--c2:#5B47FF">
+          <div class="dcard__copy">
+            <p class="dcard__n">Division 1 / 7</p>
+            <h3>Programming</h3>
+            <p class="dcard__motto">Quack the code.</p>
+            <p>Robot code in Java, autonomous routines, vision, sensors and control loops. You make the robot do exactly what it is told.</p>
+            <ul><li>Java &amp; WPILib</li><li>Autonomous</li><li>Vision</li><li>PID tuning</li></ul>
+          </div>
+          <svg class="dcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6 2 12l6 6M16 6l6 6-6 6"/></svg>
+        </article>
+        <article class="dcard" style="--c1:#5E2A84;--c2:#2A0F57">
+          <div class="dcard__copy">
+            <p class="dcard__n">Division 2 / 7</p>
+            <h3>Mechanical</h3>
+            <p class="dcard__motto">Built different. Built purple.</p>
+            <p>Fabrication, prototyping and assembly: drivetrain, intakes, arms, elevators and climbers. If it moves, it went through your hands.</p>
+            <ul><li>Fabrication</li><li>Prototyping</li><li>Drivetrain</li><li>Mechanisms</li></ul>
+          </div>
+          <svg class="dcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>
+        </article>
+        <article class="dcard dcard--brass" style="--c1:#E9B949;--c2:#B7832A">
+          <div class="dcard__copy">
+            <p class="dcard__n">Division 3 / 7</p>
+            <h3>Electrical</h3>
+            <p class="dcard__motto">Power to the ranks.</p>
+            <p>Wiring, power distribution, CAN bus, batteries, the roboRIO and the radio. A clean electrical board wins matches nobody notices.</p>
+            <ul><li>Wiring</li><li>CAN &amp; power</li><li>Batteries</li><li>roboRIO</li></ul>
+          </div>
+          <svg class="dcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+        </article>
+        <article class="dcard dcard--light" style="--c1:#F4F0FA;--c2:#DAC1FF">
+          <div class="dcard__copy">
+            <p class="dcard__n">Division 4 / 7</p>
+            <h3>CAD</h3>
+            <p class="dcard__motto">Measure twice. Model once.</p>
+            <p>The whole robot is designed in 3D before metal is cut: assemblies, drawings, 3D printing and renders for the portfolio.</p>
+            <ul><li>3D modelling</li><li>Assemblies</li><li>Drawings</li><li>3D printing</li></ul>
+          </div>
+          <svg class="dcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7zM3 7l9 5 9-5M12 12v10"/></svg>
+        </article>
+        <article class="dcard" style="--c1:#3A2380;--c2:#0B0712">
+          <div class="dcard__copy">
+            <p class="dcard__n">Division 5 / 7</p>
+            <h3>Strategy &amp; Scouting</h3>
+            <p class="dcard__motto">Know the field first.</p>
+            <p>Game analysis, scouting data, match strategy and alliance selection. You decide what the robot should be good at, and who we pick.</p>
+            <ul><li>Game analysis</li><li>Scouting data</li><li>Match strategy</li><li>Drive team</li></ul>
+          </div>
+          <svg class="dcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zM12 11a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>
+        </article>
+        <article class="dcard" style="--c1:#7434C2;--c2:#3D1B56">
+          <div class="dcard__copy">
+            <p class="dcard__n">Division 6 / 7</p>
+            <h3>Business &amp; Outreach</h3>
+            <p class="dcard__motto">Leading from the front.</p>
+            <p>Sponsors, budgets, community outreach, the Impact Award and team documentation. The division that keeps the regiment funded and known.</p>
+            <ul><li>Sponsorship</li><li>Outreach</li><li>Impact Award</li><li>Budget</li></ul>
+          </div>
+          <svg class="dcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10v4h4l7 5V5L7 10zM18 8a5 5 0 0 1 0 8"/></svg>
+        </article>
+        <article class="dcard" style="--c1:#5B47FF;--c2:#22083E">
+          <div class="dcard__copy">
+            <p class="dcard__n">Division 7 / 7</p>
+            <h3>Media</h3>
+            <p class="dcard__motto">Lights. Camera. Robot.</p>
+            <p>Photos, video, social media, graphics and branding. You are the reason anyone outside the Maker Lab knows what happened inside it.</p>
+            <ul><li>Photo &amp; video</li><li>Social</li><li>Design</li><li>Branding</li></ul>
+          </div>
+          <svg class="dcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zM12 10a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg>
+        </article>
+      </div>
+
+      <div class="wrap people">
+        <div class="person">
+          <span class="person__mono" aria-hidden="true">SP</span>
+          <div><h3>Sujal Patil</h3><p>Programming mentor</p></div>
         </div>
-        <div class="robot__sheet">
-          <h2 class="display" id="robot-title">Robot&nbsp;001 is still a sketch.</h2>
-          <p class="lede">Nobody can design an FRC robot before the game is revealed. Here is how ours will go from idea to field, and where it is right now.</p>
-          <ol class="pipeline" aria-label="Robot build stages">
-            <li class="is-now"><span>Concept</span></li>
-            <li><span>CAD</span></li>
-            <li><span>Prototype</span></li>
-            <li><span>Built</span></li>
-            <li><span>Tuned</span></li>
-            <li><span>Competition-ready</span></li>
+        <div class="person">
+          <span class="person__mono" aria-hidden="true">SM</span>
+          <div><h3>Suyog Mestry</h3><p>Mechanical mentor · Drive coach</p></div>
+        </div>
+        <p class="people__note">Our student roster goes up once every family has signed the photo and name consent form.</p>
+      </div>
+    </section>
+
+    <!-- ================= ROBOT (pinned scrollytelling) ================= -->
+    <section class="robot" id="robot" aria-labelledby="robot-title" data-theme="dark">
+      <div class="robot__pin" data-robot-pin>
+        <div class="robot__copy">
+          <h2 class="h2" id="robot-title">Robot 001.<br><span class="muted">Assembling soon.</span></h2>
+          <ol class="stages" data-stages>
+            <li class="is-on"><b>Concept</b><span>Read the manual, sketch every idea, pick a strategy.</span></li>
+            <li><b>CAD</b><span>Model the whole robot in 3D before cutting metal.</span></li>
+            <li><b>Prototype</b><span>Wood, polycarbonate and zip ties. Test, break, learn.</span></li>
+            <li><b>Built</b><span>Machine, assemble and wire the real thing.</span></li>
+            <li><b>Tuned</b><span>Code, drive practice and hundreds of test runs.</span></li>
+            <li><b>Ready</b><span>Inspected, bumpered and packed for Istanbul.</span></li>
           </ol>
-          <dl class="specs">
-            <div><dt>Name</dt><dd>Chosen by the team at Kickoff</dd></div>
-            <div><dt>Drivetrain</dt><dd>To be decided after the game reveal</dd></div>
-            <div><dt>Weight</dt><dd>Inside the 2027 manual's limit</dd></div>
-            <div><dt>Language</dt><dd>Java (WPILib)</dd></div>
-            <div><dt>Code &amp; CAD</dt><dd>We plan to publish both after the season</dd></div>
+          <p class="robot__now"><span class="dot dot--live"></span>Current stage: Concept. Nobody can design an FRC robot before the game is revealed.</p>
+        </div>
+        <div class="robot__view">
+          <canvas data-robot role="img" aria-label="Wireframe of a generic robot chassis that assembles as you scroll, a placeholder until our robot is designed"></canvas>
+          <dl class="robot__specs">
+            <div><dt>Name</dt><dd>Chosen at Kickoff</dd></div>
+            <div><dt>Code</dt><dd>Java · WPILib</dd></div>
+            <div><dt>Drivetrain</dt><dd>After the reveal</dd></div>
           </dl>
         </div>
       </div>
     </section>
 
-    <!-- ============ SC 06 · IMPACT ============ -->
-    <section class="impact" id="impact" data-scene="SC 06 · IMPACT" aria-labelledby="impact-title">
+    <!-- ================= IMPACT (light) ================= -->
+    <section class="impact light" id="impact" aria-labelledby="impact-title" data-theme="light">
       <div class="wrap">
-        <h2 class="display impact__title" id="impact-title">Leading from the front,<br>lifting others up.</h2>
-        <p class="lede">A rookie team cannot point at years of outreach. So here is our call sheet: what we intend to do in season one. Each line turns green when it happens, with photos and numbers.</p>
-        <ul class="callsheet">
-          <li><span class="callsheet__when">Term 2</span><span class="callsheet__what">Robot demos for the junior and middle school at CAJCS</span><span class="tag">Planned</span></li>
-          <li><span class="callsheet__when">Term 2</span><span class="callsheet__what">Maker Lab open house for parents and prospective members</span><span class="tag">Planned</span></li>
-          <li><span class="callsheet__when">Ongoing</span><span class="callsheet__what">Help other Mumbai schools start <i>FIRST</i> teams of their own</span><span class="tag">Planned</span></li>
-          <li><span class="callsheet__when">Season</span><span class="callsheet__what">A build-season blog and video diary, so the next rookie team can learn from ours</span><span class="tag">Planned</span></li>
-          <li><span class="callsheet__when">Post-season</span><span class="callsheet__what">Open-source our robot code, CAD and the 154-task training library</span><span class="tag">Planned</span></li>
+        <h2 class="h2" id="impact-title">Leading from the front.<br><span class="muted">Lifting others up.</span></h2>
+        <p class="sub">A rookie team cannot point at years of outreach. So here is what we intend to do in season one. Each line flips to done, with photos and numbers, when it happens.</p>
+        <ul class="plans">
+          <li data-reveal><span class="plans__when">Term 2</span><span class="plans__what">Robot demos for the junior and middle school at CAJCS</span><span class="pill pill--ink">Planned</span></li>
+          <li data-reveal><span class="plans__when">Term 2</span><span class="plans__what">Maker Lab open house for parents and new members</span><span class="pill pill--ink">Planned</span></li>
+          <li data-reveal><span class="plans__when">Ongoing</span><span class="plans__what">Help other Mumbai schools start <i>FIRST</i> teams of their own</span><span class="pill pill--ink">Planned</span></li>
+          <li data-reveal><span class="plans__when">Season</span><span class="plans__what">A build-season blog and video diary for the next rookie team</span><span class="pill pill--ink">Planned</span></li>
+          <li data-reveal><span class="plans__when">Post-season</span><span class="plans__what">Open-source our code, CAD and the 154-task training library</span><span class="pill pill--ink">Planned</span></li>
         </ul>
       </div>
     </section>
 
-    <!-- ============ SC 07 · SPONSORS ============ -->
-    <section class="sponsors" id="sponsors" data-scene="SC 07 · SPONSORS" aria-labelledby="sponsors-title">
+    <!-- ================= SPONSORS ================= -->
+    <section class="sponsors" id="sponsors" aria-labelledby="sponsors-title" data-theme="dark">
       <div class="wrap">
-        <div class="sponsors__head">
-          <h2 class="display" id="sponsors-title">Back the regiment.</h2>
-          <p class="lede">A first season is the most expensive one: the robot kit and parts, tools, event registration and getting a team and a robot to Istanbul. Your support decides how far we get.</p>
+        <h2 class="h2 h2--xl" id="sponsors-title">Back the <em>regiment.</em></h2>
+        <p class="sub sub--dark">A first season is the most expensive one: robot parts and tools, event registration, and getting a team and a robot to Istanbul. Your support decides how far we get.</p>
+
+        <div class="needs">
+          <p><b data-count="4">4</b> things your money builds</p>
+          <ul>
+            <li>Robot parts &amp; tools</li><li>Event registration</li><li>Travel to Istanbul</li><li>Outreach programmes</li>
+          </ul>
         </div>
 
-        <ul class="needs" aria-label="What sponsorship pays for">
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>Robot parts &amp; tools</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM4 9h16M9 5v4"/></svg>Event registration</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 16l20-8-4 10-5-3-3 4v-5z"/></svg>Travel to Istanbul</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10l8-6 8 6v10zM10 20v-6h4v6"/></svg>Outreach programmes</li>
-        </ul>
-
-        <ol class="tiers" data-tiers>
-          <li class="tier glass" style="--h:1">
-            <p class="tier__rank">Cadet</p>
+        <ol class="tiers">
+          <li class="tier glass" data-tilt-soft>
+            <p class="tier__rank">Cadet</p><p class="tier__stars" style="--n:1" aria-label="1 star tier"></p>
             <p class="tier__amt">[AMOUNT]</p>
             <ul><li>Name on our website</li><li>Thank-you post on our socials</li><li>Season updates by email</li></ul>
           </li>
-          <li class="tier glass" style="--h:2">
-            <p class="tier__rank">Lieutenant</p>
+          <li class="tier glass" data-tilt-soft>
+            <p class="tier__rank">Lieutenant</p><p class="tier__stars" style="--n:2" aria-label="2 star tier"></p>
             <p class="tier__amt">[AMOUNT]</p>
-            <ul><li>Everything in Cadet</li><li>Logo on website and team jersey</li><li>Logo in our engineering portfolio</li></ul>
+            <ul><li>Everything in Cadet</li><li>Logo on website and jersey</li><li>Logo in our engineering portfolio</li></ul>
           </li>
-          <li class="tier glass" style="--h:3">
-            <p class="tier__rank">Colonel</p>
+          <li class="tier glass" data-tilt-soft>
+            <p class="tier__rank">Colonel</p><p class="tier__stars" style="--n:3" aria-label="3 star tier"></p>
             <p class="tier__amt">[AMOUNT]</p>
             <ul><li>Everything in Lieutenant</li><li>Logo on the robot and pit banner</li><li>Robot demo at your office</li></ul>
           </li>
-          <li class="tier tier--top glass" style="--h:4">
-            <p class="tier__rank">General</p>
+          <li class="tier tier--general" data-tilt-soft>
+            <p class="tier__rank">General</p><p class="tier__stars" style="--n:4" aria-label="4 star tier"></p>
             <p class="tier__amt">[AMOUNT]</p>
-            <ul><li>Everything in Colonel</li><li>Largest logo on robot, jersey and banner</li><li>Named in every press piece and presentation</li></ul>
+            <ul><li>Everything in Colonel</li><li>Largest logo on robot, jersey and banner</li><li>Named in every press piece</li></ul>
           </li>
         </ol>
-        <p class="tiers__note">Tier amounts are being finalised by our mentors. In-kind support counts too: machining, 3D printing, electronics, software licences, transport or an engineer's time.</p>
+        <p class="fine fine--dark">Tier amounts are being finalised by our mentors. In-kind support counts too: machining, 3D printing, electronics, software licences, transport or an engineer's time.</p>
 
-        <div class="wall" aria-label="Sponsor logos">
-          <div class="wall__tile wall__tile--open"><span>Your logo<br>here</span></div>
-          <div class="wall__tile wall__tile--open"><span>Your logo<br>here</span></div>
-          <div class="wall__tile wall__tile--open"><span>Your logo<br>here</span></div>
-          <div class="wall__tile wall__tile--open"><span>Your logo<br>here</span></div>
+        <div class="logos" aria-label="Sponsor logo spaces, currently open">
+          <div class="logos__track" data-logos>
+            <span>Your logo here</span><span>Your logo here</span><span>Your logo here</span><span>Your logo here</span><span>Your logo here</span><span>Your logo here</span>
+          </div>
         </div>
 
-        <div class="sponsors__cta">
-          <a class="btn btn--primary" href="#contact" data-mail="sponsor">Request the sponsorship deck</a>
-          <a class="btn btn--ghost" href="#contact">Talk to a mentor</a>
+        <div class="cta-row">
+          <a class="btn btn--brass" href="#contact" data-mail="sponsor" data-magnetic>Request the sponsor deck</a>
+          <a class="btn btn--outline" href="#contact" data-magnetic>Talk to a mentor</a>
         </div>
       </div>
     </section>
 
-    <!-- ============ SC 08 · ENLIST ============ -->
-    <section class="enlist" id="enlist" data-scene="SC 08 · ENLIST" aria-labelledby="enlist-title">
+    <!-- ================= ENLIST (purple) ================= -->
+    <section class="enlist" id="enlist" aria-labelledby="enlist-title" data-theme="dark">
       <div class="capband" aria-hidden="true"></div>
       <div class="wrap enlist__grid">
         <div>
-          <h2 class="display" id="enlist-title">The regiment is recruiting.</h2>
-          <p class="lede">No robotics experience needed. If you are a CAJCS student who likes building, coding, designing, filming or organising, there is a division for you.</p>
-
+          <h2 class="h2 h2--xl" id="enlist-title">The regiment<br>is recruiting.</h2>
+          <p class="sub sub--dark">No robotics experience needed. If you are a CAJCS student who likes building, coding, designing, filming or organising, there is a division for you.</p>
           <div class="faq">
-            <details>
-              <summary>Who can join?</summary>
-              <p>CAJCS students. Our mentors confirm the grades for each intake; tell us yours in the form and we will tell you if this intake fits.</p>
-            </details>
-            <details>
-              <summary>How much time does it take?</summary>
-              <p>Regular sessions in the Maker Lab through the year, with more during build season (January to March). Exact session times are shared with members.</p>
-            </details>
-            <details>
-              <summary>Do I need to know how to code or build?</summary>
-              <p>No. Basic training uses our 154-task skills library, starting at the Minimum level. You learn by doing, with mentors beside you.</p>
-            </details>
-            <details>
-              <summary>For parents: is it safe?</summary>
-              <p>Work happens in the school Maker Lab under mentor supervision, with safety glasses and training before any power tool. We never publish a student's name or photo without your written consent.</p>
-            </details>
+            <details><summary>Who can join?</summary><p>CAJCS students. Our mentors confirm the grades for each intake; tell us yours in the form and we will tell you if this intake fits.</p></details>
+            <details><summary>How much time does it take?</summary><p>Regular sessions in the Maker Lab through the year, with more during build season (January to March). Exact times are shared with members.</p></details>
+            <details><summary>Do I need to know how to code or build?</summary><p>No. Basic training uses our 154-task skills library, starting at the Minimum level. You learn by doing, with mentors beside you.</p></details>
+            <details><summary>For parents: is it safe?</summary><p>Work happens in the school Maker Lab under mentor supervision, with safety glasses and training before any power tool. We never publish a student's name or photo without your written consent.</p></details>
           </div>
         </div>
 
         <form class="pass glass" data-enlist novalidate>
           <div class="pass__head">
-            <img src="assets/badge.webp" alt="" width="44" height="44">
-            <div><p class="pass__title">Enlistment form</p><p class="pass__sub">FRC 11745 · Season 2026–27</p></div>
+            <img src="assets/badge.webp" alt="" width="46" height="46">
+            <div><p class="pass__title">Enlistment</p><p class="pass__sub">FRC 11745 · Season 2026–27</p></div>
+            <span class="pass__no" aria-hidden="true">No. 0001</span>
           </div>
           <label class="field">
             <span>Your name</span>
@@ -490,62 +487,47 @@
             <span>Anything we should know? <em>(optional)</em></span>
             <textarea name="note" rows="3"></textarea>
           </label>
-          <button class="btn btn--primary btn--block" type="submit" data-submit>Report for duty</button>
+          <button class="btn btn--brass btn--block" type="submit" data-submit>Report for duty</button>
           <p class="pass__status" data-status role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
 
-    <!-- ============ SC 09 · CONTACT ============ -->
-    <section class="contact" id="contact" data-scene="SC 09 · CONTACT" aria-labelledby="contact-title">
+    <!-- ================= CONTACT ================= -->
+    <section class="contact" id="contact" aria-labelledby="contact-title" data-theme="dark">
       <div class="wrap contact__grid">
-        <h2 class="display" id="contact-title">Send word.</h2>
+        <h2 class="h2" id="contact-title">Send word.</h2>
         <div class="contact__lines">
           <a class="contact__line" href="mailto:" data-mail="general"><span>Email</span><b data-email-text>[EMAIL]</b></a>
           <a class="contact__line" href="#" data-social="instagram"><span>Instagram</span><b>@[HANDLE]</b></a>
           <a class="contact__line" href="https://frc-events.firstinspires.org/team/11745" rel="noopener"><span><i>FIRST</i> team page</span><b>FRC 11745</b></a>
-          <p class="contact__line contact__line--static"><span>Base</span><b>CAJCS Maker Lab, Mumbai</b></p>
+          <p class="contact__line"><span>Base</span><b>CAJCS Maker Lab, Mumbai</b></p>
+          <p class="contact__note">Other teams: want to scrimmage, swap scouting data or share a pit tip? We are new, and we would love to hear from you.</p>
         </div>
-        <p class="contact__note">Other teams: want to scrimmage, swap scouting data or share a pit tip? We are new and we would love to hear from you.</p>
       </div>
     </section>
-
-    <!-- ============ END CREDITS ============ -->
-    <footer class="credits" data-scene="SC 10 · END CREDITS" aria-label="Credits and footer">
-      <canvas class="terrain terrain--credits" data-terrain aria-hidden="true"></canvas>
-      <div class="credits__window">
-        <div class="credits__roll" data-roll>
-          <p class="credits__lead">The Ducktators</p>
-          <dl>
-            <div><dt>A production of</dt><dd>Cathedral &amp; John Connon School, Mumbai</dd></div>
-            <div><dt>Programming mentor</dt><dd>Sujal Patil</dd></div>
-            <div><dt>Mechanical mentor &amp; drive coach</dt><dd>Suyog Mestry</dd></div>
-            <div><dt>Starring</dt><dd>The students of FRC 11745</dd></div>
-            <div><dt>Programming</dt><dd class="open">Your name here</dd></div>
-            <div><dt>Mechanical</dt><dd class="open">Your name here</dd></div>
-            <div><dt>Electrical</dt><dd class="open">Your name here</dd></div>
-            <div><dt>CAD</dt><dd class="open">Your name here</dd></div>
-            <div><dt>Strategy &amp; scouting</dt><dd class="open">Your name here</dd></div>
-            <div><dt>Business &amp; outreach</dt><dd class="open">Your name here</dd></div>
-            <div><dt>Media</dt><dd class="open">Your name here</dd></div>
-            <div><dt>With the support of</dt><dd class="open">Your company here</dd></div>
-            <div><dt>Filmed on location at</dt><dd>The CAJCS Maker Lab</dd></div>
-          </dl>
-          <p class="credits__post">Season 2027<br><span>Coming soon to the Istanbul Regional</span></p>
-        </div>
-      </div>
-
-      <div class="foot">
-        <div class="capband" aria-hidden="true"></div>
-        <div class="wrap foot__row">
-          <img src="assets/wordmark.jpg" alt="The Ducktators 11745 wordmark" width="240" height="102" class="foot__mark" loading="lazy">
-          <p>The Ducktators · FRC 11745 · Cathedral &amp; John Connon School · Mumbai · 2026–27</p>
-          <p class="foot__legal"><i>FIRST</i>® and <i>FIRST</i>® Robotics Competition are registered trademarks of <i>FIRST</i>. This site is run by the team and is not endorsed by <i>FIRST</i>.</p>
-          <a href="#top" class="foot__top">Rewind to start</a>
-        </div>
-      </div>
-    </footer>
   </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer" data-theme="dark">
+    <div class="credits wrap">
+      <dl>
+        <div><dt>A production of</dt><dd>Cathedral &amp; John Connon School, Mumbai</dd></div>
+        <div><dt>Mentors</dt><dd>Sujal Patil · Suyog Mestry</dd></div>
+        <div><dt>Starring</dt><dd>The students of FRC 11745</dd></div>
+        <div><dt>Your name here</dt><dd class="open">Enlist above</dd></div>
+        <div><dt>Your company here</dt><dd class="open">Sponsor above</dd></div>
+        <div><dt>Filmed at</dt><dd>The CAJCS Maker Lab</dd></div>
+      </dl>
+    </div>
+    <p class="footer__giant" aria-hidden="true" data-giant>Ducktators</p>
+    <div class="capband" aria-hidden="true"></div>
+    <div class="wrap footer__row">
+      <p>The Ducktators · FRC 11745 · Mumbai · 2026–27</p>
+      <p class="footer__legal"><i>FIRST</i>® and <i>FIRST</i>® Robotics Competition are registered trademarks of <i>FIRST</i>. This site is run by the team and is not endorsed by <i>FIRST</i>.</p>
+      <a href="#top" class="footer__top">Back to top ↑</a>
+    </div>
+  </footer>
 
   <script src="vendor/gsap.min.js" defer></script>
   <script src="vendor/ScrollTrigger.min.js" defer></script>

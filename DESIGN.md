@@ -162,6 +162,8 @@ components:
     textColor: "{colors.projector}"
 ---
 
+> **v2 update (keynote redesign):** the site now uses **Geist** (display 700–800, tracking −0.045em to −0.06em) and **Geist Mono** for labels and numbers; Michroma is kept only for the logotype. The palette adds **regimental brass `#E9B949`** (primary buttons, stars, highlights) and **paper `#F5F3F9`** light sections alongside black `#000`. Outfit, Orbitron and Anton are no longer loaded. Tokens below that predate v2 are superseded by the variables at the top of `css/style.css` until this file is regenerated.
+
 # Design System: The Ducktators · FRC 11745
 
 ## Overview
