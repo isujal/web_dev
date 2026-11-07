@@ -352,7 +352,7 @@ i { font-style: italic; }
 .div__name { font: 300 clamp(1.5rem, 2.6vw, 2.3rem)/1.1 var(--f-body); letter-spacing: -.02em; color: var(--text); transition: color .3s, transform .5s var(--ease); }
 .div:hover .div__name, .div.is-open .div__name { color: #fff; }
 .div.is-open .div__name { transform: translateX(6px); }
-.div__motto { font: 400 .62rem/1.4 var(--f-wide); letter-spacing: .18em; text-transform: uppercase; color: var(--text-dim); text-align: right; }
+.div__motto { font: 400 .68rem/1.4 var(--f-wide); letter-spacing: .18em; text-transform: uppercase; color: var(--text-dim); text-align: right; }
 .div__body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .6s var(--ease); }
 .div__body > * { overflow: hidden; }
 .div.is-open .div__body { grid-template-rows: 1fr; }
@@ -371,7 +371,7 @@ i { font-style: italic; }
 .ranks { padding: 22px; border-radius: var(--r-card); box-shadow: inset 0 0 0 1px var(--line); }
 .ranks p { margin: 0 0 12px; font-size: .85rem; color: var(--text-dim); }
 .ranks ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
-.ranks li { font: 400 .6rem/1 var(--f-wide); letter-spacing: .14em; text-transform: uppercase; padding: 8px 10px; border-radius: 6px; background: rgba(139,61,255,.14); color: var(--mist); }
+.ranks li { font: 400 .68rem/1 var(--f-wide); letter-spacing: .14em; text-transform: uppercase; padding: 8px 10px; border-radius: 6px; background: rgba(139,61,255,.14); color: var(--mist); }
 .officers__note { margin: 20px 0 0; color: var(--text-dim); font-size: .9rem; max-width: 70ch; }
 
 /* =========================================================
@@ -392,7 +392,7 @@ i { font-style: italic; }
 .pipeline li.is-now::before { background: linear-gradient(90deg, var(--electric), var(--violet)); box-shadow: 0 0 12px var(--electric); }
 .specs { margin: 0; display: grid; border-top: 1px solid var(--line); }
 .specs div { display: grid; grid-template-columns: 9.5rem 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
-.specs dt { font: 400 .62rem/1.8 var(--f-wide); letter-spacing: .2em; text-transform: uppercase; color: var(--lavender); }
+.specs dt { font: 400 .68rem/1.8 var(--f-wide); letter-spacing: .2em; text-transform: uppercase; color: var(--lavender); }
 .specs dd { margin: 0; color: var(--text); }
 
 /* =========================================================
@@ -501,7 +501,7 @@ a.contact__line:hover b { color: var(--lavender); transform: translateX(-6px); }
 .no-anim .credits__roll, html:not(.js) .credits__roll { position: static; padding: 80px 20px; }
 .credits__lead { margin: 0 0 80px; font: 400 clamp(1.2rem, 3vw, 2.2rem)/1 var(--f-wide); letter-spacing: .3em; padding-left: .3em; text-transform: uppercase; color: #fff; text-shadow: 0 0 24px rgba(139,61,255,.9); }
 .credits dl { margin: 0; display: grid; gap: 34px; }
-.credits dt { font: 400 .62rem/1 var(--f-wide); letter-spacing: .28em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px; }
+.credits dt { font: 400 .68rem/1 var(--f-wide); letter-spacing: .28em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px; }
 .credits dd { margin: 0; font: 300 clamp(1.1rem, 2vw, 1.5rem)/1.3 var(--f-body); color: #fff; }
 .credits dd.open { color: var(--lavender); font-style: normal; }
 .credits dd.open::before, .credits dd.open::after { content: "["; color: var(--electric); margin-right: .2em; }
