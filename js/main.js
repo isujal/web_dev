@@ -268,14 +268,8 @@ const SITE = {
   gsap.registerPlugin(ScrollTrigger);
   const EASE = 'expo.out';
 
-  /* ---------- Custom cursor + magnetic buttons ---------- */
+  /* ---------- Magnetic buttons (cursor itself is drawn by the system via CSS) ---------- */
   if (fine) {
-    root.classList.add('has-cursor');
-    const cur = $('.cursor');
-    const dx = gsap.quickTo('.cursor__dot', 'x', { duration: .08 }), dy = gsap.quickTo('.cursor__dot', 'y', { duration: .08 });
-    const rx = gsap.quickTo('.cursor__ring', 'x', { duration: .45, ease: 'power3' }), ry = gsap.quickTo('.cursor__ring', 'y', { duration: .45, ease: 'power3' });
-    addEventListener('pointermove', e => { dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY); }, { passive: true });
-    document.addEventListener('pointerover', e => cur.classList.toggle('is-hover', !!e.target.closest('a, button, summary, label, [data-magnetic]')));
     $$('[data-magnetic]').forEach(el => {
       const mx = gsap.quickTo(el, 'x', { duration: .6, ease: 'elastic.out(1,.4)' }), my = gsap.quickTo(el, 'y', { duration: .6, ease: 'elastic.out(1,.4)' });
       el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect(); mx((e.clientX - r.left - r.width / 2) * .3); my((e.clientY - r.top - r.height / 2) * .4); });
