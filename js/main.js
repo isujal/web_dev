@@ -176,6 +176,50 @@ const SITE = {
     status.textContent = 'Online enlistment opens soon. Until then, find a mentor in the CAJCS Maker Lab.';
   });
 
+  /* ---------- Sponsor enquiry form: emails the team inbox through FormSubmit ---------- */
+  const sForm = $('[data-sponsor]');
+  if (sForm) {
+    const sStatus = $('[data-sponsor-status]', sForm), sBtn = $('[data-sponsor-submit]', sForm);
+    const sErr = (n, on) => $(`[data-err="${n}"]`, sForm).closest('.field').classList.toggle('has-error', on);
+    const sValidate = () => {
+      const company = sForm.company.value.trim(), contact = sForm.contact.value.trim(), email = sForm.email.value.trim();
+      const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+      sErr('company', !company); sErr('contact', !contact); sErr('email', !ok);
+      return company && contact && ok;
+    };
+    ['input', 'change'].forEach(ev => sForm.addEventListener(ev, e => { if (e.target.closest('.has-error')) sValidate(); }));
+    sForm.addEventListener('submit', async e => {
+      e.preventDefault(); sStatus.className = 'pass__status';
+      if (!sValidate()) {
+        sStatus.textContent = 'Please fill in the highlighted fields.'; sStatus.classList.add('is-err');
+        $('.has-error input', sForm)?.focus();
+        if (anim) gsap.fromTo(sForm, { x: -8 }, { x: 0, duration: .6, ease: 'elastic.out(1,.3)' });
+        return;
+      }
+      if (sForm._honey?.value) { sForm.reset(); sStatus.textContent = 'Thank you, we will be in touch.'; sStatus.classList.add('is-ok'); return; } // bot trap
+      const d = {
+        company: sForm.company.value.trim(), contact: sForm.contact.value.trim(), email: sForm.email.value.trim(),
+        phone: sForm.phone.value.trim(), support: $$('input[name="support"]:checked', sForm).map(i => i.value), message: sForm.message.value.trim(),
+      };
+      sBtn.disabled = true; sBtn.textContent = 'Sending…';
+      try {
+        const res = await fetch(`https://formsubmit.co/ajax/${SITE.email}`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            _subject: `Sponsor enquiry: ${d.company}`, _template: 'table', _replyto: d.email, _captcha: 'false',
+            Company: d.company, Contact: d.contact, Email: d.email, Phone: d.phone || '(not given)',
+            Support: d.support.join(', ') || 'Not specified', Message: d.message || '(none)',
+          }),
+        });
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok || out.success === false || out.success === 'false') throw new Error(out.message || res.status);
+        sForm.reset(); sStatus.textContent = `Thank you, ${d.contact.split(' ')[0]}. A mentor will reply to ${d.email} within a few days.`; sStatus.classList.add('is-ok');
+      } catch {
+        sStatus.textContent = `That did not go through. Try again in a minute, or email us at ${SITE.email}.`; sStatus.classList.add('is-err');
+      } finally { sBtn.disabled = false; sBtn.textContent = 'Send enquiry'; }
+    });
+  }
+
   /* ---------- Canvas helper ---------- */
   const fit = (cv, ctx, scale = 1) => {
     const dpr = Math.min(2, devicePixelRatio || 1) * scale;

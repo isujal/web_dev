@@ -485,9 +485,56 @@
           </div>
         </div>
 
-        <div class="cta-row">
-          <a class="btn btn--brass" href="#contact" data-mail="sponsor" data-magnetic>Request our sponsorship deck</a>
-          <a class="btn btn--outline" href="#contact" data-magnetic>Talk to a mentor</a>
+        <div class="enquiry" id="sponsor-enquiry">
+          <div class="enquiry__intro">
+            <h3 class="enquiry__title">Start a conversation.</h3>
+            <p>Tell us a little about your organisation and how you would like to help. A mentor will reply within a few days with our sponsorship details.</p>
+            <p class="enquiry__alt">Prefer email? Write to <a href="mailto:ducktator.frc@gmail.com" data-email-link>ducktator.frc@gmail.com</a></p>
+          </div>
+
+          <form class="pass glass enquiry__form" data-sponsor novalidate>
+            <div class="field-row">
+              <label class="field">
+                <span>Company or organisation</span>
+                <input name="company" autocomplete="organization" required>
+                <small class="field__err" data-err="company">Tell us which organisation you represent.</small>
+              </label>
+              <label class="field">
+                <span>Your name</span>
+                <input name="contact" autocomplete="name" required>
+                <small class="field__err" data-err="contact">Tell us who to reply to.</small>
+              </label>
+            </div>
+            <div class="field-row">
+              <label class="field">
+                <span>Email</span>
+                <input name="email" type="email" autocomplete="email" required>
+                <small class="field__err" data-err="email">That email does not look right. Check for a missing @ or dot.</small>
+              </label>
+              <label class="field">
+                <span>Phone <em>(optional)</em></span>
+                <input name="phone" type="tel" autocomplete="tel">
+              </label>
+            </div>
+            <fieldset class="field">
+              <legend>How would you like to support us?</legend>
+              <div class="picks">
+                <label><input type="checkbox" name="support" value="Financial sponsorship"><span>Financial sponsorship</span></label>
+                <label><input type="checkbox" name="support" value="Parts or materials"><span>Parts or materials</span></label>
+                <label><input type="checkbox" name="support" value="Machining or manufacturing"><span>Machining or manufacturing</span></label>
+                <label><input type="checkbox" name="support" value="Mentoring or expertise"><span>Mentoring or expertise</span></label>
+                <label><input type="checkbox" name="support" value="Travel or logistics"><span>Travel or logistics</span></label>
+                <label><input type="checkbox" name="support" value="Other"><span>Other</span></label>
+              </div>
+            </fieldset>
+            <label class="field">
+              <span>Message <em>(optional)</em></span>
+              <textarea name="message" rows="3"></textarea>
+            </label>
+            <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn btn--brass btn--block" type="submit" data-sponsor-submit>Send enquiry</button>
+            <p class="pass__status" data-sponsor-status role="status" aria-live="polite"></p>
+          </form>
         </div>
       </div>
     </section>

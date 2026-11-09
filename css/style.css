@@ -649,3 +649,11 @@ a.contact__line:hover b { color: var(--brass); transform: translateX(-8px); }
 .footer__logo--first img { width: 100%; height: 100%; max-height: none; object-fit: contain; }
 .pass__privacy { margin: 0; font-size: .78rem; line-height: 1.45; color: rgba(255,255,255,.62); }
 .hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+/* ---------- Sponsor enquiry ---------- */
+.enquiry { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 620px); gap: clamp(28px, 5vw, 80px); align-items: start; margin-top: 10px; }
+.enquiry__title { margin: 0 0 14px; font: 800 clamp(1.9rem, 3.4vw, 2.8rem)/1 var(--f); letter-spacing: -.045em; }
+.enquiry__intro p { margin: 0 0 14px; max-width: 42ch; color: var(--grey); }
+.enquiry__alt a { color: var(--brass); text-decoration: underline; text-underline-offset: .2em; }
+.enquiry__form { background: linear-gradient(150deg, rgba(255,255,255,.12), rgba(255,255,255,.04) 50%, rgba(255,255,255,.07)); }
+@media (max-width: 1020px) { .enquiry { grid-template-columns: 1fr; } }
