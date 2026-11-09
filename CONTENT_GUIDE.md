@@ -28,7 +28,7 @@ Based on Hall of Fame and championship-level team sites, plus rookie team sites 
 ## 2. What I need from you (send in this order)
 
 ### A. Must have before going public
-1. **Team email** (a shared Gmail or school address) → `SITE.email` in `js/main.js`.
+1. ~~**Team email**~~ Done: ducktator.frc@gmail.com is set in `SITE.email` in `js/main.js`. Join applications go to a Google Sheet once `tools/apps-script/README.md` is set up.
 2. **Instagram handle** (and any YouTube or LinkedIn) → `SITE.instagram`.
 3. **Mentor approval of copy**: tagline "Order in the ranks.", domain mottos, and sponsor tier names (Cadet / Lieutenant / Colonel / General).
 4. **Sponsor tier amounts** (INR, plus USD if you pitch abroad) and what each tier gets.

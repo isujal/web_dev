@@ -3,10 +3,10 @@
 
 /* ---------- EDIT ME: team details (leave '' until confirmed) ---------- */
 const SITE = {
-  email: '',          // e.g. 'ducktators11745@gmail.com'
+  email: 'ducktator.frc@gmail.com', // team inbox: contact links, sponsor enquiries, and the join-form fallback
   instagram: '',      // handle without @, e.g. 'frc11745'
   kickoff: '2027-01-09T00:00:00+05:30', // Kickoff day (IST). Put the exact broadcast time here once FIRST confirms it, e.g. '2027-01-09T22:30:00+05:30'
-  formEndpoint: '',   // optional: Formspree / Google Apps Script URL that accepts POST JSON
+  formEndpoint: '',   // Google Apps Script web-app URL (…/exec) that saves join applications to the team Google Sheet. See tools/apps-script/README.md
 };
 
 (() => {
@@ -138,19 +138,22 @@ const SITE = {
     const data = { name: form.name.value.trim(), grade: form.grade.value, email: form.email.value.trim(),
       domains: $$('input[name="div"]:checked', form).map(i => i.value), note: form.note.value.trim() };
     if (SITE.formEndpoint) {
-      submitBtn.disabled = true; submitBtn.textContent = 'Sending orders…';
+      submitBtn.disabled = true; submitBtn.textContent = 'Sending…';
       try {
-        const res = await fetch(SITE.formEndpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) });
-        if (!res.ok) throw new Error(res.status);
-        form.reset(); status.textContent = `Orders received, ${data.name.split(' ')[0]}. A mentor will reply to ${data.email}.`; status.classList.add('is-ok');
+        // text/plain keeps this a "simple" request, which Google Apps Script accepts without a CORS preflight
+        const res = await fetch(SITE.formEndpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ type: 'join', page: location.href, ...data, domains: data.domains.join(', ') }) });
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok || out.ok === false) throw new Error(out.error || res.status);
+        form.reset(); status.textContent = `Application received, ${data.name.split(' ')[0]}. A mentor will reply to ${data.email}.`; status.classList.add('is-ok');
       } catch {
-        status.textContent = 'That did not go through. Check your connection and try again, or tell a mentor in the Maker Lab.'; status.classList.add('is-err');
-      } finally { submitBtn.disabled = false; submitBtn.textContent = 'Report for duty'; }
+        status.textContent = `That did not go through. Try again, or email us at ${SITE.email}.`; status.classList.add('is-err');
+      } finally { submitBtn.disabled = false; submitBtn.textContent = 'Submit application'; }
       return;
     }
     if (SITE.email) {
       const body = `Name: ${data.name}\nGrade: ${data.grade}\nEmail: ${data.email}\nDomains: ${data.domains.join(', ') || 'Not sure yet'}\n\n${data.note}`;
-      location.href = `mailto:${SITE.email}?subject=${encodeURIComponent('Enlistment: ' + data.name)}&body=${encodeURIComponent(body)}`;
+      location.href = `mailto:${SITE.email}?subject=${encodeURIComponent('Application: ' + data.name)}&body=${encodeURIComponent(body)}`;
       status.textContent = 'Your email app should open with your details filled in. Press send to finish.'; status.classList.add('is-ok');
       return;
     }
