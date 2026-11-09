@@ -48,51 +48,16 @@ const SITE = {
       requestAnimationFrame(raf);
     }
   }
-  /* In-page links: short hops glide; long jumps "cut" behind a curtain instead of racing
-     through every pinned, animated section in between. */
-  const curtain = document.createElement('div');
-  curtain.className = 'cut'; curtain.setAttribute('aria-hidden', 'true');
-  curtain.innerHTML = '<div class="cut__panel"><span class="cut__stripe"></span><img src="assets/badge.webp" alt="" class="cut__badge"><p class="cut__label"></p></div>';
-  document.body.append(curtain);
-  const cutLabel = curtain.querySelector('.cut__label');
-  let cutting = false;
-  const jumpTo = (target, offset) => {
-    if (lenis) lenis.scrollTo(target, { offset, immediate: true, force: true });
-    else { const y = target === 0 ? 0 : target.getBoundingClientRect().top + scrollY + offset; scrollTo({ top: y, behavior: 'instant' }); }
-    if (window.ScrollTrigger) ScrollTrigger.update();
-    // keep the menu bar on screen after a menu jump (it normally hides while scrolling down)
-    lastY = scrollY; $('[data-nav]').classList.remove('is-hidden');
-  };
-  const scrollToEl = (target, offset = -20, label = '') => {
-    const y = target === 0 ? 0 : target.getBoundingClientRect().top + scrollY + offset;
-    const far = Math.abs(y - scrollY) > innerHeight * 1.2;
-    if (reduce) { jumpTo(target, offset); return; }
-    if (!far || !hasGsap) {
-      if (lenis) lenis.scrollTo(target, { offset, duration: 1, easing: t => 1 - Math.pow(1 - t, 3), force: true,
-        onComplete: () => { lastY = scrollY; $('[data-nav]').classList.remove('is-hidden'); } });
-      else (target === 0 ? document.documentElement : target).scrollIntoView({ behavior: 'smooth' });
-      return;
-    }
-    if (cutting) return;
-    cutting = true;
-    cutLabel.textContent = label;
-    gsap.timeline({ onComplete: () => { cutting = false; } })
-      .set(curtain, { visibility: 'visible' })
-      .fromTo('.cut__panel', { yPercent: 100 }, { yPercent: 0, duration: .38, ease: 'power3.in' })
-      .fromTo(['.cut__badge', '.cut__label'], { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .25, stagger: .05, ease: 'power2.out' }, '-=.12')
-      .add(() => jumpTo(target, offset))
-      .to({}, { duration: .22 })
-      .to('.cut__panel', { yPercent: -100, duration: .5, ease: 'power3.inOut' })
-      .set(curtain, { visibility: 'hidden' });
+  const scrollToEl = (target, offset = -20) => {
+    if (lenis) lenis.scrollTo(target, { offset, duration: 1.8, easing: t => 1 - Math.pow(1 - t, 4) });
+    else target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
   };
   $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
     const id = a.getAttribute('href');
     if (id.length < 2) return;
-    const t = id === '#top' ? 0 : document.querySelector(id);
-    if (t === null) return;
-    e.preventDefault();
-    scrollToEl(t, id === '#top' ? 0 : -10, id === '#top' ? 'Top' : a.textContent.replace(/[→↑]/g, '').trim());
-    history.replaceState(null, '', id === '#top' ? location.pathname : id);
+    const t = document.querySelector(id);
+    if (!t) return;
+    e.preventDefault(); scrollToEl(t, id === '#top' ? 0 : -10); history.replaceState(null, '', id);
   }));
 
   /* ---------- Drawer ---------- */

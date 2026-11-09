@@ -647,18 +647,3 @@ a.contact__line:hover b { color: var(--brass); transform: translateX(-8px); }
 .affil__logo--first img { width: 100%; height: 100%; max-height: none; object-fit: contain; }
 .footer__logo--first { min-width: 0; width: 72px; padding: 8px; }
 .footer__logo--first img { width: 100%; height: 100%; max-height: none; object-fit: contain; }
-
-/* ---------- Scene cut: curtain used when a menu link jumps far down the page ---------- */
-.cut { position: fixed; inset: 0; z-index: 160; pointer-events: none; visibility: hidden; overflow: hidden; }
-.cut__panel {
-  position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 18px;
-  background: radial-gradient(60% 60% at 50% 45%, #3B1673, #12061F 60%, #000);
-  transform: translateY(100%);
-}
-.cut__stripe { position: absolute; top: 0; left: 0; right: 0; height: 10px; background: linear-gradient(#fff 0 3px, var(--purple) 3px); }
-.cut__badge { width: 84px; height: 84px; border-radius: 50%; box-shadow: 0 0 0 2px #fff, 0 0 40px rgba(139,61,255,.7); }
-.cut__label {
-  margin: 0; color: #fff; text-transform: uppercase; text-align: center;
-  font-family: "Saira", var(--f); font-style: italic; font-stretch: 75%; font-weight: 900;
-  font-size: clamp(3rem, 10vw, 8rem); line-height: .9; letter-spacing: -.005em;
-}
