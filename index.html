@@ -55,14 +55,26 @@
   </header>
 
   <div class="drawer" id="drawer" hidden>
-    <a href="#frc">What is FRC</a>
-    <a href="#season">The season</a>
-    <a href="#domains">Domains</a>
-    <a href="#robot">The robot</a>
-    <a href="#impact">Impact</a>
-    <a href="#sponsors">Sponsors</a>
-    <a href="updates.html">Updates</a>
-    <a href="#enlist">Join the team</a>
+    <nav class="drawer__links" aria-label="Menu">
+      <a href="#frc"><span>What is FRC</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#season"><span>The season</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#domains"><span>Domains</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#robot"><span>The robot</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#impact"><span>Impact</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#sponsors"><span>Sponsors</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="updates.html"><span>Updates</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    </nav>
+    <div class="drawer__foot">
+      <div class="drawer__dates">
+        <p><span class="dot dot--live"></span>Kickoff · 9 Jan 2027</p>
+        <p><span class="dot dot--live"></span>Istanbul Regional · 26–28 Mar 2027</p>
+      </div>
+      <div class="drawer__cta">
+        <a class="btn btn--brass" href="#enlist">Join the team</a>
+        <a class="btn btn--outline" href="#sponsor-enquiry">Sponsor us</a>
+      </div>
+      <a class="drawer__mail" href="mailto:ducktator.frc@gmail.com">ducktator.frc@gmail.com</a>
+    </div>
   </div>
 
   <main id="top">
@@ -489,7 +501,30 @@
           <div class="enquiry__intro">
             <h3 class="enquiry__title">Start a conversation.</h3>
             <p>Tell us a little about your organisation and how you would like to help. A mentor will reply within a few days with our sponsorship details.</p>
-            <p class="enquiry__alt">Prefer email? Write to <a href="mailto:ducktator.frc@gmail.com" data-email-link>ducktator.frc@gmail.com</a></p>
+
+            <ol class="steps" aria-label="What happens next">
+              <li>
+                <span class="steps__n" aria-hidden="true">1</span>
+                <div><h4>You send an enquiry</h4><p>Takes a minute. Tell us what kind of support fits your organisation.</p></div>
+              </li>
+              <li>
+                <span class="steps__n" aria-hidden="true">2</span>
+                <div><h4>A mentor replies</h4><p>Within a few days, with our season plan, budget and sponsorship options.</p></div>
+              </li>
+              <li>
+                <span class="steps__n" aria-hidden="true">3</span>
+                <div><h4>We agree a partnership</h4><p>Your logo goes on the robot, jerseys and pit banner, and the students keep you updated all season.</p></div>
+              </li>
+            </ol>
+
+            <div class="contact-card">
+              <img src="assets/badge.webp" alt="" width="52" height="52" loading="lazy">
+              <div>
+                <p class="contact-card__who">Suyog Mestry · Sujal Patil</p>
+                <p class="contact-card__role">Team mentors, FRC 11745</p>
+                <a href="mailto:ducktator.frc@gmail.com" data-email-link>ducktator.frc@gmail.com</a>
+              </div>
+            </div>
           </div>
 
           <form class="pass glass enquiry__form" data-sponsor novalidate>

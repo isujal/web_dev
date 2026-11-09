@@ -48,8 +48,12 @@ const SITE = {
       requestAnimationFrame(raf);
     }
   }
+  let jumping = false;
   const scrollToEl = (target, offset = -20) => {
-    if (lenis) lenis.scrollTo(target, { offset, duration: 1.8, easing: t => 1 - Math.pow(1 - t, 4) });
+    // force: true so the scroll still runs if Lenis was paused (e.g. the phone menu was open)
+    // keep the menu bar on screen during and after a menu jump (it normally hides while scrolling down)
+    if (lenis) { jumping = true; lenis.scrollTo(target, { offset, duration: 1.8, easing: t => 1 - Math.pow(1 - t, 4), force: true,
+      onComplete: () => { jumping = false; lastY = scrollY; nav.classList.remove('is-hidden'); } }); }
     else target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
   };
   $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
@@ -57,19 +61,28 @@ const SITE = {
     if (id.length < 2) return;
     const t = document.querySelector(id);
     if (!t) return;
-    e.preventDefault(); scrollToEl(t, id === '#top' ? 0 : -10); history.replaceState(null, '', id);
+    e.preventDefault();
+    const go = () => { scrollToEl(t, id === '#top' ? 0 : -10); history.replaceState(null, '', id); };
+    // From the phone menu: close it first (this unlocks scrolling), then scroll on the next frame
+    if (!drawer.hidden) { setMenu(false); requestAnimationFrame(() => requestAnimationFrame(go)); }
+    else go();
   }));
 
-  /* ---------- Drawer ---------- */
+  /* ---------- Drawer (phone menu) ---------- */
   const menuBtn = $('[data-menu]'), drawer = $('#drawer');
-  const setMenu = open => {
+  function setMenu(open) {
     menuBtn.setAttribute('aria-expanded', String(open)); drawer.hidden = !open;
+    document.documentElement.classList.toggle('menu-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
     if (lenis) open ? lenis.stop() : lenis.start();
-    if (open && anim) gsap.from($$('a', drawer), { y: 40, opacity: 0, stagger: .05, duration: .7, ease: 'expo.out' });
-  };
+    if (open && anim) {
+      gsap.fromTo(drawer, { clipPath: 'circle(0% at calc(100% - 40px) 40px)' }, { clipPath: 'circle(150% at calc(100% - 40px) 40px)', duration: .7, ease: 'power3.inOut' });
+      gsap.from($$('.drawer__links a', drawer), { x: 40, opacity: 0, stagger: .045, duration: .7, ease: 'expo.out', delay: .15 });
+      gsap.from($$('.drawer__foot > *', drawer), { y: 20, opacity: 0, stagger: .06, duration: .6, ease: 'expo.out', delay: .35 });
+    }
+  }
   menuBtn.addEventListener('click', () => setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'));
-  drawer.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  drawer.addEventListener('click', e => { const a = e.target.closest('a'); if (a && !a.getAttribute('href').startsWith('#')) setMenu(false); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && !drawer.hidden) { setMenu(false); menuBtn.focus(); } });
 
   /* ---------- Nav: hide on scroll down, adapt to light sections, active link ---------- */
@@ -78,7 +91,7 @@ const SITE = {
   let lastY = scrollY;
   const onScroll = () => {
     const y = scrollY;
-    if (y > 500 && y > lastY + 3 && drawer.hidden) nav.classList.add('is-hidden');
+    if (y > 500 && y > lastY + 3 && drawer.hidden && !jumping) nav.classList.add('is-hidden');
     else if (y < lastY - 3 || y < 500) nav.classList.remove('is-hidden');
     lastY = y;
     const el = document.elementFromPoint(innerWidth / 2, 40);

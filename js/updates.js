@@ -36,7 +36,7 @@ const POSTS = [
 
   /* Mobile menu */
   const menuBtn = $('[data-menu]'), drawer = $('#drawer');
-  const setMenu = open => { menuBtn.setAttribute('aria-expanded', String(open)); drawer.hidden = !open; document.body.style.overflow = open ? 'hidden' : ''; };
+  const setMenu = open => { menuBtn.setAttribute('aria-expanded', String(open)); drawer.hidden = !open; document.documentElement.classList.toggle('menu-open', open); document.body.style.overflow = open ? 'hidden' : ''; };
   menuBtn.addEventListener('click', () => setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'));
   addEventListener('keydown', e => { if (e.key === 'Escape' && !drawer.hidden) { setMenu(false); menuBtn.focus(); } });
 
