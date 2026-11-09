@@ -152,9 +152,25 @@ const SITE = {
       return;
     }
     if (SITE.email) {
-      const body = `Name: ${data.name}\nGrade: ${data.grade}\nEmail: ${data.email}\nDomains: ${data.domains.join(', ') || 'Not sure yet'}\n\n${data.note}`;
-      location.href = `mailto:${SITE.email}?subject=${encodeURIComponent('Application: ' + data.name)}&body=${encodeURIComponent(body)}`;
-      status.textContent = 'Your email app should open with your details filled in. Press send to finish.'; status.classList.add('is-ok');
+      // No Google Sheet yet: email the application straight to the team inbox through FormSubmit
+      // (free relay; the very first submission sends a one-time "Activate form" email to the team inbox).
+      if (form._honey?.value) { form.reset(); status.textContent = 'Application received.'; status.classList.add('is-ok'); return; } // bot trap
+      submitBtn.disabled = true; submitBtn.textContent = 'Sending…';
+      try {
+        const res = await fetch(`https://formsubmit.co/ajax/${SITE.email}`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            _subject: `New application: ${data.name} (${data.grade})`, _template: 'table', _replyto: data.email, _captcha: 'false',
+            Name: data.name, Grade: data.grade, Email: data.email,
+            Domains: data.domains.join(', ') || 'Not sure yet', Note: data.note || '(none)',
+          }),
+        });
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok || out.success === false || out.success === 'false') throw new Error(out.message || res.status);
+        form.reset(); status.textContent = `Application received, ${data.name.split(' ')[0]}. A mentor will reply to ${data.email}.`; status.classList.add('is-ok');
+      } catch {
+        status.textContent = `That did not go through. Try again in a minute, or email us at ${SITE.email}.`; status.classList.add('is-err');
+      } finally { submitBtn.disabled = false; submitBtn.textContent = 'Submit application'; }
       return;
     }
     status.textContent = 'Online enlistment opens soon. Until then, find a mentor in the CAJCS Maker Lab.';
