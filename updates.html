@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Updates · The Ducktators · FRC 11745</title>
+  <meta name="description" content="Outreach, events, build-season diaries and competition photos from The Ducktators, FRC team 11745 from Cathedral and John Connon School, Mumbai.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="Updates · The Ducktators · FRC 11745">
+  <meta property="og:description" content="Outreach, events and build-season updates from FRC 11745.">
+  <meta property="og:image" content="assets/og.jpg">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..900&family=Saira:ital,wdth,wght@1,75..100,700..900&family=Titillium+Web:wght@600;700&family=Geist+Mono:wght@400..600&family=Michroma&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/lenis.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/race.css">
+  <link rel="stylesheet" href="css/updates.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="page-updates">
+  <a class="skip" href="#feed">Skip to updates</a>
+
+  <header class="nav" data-nav>
+    <a class="nav__brand" href="index.html" aria-label="The Ducktators, home">
+      <img src="assets/badge.webp" alt="" width="34" height="34">
+      <span>The Ducktators</span>
+    </a>
+    <nav class="nav__links" aria-label="Site">
+      <a href="index.html">Home</a>
+      <a href="index.html#season">Season</a>
+      <a href="index.html#domains">Domains</a>
+      <a href="index.html#sponsors">Sponsors</a>
+      <a href="updates.html" class="is-active" aria-current="page">Updates</a>
+    </nav>
+    <a class="btn btn--brass btn--sm" href="index.html#enlist">Join</a>
+    <button class="nav__menu" aria-expanded="false" aria-controls="drawer" data-menu>
+      <span></span><span></span><span class="sr-only">Menu</span>
+    </button>
+  </header>
+
+  <div class="drawer" id="drawer" hidden>
+    <a href="index.html">Home</a>
+    <a href="index.html#season">The season</a>
+    <a href="index.html#domains">Domains</a>
+    <a href="index.html#sponsors">Sponsors</a>
+    <a href="updates.html" aria-current="page">Updates</a>
+    <a href="index.html#enlist">Join the team</a>
+  </div>
+
+  <main>
+    <section class="up-hero" aria-labelledby="up-title">
+      <div class="speed" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="wrap">
+        <p class="logotype">The Ducktators · FRC 11745</p>
+        <h1 class="up-title" id="up-title">Updates.</h1>
+        <p class="up-lede">Outreach, events, build-season diaries and competition photos, straight from the team.</p>
+        <div class="up-filters" role="tablist" aria-label="Filter updates" data-filters>
+          <button role="tab" aria-selected="true" data-filter="all">All</button>
+          <button role="tab" aria-selected="false" data-filter="outreach">Outreach</button>
+          <button role="tab" aria-selected="false" data-filter="event">Events</button>
+          <button role="tab" aria-selected="false" data-filter="build">Build</button>
+          <button role="tab" aria-selected="false" data-filter="competition">Competition</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="up-feed" id="feed" aria-label="Posts">
+      <div class="wrap">
+        <ol class="posts" data-posts></ol>
+
+        <div class="up-empty" data-empty>
+          <img src="assets/badge.webp" alt="" width="96" height="96">
+          <h2>Nothing posted yet.</h2>
+          <p data-empty-text>Outreach days, events, build-season diaries and photos will appear here as the season happens. The first big moment is Kickoff on Saturday 9 January 2027.</p>
+          <a class="btn btn--light" href="index.html">Back to the home page</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="lightbox" data-lightbox aria-label="Photo">
+    <button class="lightbox__close" data-lightbox-close aria-label="Close photo">×</button>
+    <img alt="" data-lightbox-img>
+    <p class="lightbox__cap" data-lightbox-cap></p>
+  </dialog>
+
+  <footer class="footer" data-theme="dark">
+    <div class="wrap footer__logos">
+      <div class="footer__logo footer__logo--school" data-logo><img src="assets/logos/cajcs.png" alt="Cathedral and John Connon School" loading="lazy"></div>
+      <div class="footer__logo footer__logo--first" data-logo><img src="assets/logos/first-frc.png" alt="FIRST" loading="lazy"></div>
+      <img class="footer__badge" src="assets/badge.webp" alt="The Ducktators badge" width="72" height="72" loading="lazy">
+    </div>
+    <div class="checker" aria-hidden="true"></div>
+    <div class="capband" aria-hidden="true"></div>
+    <div class="wrap footer__row">
+      <p>The Ducktators · FRC 11745 · Mumbai · 2026–27</p>
+      <p class="footer__legal"><i>FIRST</i>® and <i>FIRST</i>® Robotics Competition are registered trademarks of <i>FIRST</i>. This site is run by the team and is not endorsed by <i>FIRST</i>.</p>
+      <a href="index.html" class="footer__top">Home ↑</a>
+    </div>
+  </footer>
+
+  <script src="vendor/lenis.min.js" defer></script>
+  <script src="js/updates.js" defer></script>
+</body>
+</html>

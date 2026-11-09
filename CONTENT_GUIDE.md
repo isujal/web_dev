@@ -67,3 +67,14 @@ Based on Hall of Fame and championship-level team sites, plus rookie team sites 
 - Never invent results, sponsors or dates; keep the placeholders until they are real.
 - Never use "Cath-astrophic" or "Paraducks".
 - *FIRST* logos only from *FIRST*'s official brand kit; otherwise write "*FIRST*® Robotics Competition" as text.
+
+## 5. Updates page (outreach, events, photos)
+
+The site has a separate page, `updates.html`, linked from the menu as **Updates**. It does not appear while scrolling the home page. It is empty until the first post.
+
+To add a post:
+1. Put the photos in `assets/updates/` (JPG or WebP, about 1600 px wide).
+2. Open `js/updates.js` and add an entry to `POSTS` (the format is described at the top of that file): date, type (`outreach`, `event`, `build` or `competition`), title, a few sentences, photos and an optional link.
+3. Push; the page sorts posts by date and the filters, photo viewer and layout work automatically.
+
+Only post photos of students whose families have signed the consent form.
