@@ -35,7 +35,7 @@ The public home of The Ducktators, FRC 11745. It introduces a team formed in 202
 
 ## Capabilities and Constraints
 
-- Confirmed facts: name, number 11745, school CAJCS, Mumbai, season 2026–27, registered for Istanbul Regional, mentors Sujal Patil (Programming) and Suyog Mestry (Mechanical, Drive coach), 7 subteams, positions list, ~10 students.
+- Confirmed facts: name, number 11745, school CAJCS, Mumbai, season 2026–27, registered for Istanbul Regional, mentors Suyog Mestry (Mechanical, Drive coach) and Sujal Patil (Programming), 7 subteams, positions list, ~10 students.
 - Unknown and must stay placeholders: game name, event dates, sponsors, robot name, results/awards, social handles, email, student names and photos.
 - Never use the names "Cath-astrophic" or "Paraducks".
 
