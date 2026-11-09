@@ -59,3 +59,10 @@
   .up-hero { padding: 130px 0 50px; }
   .up-title { font-size: 20vw; }
 }
+
+/* Vanta NET background in the header (desktop only; phones keep the gradient) */
+.up-vanta { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 1.2s ease;
+  -webkit-mask: linear-gradient(180deg, #000 55%, transparent); mask: linear-gradient(180deg, #000 55%, transparent); }
+.up-vanta.is-on { opacity: .9; }
+.up-vanta.is-on ~ .speed { display: none; }
+.up-vanta canvas { display: block; }

@@ -34,6 +34,25 @@ const POSTS = [
     requestAnimationFrame(raf);
   }
 
+  /* Vanta NET background in the header: wide screens only, never with reduced motion.
+     three.js (~600 KB) is fetched only here, after the page has loaded. */
+  const vantaEl = $('[data-vanta]');
+  if (vantaEl && !reduce && matchMedia('(min-width: 700px)').matches) {
+    const load = src => new Promise((ok, fail) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = fail; document.head.append(s); });
+    addEventListener('load', async () => {
+      try {
+        await load('vendor/three.r134.min.js');
+        await load('vendor/vanta.net.min.js');
+        window.VANTA.NET({
+          el: vantaEl, THREE: window.THREE, mouseControls: true, touchControls: false, gyroControls: false,
+          scale: 1, scaleMobile: 1, color: 0x8b3dff, backgroundColor: 0x000000, backgroundAlpha: 0,
+          points: 11, maxDistance: 21, spacing: 17, showDots: true,
+        });
+        vantaEl.classList.add('is-on');
+      } catch { /* the gradient header stays as the fallback */ }
+    }, { once: true });
+  }
+
   /* Mobile menu */
   const menuBtn = $('[data-menu]'), drawer = $('#drawer');
   const setMenu = open => { menuBtn.setAttribute('aria-expanded', String(open)); drawer.hidden = !open; document.documentElement.classList.toggle('menu-open', open); document.body.style.overflow = open ? 'hidden' : ''; };
