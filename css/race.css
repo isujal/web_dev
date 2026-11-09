@@ -1,7 +1,7 @@
 /* The Ducktators · race accents
-   Kept from the motorsport experiment: the opening screen (speed lines, italic condensed
-   headline, slanted buttons, race-control ticker) and the chequered flag on a carbon-fibre
-   footer. Scoped to .hero, .ticker and .footer so the rest of the site is unchanged. */
+   Kept from the motorsport experiment: the opening screen's speed lines and italic condensed
+   headline, and the chequered flag on a carbon-fibre footer. Buttons and the ticker keep
+   the main site style. Scoped to .hero and .footer so the rest of the site is unchanged. */
 
 :root {
   --f-race: "Saira", "Geist", sans-serif;
@@ -30,24 +30,8 @@
 .speed i:nth-child(8) { top: 65%; animation-delay: .6s; width: 24vw; }
 @keyframes streak { to { transform: translateX(260vw); } }
 
-/* Slanted buttons on the opening screen */
-.hero .btn {
-  border-radius: 0; --pad: 17px 36px;
-  clip-path: polygon(14px 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
-  font-family: var(--f-race); font-style: italic; font-stretch: 87.5%; font-weight: 800;
-  text-transform: uppercase; letter-spacing: .05em; font-size: 1rem;
-}
-.hero .btn--light:hover { background: var(--purple); color: #fff; }
-.hero .btn--glass { background: rgba(255,255,255,.1); box-shadow: none; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
-.hero .btn--glass:hover { background: rgba(255,255,255,.2); }
-.hero .btn--glass::after { display: none; }
 .hero__meta { font-family: "Titillium Web", var(--f); font-style: italic; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
 .hero__meta p { font-size: .76rem; }
-
-/* Race-control ticker under the opening screen */
-.ticker { background: #fff; color: var(--ink); box-shadow: 0 -6px 0 var(--purple), 0 6px 0 var(--purple), 0 30px 60px -20px rgba(0,0,0,.6); }
-.ticker__track { font-family: var(--f-race); font-style: italic; font-weight: 900; font-stretch: 75%; letter-spacing: .01em; }
-.ticker svg { fill: var(--purple); }
 
 /* ---------- Footer: carbon fibre + chequered flag ---------- */
 .footer {
