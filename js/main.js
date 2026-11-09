@@ -132,7 +132,19 @@ const SITE = {
 
   /* ---------- Enlistment form ---------- */
   const form = $('[data-enlist]'), status = $('[data-status]', form), submitBtn = $('[data-submit]', form);
-  const showErr = (n, on) => $(`[data-err="${n}"]`, form).closest('.field').classList.toggle('has-error', on);
+  // Link every inline error to its field (aria-describedby) and flag invalid fields (aria-invalid) for screen readers
+  const linkErrors = f => $$('[data-err]', f).forEach(err => {
+    err.id = `${f.hasAttribute('data-enlist') ? 'join' : 'sponsor'}-err-${err.dataset.err}`;
+    const ctl = err.closest('.field').querySelector('input, select, textarea');
+    if (ctl) ctl.setAttribute('aria-describedby', err.id);
+  });
+  const flag = (f, n, on) => {
+    const field = $(`[data-err="${n}"]`, f).closest('.field');
+    field.classList.toggle('has-error', on);
+    field.querySelector('input, select, textarea')?.setAttribute('aria-invalid', String(on));
+  };
+  linkErrors(form);
+  const showErr = (n, on) => flag(form, n, on);
   const validate = () => {
     const name = form.name.value.trim(), grade = form.grade.value, email = form.email.value.trim();
     const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
@@ -193,7 +205,8 @@ const SITE = {
   const sForm = $('[data-sponsor]');
   if (sForm) {
     const sStatus = $('[data-sponsor-status]', sForm), sBtn = $('[data-sponsor-submit]', sForm);
-    const sErr = (n, on) => $(`[data-err="${n}"]`, sForm).closest('.field').classList.toggle('has-error', on);
+    linkErrors(sForm);
+    const sErr = (n, on) => flag(sForm, n, on);
     const sValidate = () => {
       const company = sForm.company.value.trim(), contact = sForm.contact.value.trim(), email = sForm.email.value.trim();
       const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);

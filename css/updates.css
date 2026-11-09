@@ -53,7 +53,7 @@
 .lightbox::backdrop { background: rgba(0,0,0,.85); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 .lightbox img { display: block; max-width: min(94vw, 1400px); max-height: 82vh; border-radius: 18px; }
 .lightbox__cap { margin: 0; padding: 12px 6px 0; color: var(--grey); font-size: .92rem; }
-.lightbox__close { position: absolute; top: -14px; right: -14px; width: 40px; height: 40px; border-radius: 50%; border: 0; cursor: pointer; background: #fff; color: var(--ink); font-size: 1.4rem; line-height: 1; }
+.lightbox__close { position: absolute; top: -14px; right: -14px; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; border: 0; cursor: pointer; background: #fff; color: var(--ink); font-size: 1.4rem; line-height: 1; }
 
 @media (max-width: 640px) {
   .up-hero { padding: 130px 0 50px; }
