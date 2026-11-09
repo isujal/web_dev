@@ -48,7 +48,13 @@ Based on Hall of Fame and championship-level team sites, plus rookie team sites 
 14. **Build diary** posts (100–300 words + 1 photo, weekly in build season).
 15. **Results and awards** after the event, only as published by *FIRST*.
 
-## 3. How to edit
+## 3. Logos and photos
+
+- **School and *FIRST* logos:** save the official files as `assets/logos/cajcs.png` and `assets/logos/first-frc.png` (PNG with a transparent background, or swap the extension in `index.html` for SVG). Until the files exist, the site shows a clean text version in the same white tile. Get the *FIRST* logo from *FIRST*'s official brand page and use it unaltered; get the crest from the school office.
+- **Photos:** in `assets/photos/`. `team-makerlab.webp` is the founding team. The `arena-*` photos show **other teams** at *FIRST* events and are captioned that way on the site. Confirm you have the right to use them (for *FIRST* media photos, check the licence on the source); replace them with our own event photos after Istanbul.
+- **Consent:** the team photo shows students. Publish only once every family in it has signed the photo consent form.
+
+## 4. How to edit
 
 - All text is in `index.html`; each section is marked `SC 01` to `SC 10`.
 - Team settings (email, handle, kickoff date, form endpoint) are at the top of `js/main.js`.

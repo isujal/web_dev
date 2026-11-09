@@ -32,13 +32,6 @@
 
   <a class="skip" href="#story">Skip to content</a>
 
-  <!-- Intro: counter rolls up to the team number, then the cap band wipes away -->
-  <div class="loader" data-loader aria-hidden="true">
-    <div class="loader__num" data-loader-num>00000</div>
-    <div class="loader__label">FRC · Reporting for duty</div>
-    <div class="loader__bar"><span data-loader-bar></span></div>
-  </div>
-
   <div class="progress" aria-hidden="true"><span data-progress></span></div>
 
   <header class="nav" data-nav>
@@ -53,7 +46,7 @@
       <a href="#robot">Robot</a>
       <a href="#sponsors">Sponsors</a>
     </nav>
-    <a class="btn btn--brass btn--sm" href="#enlist" data-magnetic>Enlist</a>
+    <a class="btn btn--brass btn--sm" href="#enlist" data-magnetic>Join</a>
     <button class="nav__menu" aria-expanded="false" aria-controls="drawer" data-menu>
       <span></span><span></span><span class="sr-only">Menu</span>
     </button>
@@ -66,7 +59,7 @@
     <a href="#robot">The robot</a>
     <a href="#impact">Impact</a>
     <a href="#sponsors">Sponsors</a>
-    <a href="#enlist">Enlist</a>
+    <a href="#enlist">Join the team</a>
   </div>
 
   <main id="top">
@@ -115,12 +108,71 @@
       </div>
     </div>
 
-    <!-- ================= STORY (light) ================= -->
-    <section class="story light" id="story" aria-label="Who we are" data-theme="light">
-      <p class="story__text" data-fill>
-        We are a brand-new robotics team from Mumbai. <b>Ten students.</b> <b>Seven divisions.</b> <b>Two mentors.</b>
-        One robot built from scratch, and a first match waiting in Istanbul.
-      </p>
+    <!-- ================= TEAM PHOTO REVEAL ================= -->
+    <section class="reveal" id="story" aria-label="The founding team" data-theme="dark">
+      <div class="reveal__pin" data-reveal-pin>
+        <figure class="reveal__frame" data-reveal-frame>
+          <img src="assets/photos/team-makerlab.webp" alt="The founding members of The Ducktators standing together in front of the blue CAJCS Maker Lab wall" width="1600" height="1200" loading="lazy" decoding="async">
+          <figcaption class="reveal__cap">
+            <span class="reveal__tag">The founding squad</span>
+            <span>CAJCS Maker Lab · Mumbai · 2026</span>
+          </figcaption>
+        </figure>
+        <p class="reveal__line" data-reveal-line>Every team starts somewhere.<br><b>Ours starts here.</b></p>
+      </div>
+    </section>
+
+    <!-- ================= AFFILIATIONS ================= -->
+    <section class="affil" aria-label="Our school and our program" data-theme="dark">
+      <div class="wrap affil__row">
+        <figure class="affil__item">
+          <div class="affil__logo affil__logo--school" data-logo>
+            <img src="assets/logos/cajcs.png" alt="Cathedral and John Connon School crest" loading="lazy" onerror="this.closest('[data-logo]').classList.add('is-text')">
+            <span class="affil__text">Cathedral &amp; John&nbsp;Connon School</span>
+          </div>
+          <figcaption>A team of Cathedral &amp; John Connon School, Mumbai</figcaption>
+        </figure>
+        <span class="affil__x" aria-hidden="true"></span>
+        <figure class="affil__item">
+          <div class="affil__logo affil__logo--first" data-logo>
+            <img src="assets/logos/first-frc.png" alt="FIRST Robotics Competition logo" loading="lazy" onerror="this.closest('[data-logo]').classList.add('is-text')">
+            <span class="affil__text"><i>FIRST</i>® Robotics Competition</span>
+          </div>
+          <figcaption>Competing in <i>FIRST</i>® Robotics Competition as Team 11745</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= MISSION + VALUES (light) ================= -->
+    <section class="story light" aria-labelledby="mission-title" data-theme="light">
+      <div class="wrap">
+        <h2 class="sr-only" id="mission-title">Our mission</h2>
+        <p class="story__text" data-fill>
+          Our mission is to give students at Cathedral a real engineering team: <b>design it,</b> <b>build it,</b> <b>compete with it,</b>
+          and share everything we learn so more young people in Mumbai can do the same.
+        </p>
+      </div>
+      <div class="wrap values">
+        <h2 class="h2 values__title">What we stand for.</h2>
+        <ol class="values__list">
+          <li data-reveal>
+            <h3>Discipline by design</h3>
+            <p>Order in the ranks means process: plan the work, document every decision, test before we trust, and finish what we start.</p>
+          </li>
+          <li data-reveal>
+            <h3>Students lead</h3>
+            <p>Mentors teach and keep us safe. Students make the calls, hold the tools and own the results, good or bad.</p>
+          </li>
+          <li data-reveal>
+            <h3>Gracious Professionalism</h3>
+            <p>Compete as hard as we can, and still lend a part, a laptop or an hour to the team across the pit.</p>
+          </li>
+          <li data-reveal>
+            <h3>Open by default</h3>
+            <p>Our code, CAD and lessons belong to the next team too. We share what worked and, more usefully, what didn't.</p>
+          </li>
+        </ol>
+      </div>
     </section>
 
     <!-- ================= WHAT IS FRC (light bento) ================= -->
@@ -164,6 +216,20 @@
         </div>
         <p class="fine">Rules change every season. Figures are typical of recent games; the 2027 game manual is the final word.</p>
       </div>
+
+      <div class="arena" aria-labelledby="arena-title">
+        <div class="wrap arena__head">
+          <h3 class="arena__title" id="arena-title">The arena we are walking into.</h3>
+          <p class="arena__note">Scenes from <i>FIRST</i> Robotics Competition events, featuring other teams. Our turn comes in Istanbul.</p>
+        </div>
+        <div class="arena__grid">
+          <figure class="ph ph--a" data-parallax="-8"><img src="assets/photos/arena-robots.webp" alt="Robots and game pieces on a FIRST Robotics Competition field in front of a packed arena" width="1600" height="1066" loading="lazy" decoding="async"></figure>
+          <figure class="ph ph--b" data-parallax="10"><img src="assets/photos/arena-shot.webp" alt="A robot launching yellow balls during a FIRST Robotics Competition match" width="1000" height="1129" loading="lazy" decoding="async"></figure>
+          <figure class="ph ph--c" data-parallax="-4"><img src="assets/photos/arena-match.webp" alt="A full match in progress under stadium lights, with yellow balls in the air" width="1400" height="920" loading="lazy" decoding="async"></figure>
+          <figure class="ph ph--d" data-parallax="14"><img src="assets/photos/arena-field.webp" alt="A robot on the competition field with spectators in the stands behind" width="943" height="1061" loading="lazy" decoding="async"></figure>
+          <figure class="ph ph--e" data-parallax="-12"><img src="assets/photos/arena-confetti.webp" alt="Confetti falling over a celebrating crowd at a FIRST championship" width="1080" height="1226" loading="lazy" decoding="async"></figure>
+        </div>
+      </div>
     </section>
 
     <!-- ================= SEASON (horizontal) ================= -->
@@ -176,17 +242,17 @@
         <ol class="track" data-track>
           <li class="card">
             <span class="card__no">01</span>
-            <div class="card__art card__art--photo"><span>Team photo<br>coming soon</span></div>
+            <div class="card__art card__art--photo-real"><img src="assets/photos/team-makerlab.webp" alt="The founding team at the CAJCS Maker Lab" loading="lazy" decoding="async" style="object-position:50% 30%"></div>
             <p class="card__when">2026 <span class="pill pill--done">Done</span></p>
-            <h3>The regiment forms</h3>
+            <h3>The team forms</h3>
             <p>Students and mentors at the CAJCS Maker Lab register as <i>FIRST</i> Robotics Competition team 11745.</p>
           </li>
           <li class="card">
             <span class="card__no">02</span>
-            <div class="card__art card__art--grid"><span>154</span></div>
+            <div class="card__art card__art--grid card__art--skills" aria-hidden="true"><span>CAD</span><span>Code</span><span>Wiring</span><span>Machining</span></div>
             <p class="card__when">Autumn 2026 <span class="pill pill--live">Now</span></p>
-            <h3>Basic training</h3>
-            <p>A 154-task skills library across seven divisions, from Minimum to Advanced. Everyone earns their stripes before Kickoff.</p>
+            <h3>Training camp</h3>
+            <p>A structured training programme for every member across CAD, code, electrical and fabrication, so everyone is ready before Kickoff.</p>
           </li>
           <li class="card card--sealed">
             <span class="card__no">03</span>
@@ -220,28 +286,23 @@
             <h3>Istanbul Regional</h3>
             <p>Our first competition, about 4,800&nbsp;km from Mumbai. The 2026 edition ran over three days in early March with 34 teams.</p>
           </li>
-          <li class="card">
-            <span class="card__no">06</span>
-            <div class="card__art card__art--next" aria-hidden="true"><span>Year 2</span></div>
-            <p class="card__when">2027 → <span class="pill">To be written</span></p>
-            <h3>The sequel</h3>
-            <p>Off-season events, outreach, a better robot and a bigger regiment.</p>
-          </li>
         </ol>
       </div>
     </section>
 
     <!-- ================= KICKOFF COUNTDOWN ================= -->
     <section class="kickoff" aria-labelledby="kickoff-title" data-theme="dark">
+      <img class="kickoff__bg" src="assets/photos/arena-crowd.webp" alt="" loading="lazy" decoding="async" data-parallax="-14">
       <div class="wrap kickoff__inner">
+        <p class="kickoff__date" data-kickoff-label>Kickoff · January 2027</p>
         <h2 class="kickoff__title" id="kickoff-title">Orders sealed<br>until Kickoff.</h2>
-        <div class="clock" data-countdown aria-live="off">
+        <div class="clock" data-countdown aria-live="off" hidden>
           <div><span data-cd="d">--</span><small>Days</small></div>
           <div><span data-cd="h">--</span><small>Hours</small></div>
           <div><span data-cd="m">--</span><small>Minutes</small></div>
           <div><span data-cd="s">--</span><small>Seconds</small></div>
         </div>
-        <p class="kickoff__note" data-countdown-note><i>FIRST</i> has not announced the 2027 Kickoff date yet. It has fallen in the first half of January in recent seasons; the clock starts the moment it is confirmed.</p>
+        <p class="kickoff__note" data-countdown-note>On Kickoff day, <i>FIRST</i> reveals the 2027 game to every team in the world at once. The clock starts here the moment the date is confirmed.</p>
       </div>
     </section>
 
@@ -308,7 +369,7 @@
             <p class="dcard__n">Division 6 / 7</p>
             <h3>Business &amp; Outreach</h3>
             <p class="dcard__motto">Leading from the front.</p>
-            <p>Sponsors, budgets, community outreach, the Impact Award and team documentation. The division that keeps the regiment funded and known.</p>
+            <p>Sponsors, budgets, community outreach, the Impact Award and team documentation. The division that keeps the team funded and known.</p>
             <ul><li>Sponsorship</li><li>Outreach</li><li>Impact Award</li><li>Budget</li></ul>
           </div>
           <svg class="dcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10v4h4l7 5V5L7 10zM18 8a5 5 0 0 1 0 8"/></svg>
@@ -368,13 +429,11 @@
     <section class="impact light" id="impact" aria-labelledby="impact-title" data-theme="light">
       <div class="wrap">
         <h2 class="h2" id="impact-title">Leading from the front.<br><span class="muted">Lifting others up.</span></h2>
-        <p class="sub">A rookie team cannot point at years of outreach. So here is what we intend to do in season one. Each line flips to done, with photos and numbers, when it happens.</p>
+        <p class="sub">Robotics changed how we learn. This season we are committing to three things that pass it on, and we will report each one here with photos and numbers.</p>
         <ul class="plans">
-          <li data-reveal><span class="plans__when">Term 2</span><span class="plans__what">Robot demos for the junior and middle school at CAJCS</span><span class="pill pill--ink">Planned</span></li>
-          <li data-reveal><span class="plans__when">Term 2</span><span class="plans__what">Maker Lab open house for parents and new members</span><span class="pill pill--ink">Planned</span></li>
-          <li data-reveal><span class="plans__when">Ongoing</span><span class="plans__what">Help other Mumbai schools start <i>FIRST</i> teams of their own</span><span class="pill pill--ink">Planned</span></li>
-          <li data-reveal><span class="plans__when">Season</span><span class="plans__what">A build-season blog and video diary for the next rookie team</span><span class="pill pill--ink">Planned</span></li>
-          <li data-reveal><span class="plans__when">Post-season</span><span class="plans__what">Open-source our code, CAD and the 154-task training library</span><span class="pill pill--ink">Planned</span></li>
+          <li data-reveal><span class="plans__when">At school</span><span class="plans__what">Robot demos and hands-on sessions for the junior and middle school at CAJCS</span></li>
+          <li data-reveal><span class="plans__when">In Mumbai</span><span class="plans__what">Help other schools in the city start <i>FIRST</i> teams of their own</span></li>
+          <li data-reveal><span class="plans__when">Online</span><span class="plans__what">Open-source our robot code, CAD and training material after the season</span></li>
         </ul>
       </div>
     </section>
@@ -382,48 +441,39 @@
     <!-- ================= SPONSORS ================= -->
     <section class="sponsors" id="sponsors" aria-labelledby="sponsors-title" data-theme="dark">
       <div class="wrap">
-        <h2 class="h2 h2--xl" id="sponsors-title">Back the <em>regiment.</em></h2>
-        <p class="sub sub--dark">A first season is the most expensive one: robot parts and tools, event registration, and getting a team and a robot to Istanbul. Your support decides how far we get.</p>
+        <h2 class="h2 h2--xl" id="sponsors-title">Partner <em>with us.</em></h2>
+        <p class="sub sub--dark">A first season is the most expensive one. Partners decide how far a new team gets, and put their name in front of the engineers of tomorrow.</p>
 
-        <div class="needs">
-          <p><b data-count="4">4</b> things your money builds</p>
-          <ul>
-            <li>Robot parts &amp; tools</li><li>Event registration</li><li>Travel to Istanbul</li><li>Outreach programmes</li>
-          </ul>
-        </div>
+        <div class="partner">
+          <div class="partner__photo" data-parallax="-6">
+            <img src="assets/photos/arena-robots.webp" alt="" loading="lazy" decoding="async">
+          </div>
 
-        <ol class="tiers">
-          <li class="tier glass" data-tilt-soft>
-            <p class="tier__rank">Cadet</p><p class="tier__stars" style="--n:1" aria-label="1 star tier"></p>
-            <p class="tier__amt">[AMOUNT]</p>
-            <ul><li>Name on our website</li><li>Thank-you post on our socials</li><li>Season updates by email</li></ul>
-          </li>
-          <li class="tier glass" data-tilt-soft>
-            <p class="tier__rank">Lieutenant</p><p class="tier__stars" style="--n:2" aria-label="2 star tier"></p>
-            <p class="tier__amt">[AMOUNT]</p>
-            <ul><li>Everything in Cadet</li><li>Logo on website and jersey</li><li>Logo in our engineering portfolio</li></ul>
-          </li>
-          <li class="tier glass" data-tilt-soft>
-            <p class="tier__rank">Colonel</p><p class="tier__stars" style="--n:3" aria-label="3 star tier"></p>
-            <p class="tier__amt">[AMOUNT]</p>
-            <ul><li>Everything in Lieutenant</li><li>Logo on the robot and pit banner</li><li>Robot demo at your office</li></ul>
-          </li>
-          <li class="tier tier--general" data-tilt-soft>
-            <p class="tier__rank">General</p><p class="tier__stars" style="--n:4" aria-label="4 star tier"></p>
-            <p class="tier__amt">[AMOUNT]</p>
-            <ul><li>Everything in Colonel</li><li>Largest logo on robot, jersey and banner</li><li>Named in every press piece</li></ul>
-          </li>
-        </ol>
-        <p class="fine fine--dark">Tier amounts are being finalised by our mentors. In-kind support counts too: machining, 3D printing, electronics, software licences, transport or an engineer's time.</p>
+          <div class="partner__col">
+            <h3 class="partner__h">Where your support goes</h3>
+            <ul class="uses">
+              <li><b>Robot</b><span>Motors, electronics, aluminium, tools and spares to build a competitive machine.</span></li>
+              <li><b>Competition</b><span>Event registration for the Istanbul Regional.</span></li>
+              <li><b>Travel</b><span>Getting the team and the robot from Mumbai to Istanbul.</span></li>
+              <li><b>Outreach</b><span>Demos, workshops and open-source material for other schools.</span></li>
+            </ul>
+          </div>
 
-        <div class="logos" aria-label="Sponsor logo spaces, currently open">
-          <div class="logos__track" data-logos>
-            <span>Your logo here</span><span>Your logo here</span><span>Your logo here</span><span>Your logo here</span><span>Your logo here</span><span>Your logo here</span>
+          <div class="partner__col partner__col--get glass">
+            <h3 class="partner__h">What partners get</h3>
+            <ul class="gets">
+              <li>Your logo on the robot, team jerseys and pit banner</li>
+              <li>Recognition on this website and our social channels</li>
+              <li>A feature in our engineering portfolio and award submissions</li>
+              <li>A robot demonstration at your office</li>
+              <li>Season updates straight from the students</li>
+            </ul>
+            <p class="gets__note">Financial and in-kind support are both welcome: machining, 3D printing, electronics, software licences, transport or an engineer's time.</p>
           </div>
         </div>
 
         <div class="cta-row">
-          <a class="btn btn--brass" href="#contact" data-mail="sponsor" data-magnetic>Request the sponsor deck</a>
+          <a class="btn btn--brass" href="#contact" data-mail="sponsor" data-magnetic>Request our sponsorship deck</a>
           <a class="btn btn--outline" href="#contact" data-magnetic>Talk to a mentor</a>
         </div>
       </div>
@@ -434,12 +484,12 @@
       <div class="capband" aria-hidden="true"></div>
       <div class="wrap enlist__grid">
         <div>
-          <h2 class="h2 h2--xl" id="enlist-title">The regiment<br>is recruiting.</h2>
+          <h2 class="h2 h2--xl" id="enlist-title">Join<br>the team.</h2>
           <p class="sub sub--dark">No robotics experience needed. If you are a CAJCS student who likes building, coding, designing, filming or organising, there is a division for you.</p>
           <div class="faq">
             <details><summary>Who can join?</summary><p>CAJCS students. Our mentors confirm the grades for each intake; tell us yours in the form and we will tell you if this intake fits.</p></details>
             <details><summary>How much time does it take?</summary><p>Regular sessions in the Maker Lab through the year, with more during build season (January to March). Exact times are shared with members.</p></details>
-            <details><summary>Do I need to know how to code or build?</summary><p>No. Basic training uses our 154-task skills library, starting at the Minimum level. You learn by doing, with mentors beside you.</p></details>
+            <details><summary>Do I need to know how to code or build?</summary><p>No. Our training programme starts from the basics, and you learn by doing, with mentors beside you.</p></details>
             <details><summary>For parents: is it safe?</summary><p>Work happens in the school Maker Lab under mentor supervision, with safety glasses and training before any power tool. We never publish a student's name or photo without your written consent.</p></details>
           </div>
         </div>
@@ -447,8 +497,7 @@
         <form class="pass glass" data-enlist novalidate>
           <div class="pass__head">
             <img src="assets/badge.webp" alt="" width="46" height="46">
-            <div><p class="pass__title">Enlistment</p><p class="pass__sub">FRC 11745 · Season 2026–27</p></div>
-            <span class="pass__no" aria-hidden="true">No. 0001</span>
+            <div><p class="pass__title">Application</p><p class="pass__sub">FRC 11745 · Season 2026–27</p></div>
           </div>
           <label class="field">
             <span>Your name</span>
@@ -486,7 +535,7 @@
             <span>Anything we should know? <em>(optional)</em></span>
             <textarea name="note" rows="3"></textarea>
           </label>
-          <button class="btn btn--brass btn--block" type="submit" data-submit>Report for duty</button>
+          <button class="btn btn--brass btn--block" type="submit" data-submit>Submit application</button>
           <p class="pass__status" data-status role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -495,10 +544,10 @@
     <!-- ================= CONTACT ================= -->
     <section class="contact" id="contact" aria-labelledby="contact-title" data-theme="dark">
       <div class="wrap contact__grid">
-        <h2 class="h2" id="contact-title">Send word.</h2>
+        <h2 class="h2" id="contact-title">Get in touch.</h2>
         <div class="contact__lines">
-          <a class="contact__line" href="mailto:" data-mail="general"><span>Email</span><b data-email-text>[EMAIL]</b></a>
-          <a class="contact__line" href="#" data-social="instagram"><span>Instagram</span><b>@[HANDLE]</b></a>
+          <a class="contact__line" href="mailto:" data-mail="general" data-needs="email" hidden><span>Email</span><b data-email-text>[EMAIL]</b></a>
+          <a class="contact__line" href="#" data-social="instagram" data-needs="instagram" hidden><span>Instagram</span><b>@[HANDLE]</b></a>
           <a class="contact__line" href="https://frc-events.firstinspires.org/team/11745" rel="noopener"><span><i>FIRST</i> team page</span><b>FRC 11745</b></a>
           <p class="contact__line"><span>Base</span><b>CAJCS Maker Lab, Mumbai</b></p>
           <p class="contact__note">Other teams: want to scrimmage, swap scouting data or share a pit tip? We are new, and we would love to hear from you.</p>
@@ -511,13 +560,16 @@
   <footer class="footer" data-theme="dark">
     <div class="credits wrap">
       <dl>
-        <div><dt>A production of</dt><dd>Cathedral &amp; John Connon School, Mumbai</dd></div>
+        <div><dt>A team of</dt><dd>Cathedral &amp; John Connon School, Mumbai</dd></div>
         <div><dt>Mentors</dt><dd>Sujal Patil · Suyog Mestry</dd></div>
         <div><dt>Starring</dt><dd>The students of FRC 11745</dd></div>
-        <div><dt>Your name here</dt><dd class="open">Enlist above</dd></div>
-        <div><dt>Your company here</dt><dd class="open">Sponsor above</dd></div>
-        <div><dt>Filmed at</dt><dd>The CAJCS Maker Lab</dd></div>
+        <div><dt>Based at</dt><dd>The CAJCS Maker Lab</dd></div>
       </dl>
+    </div>
+    <div class="wrap footer__logos">
+      <div class="footer__logo" data-logo><img src="assets/logos/cajcs.png" alt="Cathedral and John Connon School" loading="lazy" onerror="this.closest('[data-logo]').classList.add('is-text')"><span class="affil__text">Cathedral &amp; John&nbsp;Connon School</span></div>
+      <div class="footer__logo footer__logo--first" data-logo><img src="assets/logos/first-frc.png" alt="FIRST Robotics Competition" loading="lazy" onerror="this.closest('[data-logo]').classList.add('is-text')"><span class="affil__text"><i>FIRST</i>® Robotics Competition</span></div>
+      <img class="footer__badge" src="assets/badge.webp" alt="The Ducktators badge" width="72" height="72" loading="lazy">
     </div>
     <p class="footer__giant" aria-hidden="true" data-giant>Ducktators</p>
     <div class="capband" aria-hidden="true"></div>

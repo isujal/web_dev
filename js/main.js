@@ -32,6 +32,8 @@ const SITE = {
   $$('[data-social="instagram"]').forEach(a => {
     if (SITE.instagram) { a.href = `https://instagram.com/${SITE.instagram}`; a.querySelector('b').textContent = '@' + SITE.instagram; a.rel = 'noopener'; }
   });
+  // Lines that would otherwise show a placeholder stay hidden until their detail is filled in above
+  $$('[data-needs]').forEach(el => { if (SITE[el.dataset.needs]) el.hidden = false; });
 
   /* ---------- Lenis ---------- */
   let lenis = null;
@@ -102,7 +104,8 @@ const SITE = {
   const cd = Object.fromEntries($$('[data-cd]').map(el => [el.dataset.cd, el]));
   const kickoff = SITE.kickoff ? new Date(SITE.kickoff) : null;
   if (kickoff && !isNaN(kickoff)) {
-    $('[data-countdown-note]').textContent = 'Kickoff 2027: ' + kickoff.toLocaleString(undefined, { dateStyle: 'full', timeStyle: 'short' });
+    $('[data-countdown]').hidden = false;
+    $('[data-kickoff-label]').textContent = 'Kickoff · ' + kickoff.toLocaleString(undefined, { dateStyle: 'long', timeStyle: 'short' });
     const render = () => {
       let ms = Math.max(0, kickoff - Date.now());
       const d = Math.floor(ms / 864e5); ms -= d * 864e5;
@@ -127,7 +130,7 @@ const SITE = {
   form.addEventListener('submit', async e => {
     e.preventDefault(); status.className = 'pass__status';
     if (!validate()) {
-      status.textContent = 'A few fields need attention before you can report for duty.'; status.classList.add('is-err');
+      status.textContent = 'A few fields need attention before you can submit.'; status.classList.add('is-err');
       $('.has-error input, .has-error select', form)?.focus();
       if (anim) gsap.fromTo(form, { x: -8 }, { x: 0, duration: .6, ease: 'elastic.out(1,.3)' });
       return;
@@ -300,20 +303,7 @@ const SITE = {
     return tl;
   };
 
-  /* ---------- Loader: count to 11745, then lift ---------- */
-  const loader = $('[data-loader]');
-  let seen = false; try { seen = sessionStorage.getItem('dk-intro') === '1'; sessionStorage.setItem('dk-intro', '1'); } catch {}
-  if (seen) { loader.classList.add('is-done'); heroIntro(); }
-  else {
-    if (lenis) lenis.stop();
-    const num = $('[data-loader-num]'); const o = { v: 0 };
-    gsap.timeline()
-      .to(o, { v: 11745, duration: 1.6, ease: 'power3.inOut', onUpdate: () => { num.textContent = String(Math.round(o.v)).padStart(5, '0'); } })
-      .to('[data-loader-bar]', { scaleX: 1, duration: 1.6, ease: 'power3.inOut' }, 0)
-      .to(loader, { clipPath: 'inset(0 0 100% 0)', duration: 1, ease: 'expo.inOut' }, '+=.15')
-      .add(() => { loader.classList.add('is-done'); if (lenis) lenis.start(); })
-      .add(heroIntro(), '-=.7');
-  }
+  heroIntro();
 
   /* ---------- Hero: badge tilt + scroll-away ---------- */
   const badge = $('[data-tilt]');
@@ -335,12 +325,36 @@ const SITE = {
   const tickerTrack = $('[data-ticker]');
   tickerTrack.innerHTML += tickerTrack.innerHTML;
   const tick = gsap.to(tickerTrack, { xPercent: -50, duration: 26, ease: 'none', repeat: -1 });
-  const logos = $('[data-logos]'); logos.innerHTML += logos.innerHTML;
-  const logoTick = gsap.to(logos, { xPercent: -50, duration: 30, ease: 'none', repeat: -1 });
   if (lenis) lenis.on('scroll', ({ velocity }) => {
     const v = 1 + Math.min(4, Math.abs(velocity) / 8);
-    gsap.to([tick, logoTick], { timeScale: velocity < 0 ? -v : v, duration: .3, overwrite: true });
+    gsap.to(tick, { timeScale: velocity < 0 ? -v : v, duration: .3, overwrite: true });
   });
+
+  /* ---------- Team photo: card grows to full-bleed as you scroll ---------- */
+  const mm0 = gsap.matchMedia();
+  mm0.add('(min-width: 700px)', () => {
+    gsap.timeline({ scrollTrigger: { trigger: '[data-reveal-pin]', start: 'top top', end: '+=120%', pin: true, scrub: .6, anticipatePin: 1 } })
+      .fromTo('[data-reveal-frame]', { width: '46vw', height: '52vh', borderRadius: 36 }, { width: '100vw', height: '100vh', borderRadius: 0, ease: 'power2.inOut' }, 0)
+      .fromTo('[data-reveal-frame] img', { scale: 1.25 }, { scale: 1, ease: 'power2.inOut' }, 0)
+      .fromTo('[data-reveal-line]', { opacity: 1, y: 0 }, { opacity: 0, y: -60, ease: 'power1.in', duration: .35 }, 0)
+      .fromTo('.reveal__cap', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .3 }, .7);
+  });
+  mm0.add('(max-width: 699px)', () => {
+    gsap.from('[data-reveal-frame]', { scale: .86, borderRadius: 40, ease: 'none', scrollTrigger: { trigger: '[data-reveal-frame]', start: 'top bottom', end: 'center center', scrub: true } });
+  });
+
+  /* ---------- Affiliations, values ---------- */
+  gsap.from('.affil__item', { y: 40, opacity: 0, duration: 1.2, stagger: .15, ease: EASE, scrollTrigger: { trigger: '.affil', start: 'top 85%' } });
+  gsap.from('.affil__x', { scaleX: 0, duration: 1.2, ease: 'power3.inOut', scrollTrigger: { trigger: '.affil', start: 'top 85%' } });
+  gsap.from('.values__list li', { y: 60, opacity: 0, duration: 1.2, stagger: .1, ease: EASE, scrollTrigger: { trigger: '.values__list', start: 'top 85%' } });
+
+  /* ---------- Photo parallax ---------- */
+  $$('[data-parallax]').forEach(el => {
+    const amt = +el.dataset.parallax;
+    const target = el.tagName === 'IMG' ? el : (el.querySelector('img') || el);
+    gsap.fromTo(target, { yPercent: -amt / 2 }, { yPercent: amt / 2, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+  gsap.from('.ph', { clipPath: 'inset(18% 18% 18% 18% round 28px)', duration: 1.6, stagger: .12, ease: 'expo.out', scrollTrigger: { trigger: '.arena__grid', start: 'top 80%' } });
 
   /* ---------- Generic heading reveal ---------- */
   $$('.h2, .kickoff__title').forEach(h => gsap.from(h, { y: 60, opacity: 0, filter: 'blur(12px)', duration: 1.4, ease: EASE, scrollTrigger: { trigger: h, start: 'top 88%' } }));
@@ -386,15 +400,7 @@ const SITE = {
   mm.add('(max-width: 899px)', () => { root.classList.add('no-hscroll'); return () => root.classList.remove('no-hscroll'); });
   gsap.fromTo('.route', { strokeDashoffset: 300, strokeDasharray: '300 300' }, { strokeDashoffset: 0, duration: 2.4, ease: 'power2.inOut', scrollTrigger: { trigger: '#season', start: 'top 30%' } });
 
-  /* ---------- Kickoff clock: sealed digits flicker ---------- */
-  if (!kickoff) {
-    ScrollTrigger.create({ trigger: '.clock', start: 'top 85%', onEnter: () => {
-      Object.values(cd).forEach((el, i) => {
-        const o = { p: 0 };
-        gsap.to(o, { p: 1, duration: 1.4, delay: i * .12, ease: 'none', onUpdate: () => { el.textContent = o.p < .9 ? pad(Math.random() * 99 | 0) : '--'; }, onComplete: () => { el.textContent = '--'; } });
-      });
-    } });
-  }
+  gsap.from('.kickoff__date', { y: 20, opacity: 0, duration: 1, ease: EASE, scrollTrigger: { trigger: '.kickoff', start: 'top 75%' } });
   gsap.from('.clock > div', { y: 50, opacity: 0, rotateX: -60, transformOrigin: '50% 100%', duration: 1.2, stagger: .08, ease: EASE, scrollTrigger: { trigger: '.clock', start: 'top 88%' } });
 
   /* ---------- Divisions: stacking cards ---------- */
@@ -426,13 +432,9 @@ const SITE = {
   /* ---------- Impact plans ---------- */
   gsap.utils.toArray('.plans li').forEach(li => gsap.from(li, { clipPath: 'inset(0 100% 0 0)', x: -30, duration: 1.1, ease: 'power3.inOut', scrollTrigger: { trigger: li, start: 'top 90%' } }));
 
-  /* ---------- Sponsors: tiers rise + tilt ---------- */
-  gsap.from('.tier', { y: (i) => 80 + i * 40, opacity: 0, rotateX: 25, duration: 1.4, stagger: .1, ease: EASE, scrollTrigger: { trigger: '.tiers', start: 'top 85%' } });
-  if (fine) $$('[data-tilt-soft]').forEach(t => {
-    const rx = gsap.quickTo(t, 'rotateX', { duration: .6, ease: 'power3' }), ry = gsap.quickTo(t, 'rotateY', { duration: .6, ease: 'power3' });
-    t.addEventListener('pointermove', e => { const r = t.getBoundingClientRect(); ry(((e.clientX - r.left) / r.width - .5) * 14); rx(-((e.clientY - r.top) / r.height - .5) * 14); });
-    t.addEventListener('pointerleave', () => { rx(0); ry(0); });
-  });
+  /* ---------- Sponsors ---------- */
+  gsap.from('.uses li', { y: 30, opacity: 0, duration: 1, stagger: .08, ease: EASE, scrollTrigger: { trigger: '.uses', start: 'top 85%' } });
+  gsap.from('.partner__col--get', { y: 80, opacity: 0, rotate: 2, duration: 1.4, ease: EASE, scrollTrigger: { trigger: '.partner', start: 'top 80%' } });
 
   /* ---------- Enlist + footer ---------- */
   $$('.capband').forEach(c => gsap.from(c, { scaleX: 0, transformOrigin: 'left center', duration: 1.4, ease: 'power3.inOut', scrollTrigger: { trigger: c, start: 'top 95%' } }));
