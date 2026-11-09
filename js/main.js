@@ -5,7 +5,7 @@
 const SITE = {
   email: '',          // e.g. 'ducktators11745@gmail.com'
   instagram: '',      // handle without @, e.g. 'frc11745'
-  kickoff: '',        // ISO date-time once FIRST announces it, e.g. '2027-01-09T21:30:00+05:30'
+  kickoff: '2027-01-09T00:00:00+05:30', // Kickoff day (IST). Put the exact broadcast time here once FIRST confirms it, e.g. '2027-01-09T22:30:00+05:30'
   formEndpoint: '',   // optional: Formspree / Google Apps Script URL that accepts POST JSON
 };
 
@@ -105,7 +105,7 @@ const SITE = {
   const kickoff = SITE.kickoff ? new Date(SITE.kickoff) : null;
   if (kickoff && !isNaN(kickoff)) {
     $('[data-countdown]').hidden = false;
-    $('[data-kickoff-label]').textContent = 'Kickoff · ' + kickoff.toLocaleString(undefined, { dateStyle: 'long', timeStyle: 'short' });
+    $('[data-kickoff-label]').textContent = 'Kickoff · ' + kickoff.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Kolkata' });
     const render = () => {
       let ms = Math.max(0, kickoff - Date.now());
       const d = Math.floor(ms / 864e5); ms -= d * 864e5;
