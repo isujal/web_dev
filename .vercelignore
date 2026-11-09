@@ -1,0 +1,5 @@
+.agents/
+.claude/
+.impeccable/
+.taste-skill/
+node_modules/

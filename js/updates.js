@@ -43,12 +43,23 @@ const POSTS = [
       try {
         await load('vendor/three.r134.min.js');
         await load('vendor/vanta.net.min.js');
-        window.VANTA.NET({
+        const fx = window.VANTA.NET({
           el: vantaEl, THREE: window.THREE, mouseControls: true, touchControls: false, gyroControls: false,
           scale: 1, scaleMobile: 1, color: 0x8b3dff, backgroundColor: 0x000000, backgroundAlpha: 0,
           points: 11, maxDistance: 21, spacing: 17, showDots: true,
         });
         vantaEl.classList.add('is-on');
+        /* Pause control: anything that moves for more than 5 s gets one (WCAG 2.2.2) */
+        const tog = $('[data-vanta-toggle]'), label = $('[data-vanta-label]');
+        if (tog && fx) {
+          tog.hidden = false;
+          tog.addEventListener('click', () => {
+            const paused = tog.getAttribute('aria-pressed') !== 'true';
+            if (paused) cancelAnimationFrame(fx.req); else { fx.prevNow = 0; fx.animationLoop(); }
+            tog.setAttribute('aria-pressed', String(paused));
+            label.textContent = paused ? 'Play background' : 'Pause background';
+          });
+        }
       } catch { /* the gradient header stays as the fallback */ }
     }, { once: true });
   }

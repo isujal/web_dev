@@ -78,3 +78,13 @@ To add a post:
 3. Push; the page sorts posts by date and the filters, photo viewer and layout work automatically.
 
 Only post photos of students whose families have signed the consent form.
+
+## Figma file (brand kit, website, post templates)
+
+https://www.figma.com/design/wGPjmDYEb94g7d1N79Vkkg
+
+- **Brand Kit** page: colours (linked variables), text styles, logos and rules. Change a colour or text style here and every design that uses it updates.
+- **Website** page: an editable copy of the homepage. The domain cards are instances of one "Domain card" component; edit their text in the right panel.
+- **Post Templates** page: Instagram post (1080×1350) and story (1080×1920) components. Alt-drag an example to duplicate it, change Tag/Headline/Body/Footer in the right panel, select "Photo (swap image)" and replace the image fill, then export as PNG.
+- Do not delete the "Image assets (source, do not delete)" frame on the Brand Kit page: the logos and photos are stored there.
+- The free Starter plan allows 3 pages per file; make a second file if you need more.
