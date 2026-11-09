@@ -330,17 +330,30 @@ const SITE = {
     gsap.to(tick, { timeScale: velocity < 0 ? -v : v, duration: .3, overwrite: true });
   });
 
-  /* ---------- Team photo: card grows to full-bleed as you scroll ---------- */
+  /* ---------- Team poster: photo opens up, then the title stack assembles ----------
+     The photo is only ever scaled DOWN from its full-resolution size, so it stays sharp. */
+  const pName = $('[data-poster-name]');
+  pName.setAttribute('aria-label', pName.textContent);
+  pName.innerHTML = [...pName.textContent].map(c => `<span class="ch" aria-hidden="true">${c}</span>`).join('');
+  const posterTitle = tl => tl
+    .from('.poster__badge', { scale: .4, opacity: 0, rotate: -40, duration: .5, ease: 'back.out(2)' }, '>-0.05')
+    .from('.poster__the', { opacity: 0, letterSpacing: '1.6em', duration: .45 }, '<0.1')
+    .from('.poster__name .ch', { opacity: 0, y: 14, scale: 1.4, filter: 'blur(10px)', stagger: .04, duration: .6 }, '<0.05')
+    .from('[data-poster-rule]', { scaleX: 0, duration: .5 }, '<0.25')
+    .from(['.poster__frc', '.poster__school'], { opacity: 0, y: 14, stagger: .08, duration: .5 }, '<0.15');
   const mm0 = gsap.matchMedia();
   mm0.add('(min-width: 700px)', () => {
-    gsap.timeline({ scrollTrigger: { trigger: '[data-reveal-pin]', start: 'top top', end: '+=120%', pin: true, scrub: .6, anticipatePin: 1 } })
-      .fromTo('[data-reveal-frame]', { width: '46vw', height: '52vh', borderRadius: 36 }, { width: '100vw', height: '100vh', borderRadius: 0, ease: 'power2.inOut' }, 0)
-      .fromTo('[data-reveal-frame] img', { scale: 1.25 }, { scale: 1, ease: 'power2.inOut' }, 0)
-      .fromTo('[data-reveal-line]', { opacity: 1, y: 0 }, { opacity: 0, y: -60, ease: 'power1.in', duration: .35 }, 0)
-      .fromTo('.reveal__cap', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .3 }, .7);
+    const tl = gsap.timeline({ defaults: { ease: 'power2.out' }, scrollTrigger: { trigger: '[data-reveal-pin]', start: 'top top', end: '+=140%', pin: true, scrub: .6, anticipatePin: 1 } });
+    tl.from(['.poster__program', '.poster__stars'], { opacity: 0, y: -16, duration: .3, stagger: .05 }, 0)
+      .fromTo('[data-reveal-frame]', { scale: .58, clipPath: 'inset(8% 10% 8% 10% round 40px)' }, { scale: 1, clipPath: 'inset(0% 0% 0% 0% round 0px)', duration: 1, ease: 'power2.inOut' }, 0)
+      .fromTo('[data-reveal-frame] img', { scale: 1 }, { scale: 1, duration: 1 }, 0);
+    posterTitle(tl);
+    tl.to({}, { duration: .4 }); // hold the finished poster on screen for a moment
   });
   mm0.add('(max-width: 699px)', () => {
-    gsap.from('[data-reveal-frame]', { scale: .86, borderRadius: 40, ease: 'none', scrollTrigger: { trigger: '[data-reveal-frame]', start: 'top bottom', end: 'center center', scrub: true } });
+    const tl = gsap.timeline({ defaults: { ease: 'expo.out' }, scrollTrigger: { trigger: '.poster__photo', start: 'top 75%' } });
+    tl.from('[data-reveal-frame]', { scale: .9, opacity: 0, duration: 1.2 });
+    posterTitle(tl);
   });
 
   /* ---------- Affiliations, values ---------- */

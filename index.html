@@ -111,14 +111,23 @@
     <!-- ================= TEAM PHOTO REVEAL ================= -->
     <section class="reveal" id="story" aria-label="The founding team" data-theme="dark">
       <div class="reveal__pin" data-reveal-pin>
-        <figure class="reveal__frame" data-reveal-frame>
-          <img src="assets/photos/team-makerlab.webp" alt="The founding members of The Ducktators standing together in front of the blue CAJCS Maker Lab wall" width="1600" height="1200" loading="lazy" decoding="async">
-          <figcaption class="reveal__cap">
-            <span class="reveal__tag">The founding squad</span>
-            <span>CAJCS Maker Lab · Mumbai · 2026</span>
-          </figcaption>
-        </figure>
-        <p class="reveal__line" data-reveal-line>Every team starts somewhere.<br><b>Ours starts here.</b></p>
+        <div class="poster">
+          <p class="poster__program" data-poster-part><i>FIRST</i> Robotics Competition</p>
+          <svg class="poster__stars" viewBox="0 0 84 24" aria-hidden="true" data-poster-part><use href="#star" width="24" height="24"/><use href="#star" x="30" width="24" height="24"/><use href="#star" x="60" width="24" height="24"/></svg>
+
+          <figure class="poster__photo" data-reveal-frame>
+            <img src="assets/photos/team-poster.webp" srcset="assets/photos/team-poster-1280.webp 1280w, assets/photos/team-poster.webp 2560w" sizes="(min-width: 1280px) 1280px, 100vw" alt="The founding members of The Ducktators in the CAJCS Maker Lab, with a giant 11745 glowing on the purple-lit wall behind them" width="2560" height="1716" decoding="async">
+          </figure>
+
+          <div class="poster__title">
+            <img class="poster__badge" src="assets/badge.webp" alt="" width="160" height="160" data-poster-part>
+            <p class="poster__the" data-poster-part>The</p>
+            <p class="poster__name" data-poster-name>Ducktators</p>
+            <span class="poster__rule" aria-hidden="true" data-poster-rule></span>
+            <p class="poster__frc" data-poster-part>FRC&nbsp;&nbsp;11745</p>
+            <p class="poster__school" data-poster-part>Cathedral &amp; John Connon School · Mumbai · 2026–27</p>
+          </div>
+        </div>
       </div>
     </section>
 

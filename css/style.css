@@ -455,16 +455,33 @@ a.contact__line:hover b { color: var(--brass); transform: translateX(-8px); }
 /* =========================================================
    TEAM PHOTO REVEAL
    ========================================================= */
-.reveal { position: relative; background: #000; }
-.reveal__pin { position: relative; height: 100vh; display: grid; place-items: center; overflow: hidden; }
-.reveal__frame { position: relative; margin: 0; width: 46vw; height: 52vh; border-radius: 36px; overflow: hidden; box-shadow: 0 40px 100px -30px rgba(139,61,255,.55); }
-.reveal__frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; transform-origin: 50% 40%; }
-.reveal__frame::after { content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(180deg, rgba(0,0,0,.25), transparent 22%, transparent 62%, rgba(0,0,0,.75)); }
-.reveal__cap { position: absolute; z-index: 2; left: var(--gutter); right: var(--gutter); bottom: clamp(20px, 4vw, 44px); display: flex; justify-content: space-between; align-items: end; gap: 16px; font: 500 .78rem var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.82); }
-.reveal__tag { font: 800 clamp(1.6rem, 3.4vw, 3rem)/1 var(--f); letter-spacing: -.045em; text-transform: none; color: #fff; }
-.reveal__line { position: absolute; z-index: 3; top: 9vh; left: 0; right: 0; margin: 0; text-align: center; font: 700 clamp(1.6rem, 3.4vw, 3rem)/1.05 var(--f); letter-spacing: -.045em; color: var(--grey); }
-.reveal__line b { color: #fff; }
+/* Poster layout: photo band with the giant 11745 behind the team, title stack below (all text is live HTML) */
+.reveal { position: relative; overflow: hidden;
+  background: radial-gradient(80% 62% at 50% 40%, #4A1C9C 0%, #2C0E60 40%, #0E0520 74%, #000 100%); }
+.reveal__pin { position: relative; min-height: 100svh; display: grid; place-items: center; padding: 72px 0 24px; }
+.poster { width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.poster__program { margin: 0; font: 400 clamp(.66rem, 1vw, .86rem)/1 var(--f-logo); letter-spacing: .34em; padding-left: .34em; text-transform: uppercase; color: #D9CDF2; }
+.poster__program i { font-style: normal; }
+.poster__stars { width: 48px; height: 14px; margin: 14px 0 0; fill: var(--purple); filter: drop-shadow(0 0 6px rgba(139,61,255,.9)); }
+.poster__photo {
+  --w: min(100vw, 1440px, calc((100svh - 470px) * 1.8));
+  position: relative; margin: 1vh 0 0; width: var(--w); aspect-ratio: 1.8;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%), linear-gradient(transparent 0%, #000 14%, #000 66%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%), linear-gradient(transparent 0%, #000 14%, #000 66%, transparent 100%);
+  mask-composite: intersect;
+}
+.poster__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; transform-origin: 50% 45%; }
+.poster__title { position: relative; z-index: 2; margin-top: calc(var(--w, 900px) * -0.13); display: flex; flex-direction: column; align-items: center; }
+.poster__photo + .poster__title { margin-top: calc(min(100vw, 1440px, calc((100svh - 470px) * 1.8)) * -0.14); }
+.poster__badge { width: clamp(78px, 9vh, 116px); height: auto; border-radius: 50%; box-shadow: 0 0 0 2.5px #fff, 0 0 40px rgba(139,61,255,.9), 0 0 90px rgba(139,61,255,.5); }
+.poster__the { margin: clamp(10px, 2vh, 22px) 0 0; font: 400 clamp(.8rem, 1.3vw, 1.05rem)/1 var(--f-logo); letter-spacing: .9em; padding-left: .9em; text-transform: uppercase; color: var(--lavender); text-shadow: 0 0 14px rgba(139,61,255,.9); }
+.poster__name { margin: clamp(8px, 1.4vh, 14px) 0 0; font: 400 clamp(1.5rem, 5.4vw, 4.6rem)/1.05 var(--f-logo); letter-spacing: .2em; padding-left: .2em; text-transform: uppercase; color: #fff; white-space: nowrap;
+  text-shadow: 0 0 22px rgba(139,61,255,.85), 0 0 60px rgba(139,61,255,.45); }
+.poster__name .ch { display: inline-block; }
+.poster__rule { display: block; width: min(64vw, 620px); height: 2px; margin: clamp(10px, 2vh, 20px) 0; background: linear-gradient(90deg, transparent, var(--purple) 15%, var(--purple) 85%, transparent); box-shadow: 0 0 12px var(--purple); transform-origin: center; }
+.poster__frc { margin: 0; font: 400 clamp(1rem, 2vw, 1.6rem)/1 var(--f-logo); letter-spacing: .32em; padding-left: .32em; color: var(--lavender); text-shadow: 0 0 16px rgba(139,61,255,.8); }
+.poster__school { margin: clamp(12px, 2.2vh, 22px) 0 0; font: 400 clamp(.56rem, .9vw, .76rem)/1.4 var(--f-logo); letter-spacing: .22em; padding-left: .22em; text-transform: uppercase; color: rgba(217,205,242,.82); }
 
 /* =========================================================
    AFFILIATIONS (school + FIRST)
@@ -575,10 +592,11 @@ a.contact__line:hover b { color: var(--brass); transform: translateX(-8px); }
   .dcard__icon { position: absolute; top: 28px; right: 28px; width: 110px; opacity: .5; }
 }
 @media (max-width: 699px) {
-  .reveal__pin { height: auto; padding: 90px 16px 40px; display: block; }
-  .reveal__frame { width: 100%; height: 62vh; border-radius: 28px; }
-  .reveal__line { position: static; margin-bottom: 24px; }
-  .reveal__cap { flex-direction: column; align-items: start; }
+  .reveal__pin { min-height: 0; padding: 90px 0 56px; }
+  .poster__photo { --w: 100vw; width: 100vw; margin-top: 18px; }
+  .poster__photo + .poster__title { margin-top: -15vw; }
+  .poster__name { letter-spacing: .1em; padding-left: .1em; font-size: 7vw; }
+  .poster__school { max-width: 30ch; }
 }
 @media (max-width: 640px) {
   .affil__row { grid-template-columns: 1fr; }
