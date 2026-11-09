@@ -490,7 +490,7 @@ a.contact__line:hover b { color: var(--brass); transform: translateX(-8px); }
 .affil__row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: clamp(20px, 4vw, 60px); }
 .affil__item { margin: 0; display: grid; justify-items: center; gap: 18px; text-align: center; }
 .affil__item figcaption { max-width: 30ch; color: var(--grey); font-size: .95rem; }
-.affil__logo { height: 120px; width: min(100%, 320px); display: grid; place-items: center; padding: 18px 26px; border-radius: 22px; background: #fff; box-shadow: 0 24px 60px -30px rgba(139,61,255,.6); }
+.affil__logo { height: 140px; width: min(100%, 320px); display: grid; place-items: center; padding: 18px 26px; border-radius: 22px; background: #fff; box-shadow: 0 24px 60px -30px rgba(139,61,255,.6); }
 .affil__logo img { max-height: 84px; max-width: 100%; width: auto; object-fit: contain; }
 .affil__text { display: none; color: var(--ink); text-align: center; }
 [data-logo].is-text img { display: none; }
@@ -635,3 +635,11 @@ a.contact__line:hover b { color: var(--brass); transform: translateX(-8px); }
   .js .story__text b.w { color: var(--purple); }
   .dcard { position: relative; top: auto; }
 }
+
+/* ---------- Official logos ---------- */
+/* The CAJCS crest keeps its own purple field; the FIRST logo sits on white as FIRST's guidelines require */
+.affil__logo--school { width: 140px; height: 140px; padding: 0; overflow: hidden; background: #570158; }
+.affil__logo--school img { max-height: none; width: 100%; height: 100%; object-fit: cover; }
+.footer__logo--school { min-width: 0; width: 72px; padding: 0; overflow: hidden; background: #570158; }
+.footer__logo--school img { max-height: none; width: 100%; height: 100%; object-fit: cover; }
+.affil__logo--first img { max-height: 92px; }
