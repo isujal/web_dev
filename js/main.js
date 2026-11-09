@@ -414,21 +414,6 @@ const SITE = {
   gsap.fromTo('.route', { strokeDashoffset: 300, strokeDasharray: '300 300' }, { strokeDashoffset: 0, duration: 2.4, ease: 'power2.inOut', scrollTrigger: { trigger: '#season', start: 'top 30%' } });
 
   gsap.from('.kickoff__date', { y: 20, opacity: 0, duration: 1, ease: EASE, scrollTrigger: { trigger: '.kickoff', start: 'top 75%' } });
-
-  /* ---------- Start lights: five reds come on, then lights out ---------- */
-  const lightCols = $$('[data-lights] span');
-  if (lightCols.length) {
-    let lightsTl;
-    const runLights = () => {
-      lightsTl?.kill();
-      lightCols.forEach(c => c.classList.remove('on'));
-      const clock = $('[data-countdown]');
-      lightsTl = gsap.timeline();
-      lightCols.forEach((c, i) => lightsTl.call(() => c.classList.add('on'), null, .25 + i * .6));
-      lightsTl.call(() => { lightCols.forEach(c => c.classList.remove('on')); clock?.classList.remove('flash'); void clock?.offsetWidth; clock?.classList.add('flash'); }, null, '+=1.1');
-    };
-    ScrollTrigger.create({ trigger: '.kickoff', start: 'top 55%', onEnter: runLights, onEnterBack: runLights });
-  }
   gsap.from('.clock > div', { y: 50, opacity: 0, rotateX: -60, transformOrigin: '50% 100%', duration: 1.2, stagger: .08, ease: EASE, scrollTrigger: { trigger: '.clock', start: 'top 88%' } });
 
   /* ---------- Domains: stacking cards ---------- */

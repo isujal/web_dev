@@ -14,13 +14,12 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wdth,wght@0,50..125,100..900;1,50..125,100..900&family=Titillium+Web:wght@400;600;700&family=Geist+Mono:wght@400..600&family=Michroma&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..900&family=Geist+Mono:wght@400..600&family=Michroma&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/lenis.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/f1.css">
   <script>document.documentElement.classList.add('js')</script>
 </head>
-<body class="f1">
+<body>
   <svg class="sr-only" aria-hidden="true" focusable="false" width="0" height="0">
     <filter id="liquid" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
       <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="11" result="n"/>
@@ -68,7 +67,6 @@
     <section class="hero" aria-labelledby="hero-title" data-theme="dark">
       <canvas class="aurora" data-aurora aria-hidden="true"></canvas>
       <div class="hero__grid" aria-hidden="true"></div>
-      <div class="speed" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 
       <div class="hero__inner">
         <p class="logotype" data-scramble>The Ducktators · FRC 11745</p>
@@ -247,26 +245,26 @@
     <section class="season" id="season" aria-labelledby="season-title" data-theme="dark">
       <div class="season__pin" data-season>
         <div class="season__head wrap">
-          <h2 class="h2" id="season-title">The 2027<br><span class="muted">calendar.</span></h2>
+          <h2 class="h2" id="season-title">Season one.<br><span class="muted">Frame by frame.</span></h2>
           <div class="season__progress" aria-hidden="true"><span data-season-bar></span></div>
         </div>
         <ol class="track" data-track>
           <li class="card">
-            <span class="card__no">R01</span>
+            <span class="card__no">01</span>
             <div class="card__art card__art--photo-real"><img src="assets/photos/team-makerlab.webp" alt="The founding team at the CAJCS Maker Lab" loading="lazy" decoding="async" style="object-position:50% 30%"></div>
             <p class="card__when">2026 <span class="pill pill--done">Done</span></p>
             <h3>The team forms</h3>
             <p>Students and mentors at the CAJCS Maker Lab register as <i>FIRST</i> Robotics Competition team 11745.</p>
           </li>
           <li class="card">
-            <span class="card__no">R02</span>
+            <span class="card__no">02</span>
             <div class="card__art card__art--grid card__art--skills" aria-hidden="true"><span>CAD</span><span>Code</span><span>Wiring</span><span>Machining</span></div>
             <p class="card__when">Autumn 2026 <span class="pill pill--live">Now</span></p>
             <h3>Training camp</h3>
             <p>A structured training programme for every member across CAD, code, electrical and fabrication, so everyone is ready before Kickoff.</p>
           </li>
           <li class="card card--sealed">
-            <span class="card__no">R03</span>
+            <span class="card__no">03</span>
             <div class="card__art card__art--sealed">
               <div class="sealed" aria-label="Season game details are sealed until Kickoff">
                 <p>Game <span class="redact"></span></p>
@@ -280,7 +278,7 @@
             <p><i>FIRST</i> reveals the 2027 game worldwide. We read the manual, break it down and choose a strategy in week one.</p>
           </li>
           <li class="card">
-            <span class="card__no">R04</span>
+            <span class="card__no">04</span>
             <div class="card__art card__art--build" aria-hidden="true">
               <svg viewBox="0 0 200 120"><g fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 100h160M30 100V60h50v40M80 75h40v25M120 50h50v50"/><path d="M45 60V35h20v25M135 50V20h20v30" stroke-dasharray="3 3"/><circle cx="40" cy="104" r="6"/><circle cx="70" cy="104" r="6"/><circle cx="130" cy="104" r="6"/><circle cx="160" cy="104" r="6"/></g></svg>
             </div>
@@ -289,7 +287,7 @@
             <p>Concept, CAD, prototype, build, tune. Programming starts driving the day the drivetrain rolls.</p>
           </li>
           <li class="card card--brass">
-            <span class="card__no">R05</span>
+            <span class="card__no">05</span>
             <div class="card__art card__art--route" aria-hidden="true">
               <svg viewBox="0 0 240 120"><path class="route" d="M200 96 C 160 20, 70 10, 36 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-dasharray="4 5"/><circle cx="200" cy="96" r="4" fill="currentColor"/><circle cx="36" cy="40" r="5" fill="#fff"/><text x="200" y="114" text-anchor="middle">BOM</text><text x="36" y="28" text-anchor="middle">IST</text></svg>
             </div>
@@ -306,8 +304,7 @@
       <img class="kickoff__bg" src="assets/photos/arena-crowd.webp" alt="" loading="lazy" decoding="async" data-parallax="-14">
       <div class="wrap kickoff__inner">
         <p class="kickoff__date" data-kickoff-label>Kickoff · Saturday 9 January 2027</p>
-        <div class="lights" aria-hidden="true" data-lights><span><i></i><i></i></span><span><i></i><i></i></span><span><i></i><i></i></span><span><i></i><i></i></span><span><i></i><i></i></span></div>
-        <h2 class="kickoff__title" id="kickoff-title">Lights out<br>at Kickoff.</h2>
+        <h2 class="kickoff__title" id="kickoff-title">Orders sealed<br>until Kickoff.</h2>
         <div class="clock" data-countdown aria-live="off" hidden>
           <div><span data-cd="d">--</span><small>Days</small></div>
           <div><span data-cd="h">--</span><small>Hours</small></div>
@@ -583,7 +580,6 @@
       <div class="footer__logo footer__logo--first" data-logo><img src="assets/logos/first-frc.png" alt="FIRST" loading="lazy" onerror="this.closest('[data-logo]').classList.add('is-text')"><span class="affil__text"><i>FIRST</i>® Robotics Competition</span></div>
       <img class="footer__badge" src="assets/badge.webp" alt="The Ducktators badge" width="72" height="72" loading="lazy">
     </div>
-    <div class="checker" aria-hidden="true"></div>
     <p class="footer__giant" aria-hidden="true" data-giant>Ducktators</p>
     <div class="capband" aria-hidden="true"></div>
     <div class="wrap footer__row">
