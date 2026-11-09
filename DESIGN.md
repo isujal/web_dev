@@ -141,7 +141,7 @@ components:
     backgroundColor: "#07040C"
     rounded: "{rounded.still}"
     width: "clamp(280px, 30vw, 420px)"
-  division-row:
+  domain-row:
     textColor: "{colors.text}"
     typography: "{typography.headline}"
     padding: "24px 4px"
@@ -225,7 +225,7 @@ A one-hue world: violet-purple light on near-black stages, with green and coral 
 - **Title card** (Michroma 400, uppercase, `title-card`): the team name in the hero and the credits lead; the brightest glow on the page.
 - **Giant** (Anton, outline only, 1.5px lavender stroke at 22%): the 11745 behind the hero; Anton at small size marks "next" frames and the credits post-line.
 - **Script** (Outfit 300, `script`): narration paragraphs that brighten word by word on scroll; Orbitron numerals inline on a purple highlighter band.
-- **Headline / Title** (Outfit 300 / 600): division names; frame and card titles.
+- **Headline / Title** (Outfit 300 / 600): domain names; frame and card titles.
 - **Body / Lede** (Outfit 400): body max 60–70ch; ledes in Text Dim at 56ch.
 - **Label wide** (Michroma, uppercase, 0.18–0.3em tracking, 0.7–0.8rem): tier ranks, countdown label, spec terms, nav name, stamps.
 - **Numeral** (Orbitron 700): dates, amounts, countdown units, team number.
@@ -258,7 +258,7 @@ Depth is light, not lift. Planes separate by tonal stage steps, vignette gradien
 
 ## Shapes
 
-Pills for anything you press or that labels state (buttons, nav, nav links, tags, picks, HUD). Soft rectangles for containers: chip 14px, card 18px, hero plates 26px, fields 12px. Film objects are near-square (stills, stamps, sealed envelope at 6px; redaction bars 2px). Circles for the badge, lens, officer monograms and division dots. Dashed hairlines mean "unfinished or perforated" (frame separators, pass tear line, undeveloped placeholders, open tiles). Stamps are rotated (−6° to −9°) and bordered in Electric.
+Pills for anything you press or that labels state (buttons, nav, nav links, tags, picks, HUD). Soft rectangles for containers: chip 14px, card 18px, hero plates 26px, fields 12px. Film objects are near-square (stills, stamps, sealed envelope at 6px; redaction bars 2px). Circles for the badge, lens, officer monograms and domain dots. Dashed hairlines mean "unfinished or perforated" (frame separators, pass tear line, undeveloped placeholders, open tiles). Stamps are rotated (−6° to −9°) and bordered in Electric.
 
 ## Components
 
@@ -290,8 +290,8 @@ Pills for anything you press or that labels state (buttons, nav, nav links, tags
 ### Filmstrip Frame (signature)
 A `#07040C` strip with lavender sprocket rows top and bottom; frames separated by dashed hairlines; each still is 4:3, 6px, purple-vignetted, holding an outline numeral, a line drawing, a sealed redacted envelope with a rotated stamp, or a mono "developing" placeholder. Meta row: Orbitron date left, status tag right.
 
-### Division Roll-call (signature)
-Accordion rows on hairlines: a glowing dot in the division's own colour (`--c`), Outfit 300 name, Michroma motto right. Opening draws a coloured light line across the top, nudges the name 6px and reveals role pills tinted with `--c`.
+### Domain Roll-call (signature)
+Accordion rows on hairlines: a glowing dot in the domain's own colour (`--c`), Outfit 300 name, Michroma motto right. Opening draws a coloured light line across the top, nudges the name 6px and reveals role pills tinted with `--c`.
 
 ### Enlistment Pass
 A 26px glass plate with a badge header, Michroma title, mono subline and a dashed tear line; fields, pick pills and a full-width primary button below.

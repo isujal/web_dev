@@ -11,7 +11,7 @@ Based on Hall of Fame and championship-level team sites, plus rookie team sites 
 | Home / hero | Who you are in 5 seconds | ✅ Built: title sequence, badge, Istanbul status |
 | What is *FIRST* / FRC | Parents and sponsors don't know FRC | ✅ Built: "What is FRC, in one breath" |
 | About / history | Credibility, story | ✅ Built as the season filmstrip (rookie-honest) |
-| Subteams | Shows structure, helps recruiting | ✅ Built: 7 divisions roll call |
+| Subteams | Shows structure, helps recruiting | ✅ Built: 7 domains roll call |
 | Team / members / mentors | Human face of the team | ⚠️ Mentors only; students wait for consent |
 | Robot(s) | The engineering proof judges and sponsors look for | ⚠️ "Robot 001 in pre-production" until build season |
 | Season calendar / countdown | Keeps visitors coming back | ⚠️ Countdown ready; needs the Kickoff date |
@@ -30,13 +30,13 @@ Based on Hall of Fame and championship-level team sites, plus rookie team sites 
 ### A. Must have before going public
 1. **Team email** (a shared Gmail or school address) → `SITE.email` in `js/main.js`.
 2. **Instagram handle** (and any YouTube or LinkedIn) → `SITE.instagram`.
-3. **Mentor approval of copy**: tagline "Order in the ranks.", division mottos, and sponsor tier names (Cadet / Lieutenant / Colonel / General).
+3. **Mentor approval of copy**: tagline "Order in the ranks.", domain mottos, and sponsor tier names (Cadet / Lieutenant / Colonel / General).
 4. **Sponsor tier amounts** (INR, plus USD if you pitch abroad) and what each tier gets.
 5. **School sign-off** for using the CAJCS name on a public site, and any school branding rules.
 
 ### B. Makes the site feel alive
 6. **One team photo** at the Maker Lab (landscape, everyone in frame) once consent forms are in. It goes into the first filmstrip frame and the hero.
-7. **Student roster** (first names only, division, rank), for students whose families gave written consent.
+7. **Student roster** (first names only, domain, rank), for students whose families gave written consent.
 8. **Mentor photos** (or keep the monogram circles).
 9. **Kickoff date and time** in IST once *FIRST* announces it → `SITE.kickoff` (the countdown starts automatically).
 10. **Istanbul Regional dates** once published.

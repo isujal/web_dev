@@ -136,7 +136,7 @@ const SITE = {
       return;
     }
     const data = { name: form.name.value.trim(), grade: form.grade.value, email: form.email.value.trim(),
-      divisions: $$('input[name="div"]:checked', form).map(i => i.value), note: form.note.value.trim() };
+      domains: $$('input[name="div"]:checked', form).map(i => i.value), note: form.note.value.trim() };
     if (SITE.formEndpoint) {
       submitBtn.disabled = true; submitBtn.textContent = 'Sending orders…';
       try {
@@ -149,7 +149,7 @@ const SITE = {
       return;
     }
     if (SITE.email) {
-      const body = `Name: ${data.name}\nGrade: ${data.grade}\nEmail: ${data.email}\nDivisions: ${data.divisions.join(', ') || 'Not sure yet'}\n\n${data.note}`;
+      const body = `Name: ${data.name}\nGrade: ${data.grade}\nEmail: ${data.email}\nDomains: ${data.domains.join(', ') || 'Not sure yet'}\n\n${data.note}`;
       location.href = `mailto:${SITE.email}?subject=${encodeURIComponent('Enlistment: ' + data.name)}&body=${encodeURIComponent(body)}`;
       status.textContent = 'Your email app should open with your details filled in. Press send to finish.'; status.classList.add('is-ok');
       return;
@@ -416,7 +416,7 @@ const SITE = {
   gsap.from('.kickoff__date', { y: 20, opacity: 0, duration: 1, ease: EASE, scrollTrigger: { trigger: '.kickoff', start: 'top 75%' } });
   gsap.from('.clock > div', { y: 50, opacity: 0, rotateX: -60, transformOrigin: '50% 100%', duration: 1.2, stagger: .08, ease: EASE, scrollTrigger: { trigger: '.clock', start: 'top 88%' } });
 
-  /* ---------- Divisions: stacking cards ---------- */
+  /* ---------- Domains: stacking cards ---------- */
   const cards = $$('.dcard');
   cards.forEach((c, i) => {
     c.style.setProperty('--i', i);
