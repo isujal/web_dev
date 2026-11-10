@@ -70,10 +70,12 @@ Based on Hall of Fame and championship-level team sites, plus rookie team sites 
 
 ## 5. Updates page (outreach, events, photos)
 
-The site has a separate page, `updates.html`, linked from the menu as **Updates**. It does not appear while scrolling the home page. It is empty until the first post.
+The site has a separate page, `updates.html`, linked from the menu as **Updates**. It does not appear while scrolling the home page.
+
+**Get the original photos, not WhatsApp copies.** WhatsApp shrinks photos to 1280 px and compresses them hard, which is why forwarded photos look soft. Share originals through Google Drive, Google Photos or AirDrop, or send them in WhatsApp as a *Document* rather than a photo.
 
 To add a post:
-1. Put the photos in `assets/updates/` (JPG or WebP, about 1600 px wide).
+1. Put each photo in `assets/updates/` in three sizes (WebP): the full photo (about 2560 px on the long side, used by the photo viewer), a `-1600` copy (shown on the page) and a `-thumb` copy (480 px, the small strip).
 2. Open `js/updates.js` and add an entry to `POSTS` (the format is described at the top of that file): date, type (`outreach`, `event`, `build` or `competition`), title, a few sentences, photos and an optional link.
 3. Push; the page sorts posts by date and the filters, photo viewer and layout work automatically.
 

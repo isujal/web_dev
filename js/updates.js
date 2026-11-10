@@ -17,7 +17,8 @@
      place: 'CAJCS assembly hall',             // optional
      stats: [{ n: '120', label: 'students' }], // optional: real numbers only, they feed the Impact record
    },
-   Photos can also have thumb: 'assets/updates/x-thumb.webp' (a ~360px copy for the small strip).
+   Photos can also have card: 'assets/updates/x-1600.webp' (1600px, shown on the page) and
+   thumb: 'assets/updates/x-thumb.webp' (480px, the small strip). src is the full-size photo for the viewer.
    ------------------------------------------------------------------ */
 
 const POSTS = [
@@ -29,13 +30,13 @@ const POSTS = [
     stats: [{ n: '120', label: 'students attended' }],
     text: 'On Wednesday 28 October, 120 students joined us in the Senior School assembly hall. We gave an overview of the FIRST Robotics Competition, explained how The Ducktators work across our seven domains, and brought last season’s robot from our sister team, the Paraducks. Students drove it, looked inside the electronics and asked questions until the bell, and we left with a long list of names and registrations for the team.',
     photos: [
-      { src: 'assets/updates/recruitment-crowd.webp', thumb: 'assets/updates/recruitment-crowd-thumb.webp', alt: 'Students crowding around the Paraducks robot, loaded with yellow game pieces, in the CAJCS assembly hall' },
-      { src: 'assets/updates/recruitment-overview.webp', thumb: 'assets/updates/recruitment-overview-thumb.webp', alt: 'The FRC overview on the assembly hall screen, titled "Cathedral is starting a robotics team", with the robot on stage' },
-      { src: 'assets/updates/recruitment-driving.webp', thumb: 'assets/updates/recruitment-driving-thumb.webp', alt: 'A student drives the Paraducks robot across the hall floor while others watch' },
-      { src: 'assets/updates/recruitment-electronics.webp', thumb: 'assets/updates/recruitment-electronics-thumb.webp', alt: 'Students bend down to look at the robot’s electronics board' },
-      { src: 'assets/updates/recruitment-game-piece.webp', thumb: 'assets/updates/recruitment-game-piece-thumb.webp', alt: 'A team member explains a game piece to a group of students' },
-      { src: 'assets/updates/recruitment-driver-station.webp', thumb: 'assets/updates/recruitment-driver-station-thumb.webp', alt: 'The robot glowing orange on stage beside a laptop running the driver station dashboard' },
-      { src: 'assets/updates/recruitment-hall.webp', thumb: 'assets/updates/recruitment-hall-thumb.webp', alt: 'A wide view of students gathered around the robot below the school crest' },
+      { src: 'assets/updates/recruitment-crowd.webp', card: 'assets/updates/recruitment-crowd-1600.webp', thumb: 'assets/updates/recruitment-crowd-thumb.webp', alt: 'Students crowding around the Paraducks robot, loaded with yellow game pieces, in the CAJCS assembly hall' },
+      { src: 'assets/updates/recruitment-overview.webp', card: 'assets/updates/recruitment-overview-1600.webp', thumb: 'assets/updates/recruitment-overview-thumb.webp', alt: 'The FRC overview on the assembly hall screen, titled "Cathedral is starting a robotics team", with the robot on stage' },
+      { src: 'assets/updates/recruitment-driving.webp', card: 'assets/updates/recruitment-driving-1600.webp', thumb: 'assets/updates/recruitment-driving-thumb.webp', alt: 'A student drives the Paraducks robot across the hall floor while others watch' },
+      { src: 'assets/updates/recruitment-electronics.webp', card: 'assets/updates/recruitment-electronics-1600.webp', thumb: 'assets/updates/recruitment-electronics-thumb.webp', alt: 'Students bend down to look at the robot’s electronics board' },
+      { src: 'assets/updates/recruitment-game-piece.webp', card: 'assets/updates/recruitment-game-piece-1600.webp', thumb: 'assets/updates/recruitment-game-piece-thumb.webp', alt: 'A team member explains a game piece to a group of students' },
+      { src: 'assets/updates/recruitment-driver-station.webp', card: 'assets/updates/recruitment-driver-station-1600.webp', thumb: 'assets/updates/recruitment-driver-station-thumb.webp', alt: 'The robot glowing orange on stage beside a laptop running the driver station dashboard' },
+      { src: 'assets/updates/recruitment-hall.webp', card: 'assets/updates/recruitment-hall-1600.webp', thumb: 'assets/updates/recruitment-hall-thumb.webp', alt: 'A wide view of students gathered around the robot below the school crest' },
     ],
   },
 ];
@@ -48,7 +49,7 @@ const POSTS = [
 
   /* Smooth scroll */
   if (!reduce && window.Lenis) {
-    const lenis = new Lenis({ lerp: .085 });
+    const lenis = new Lenis({ lerp: .085 }); window.__lenis = lenis;
     const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
   }
@@ -101,14 +102,14 @@ const POSTS = [
     const rest = photos.slice(1);
     return `
       <li class="post" data-type="${esc(p.type)}">
-        ${lead ? `<button class="post__photo" data-photo="${esc(lead.src)}" data-cap="${esc(lead.alt)}" aria-label="Enlarge photo: ${esc(lead.alt)}"><img src="${esc(lead.src)}" alt="" loading="${i < 2 ? 'eager' : 'lazy'}"></button>` : ''}
+        ${lead ? `<button class="post__photo" type="button" data-post="${i}" data-idx="0" aria-label="Open photo: ${esc(lead.alt)}"><img src="${esc(lead.card || lead.src)}"${lead.card ? ` srcset="${esc(lead.thumb || lead.card)} 480w, ${esc(lead.card)} 1600w, ${esc(lead.src)} 2560w" sizes="(min-width: 900px) 56vw, 100vw"` : ''} alt="" loading="${i < 2 ? 'eager' : 'lazy'}" decoding="async"${i === 0 ? ' fetchpriority="high"' : ''}></button>` : ''}
         <div class="post__body">
           <p class="post__meta"><span class="post__tag post__tag--${esc(p.type)}">${esc(TYPES[p.type] || p.type)}</span><time datetime="${esc(p.date)}">${esc(fmt(p.date))}</time></p>
           <h2 class="post__title">${esc(p.title)}</h2>
           ${p.place ? `<p class="post__place"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>${esc(p.place)}</p>` : ''}
           ${(p.stats || []).length ? `<dl class="post__stats">${p.stats.map(s => `<div><dt>${esc(s.label)}</dt><dd>${esc(s.n)}</dd></div>`).join('')}</dl>` : ''}
           <p class="post__text">${esc(p.text)}</p>
-          ${rest.length ? `<div class="post__strip">${rest.map(ph => `<button data-photo="${esc(ph.src)}" data-cap="${esc(ph.alt)}" aria-label="Enlarge photo: ${esc(ph.alt)}"><img src="${esc(ph.thumb || ph.src)}" alt="" loading="lazy" width="84" height="64"></button>`).join('')}</div>` : ''}
+          ${rest.length ? `<div class="post__strip">${rest.map((ph, k) => `<button type="button" data-post="${i}" data-idx="${k + 1}" aria-label="Open photo: ${esc(ph.alt)}"><img src="${esc(ph.thumb || ph.card || ph.src)}" alt="" loading="lazy" decoding="async" width="84" height="64"></button>`).join('')}</div>` : ''}
           ${p.link ? `<a class="post__link" href="${esc(p.link.href)}" rel="noopener">${esc(p.link.label || 'Read more')} →</a>` : ''}
         </div>
       </li>`;
@@ -130,13 +131,16 @@ const POSTS = [
   }));
   apply();
 
-  /* Lightbox */
-  const box = $('[data-lightbox]'), boxImg = $('[data-lightbox-img]'), boxCap = $('[data-lightbox-cap]');
+  /* Photo viewer (js/lightbox.js): all photos of a post, starting at the one tapped */
+  /* phones and small screens get the 1600 px copy (sharp at their size, loads faster); big screens the full photo */
+  const bigScreen = () => Math.max(innerWidth, innerHeight) * Math.min(devicePixelRatio || 1, 2) > 1900;
+  const fullOf = ph => (bigScreen() || !ph.card) ? ph.src : ph.card;
+  const itemsOf = n => (posts[n].photos || []).map(ph => ({ src: fullOf(ph), thumb: ph.thumb || ph.card || ph.src, alt: ph.alt }));
   list.addEventListener('click', e => {
-    const b = e.target.closest('[data-photo]'); if (!b) return;
-    boxImg.src = b.dataset.photo; boxImg.alt = b.dataset.cap || ''; boxCap.textContent = b.dataset.cap || '';
-    box.showModal();
+    const b = e.target.closest('[data-post]'); if (!b || !window.Lightbox) return;
+    Lightbox.open(itemsOf(+b.dataset.post), +b.dataset.idx, b);
   });
-  $('[data-lightbox-close]').addEventListener('click', () => box.close());
-  box.addEventListener('click', e => { if (e.target === box) box.close(); });
+  /* start downloading the full photo the moment a finger or pointer lands on it */
+  const warm = e => { const b = e.target.closest?.('[data-post]'); if (b && window.Lightbox) Lightbox.prefetch(fullOf(posts[+b.dataset.post].photos[+b.dataset.idx])); };
+  list.addEventListener('pointerover', warm); list.addEventListener('touchstart', warm, { passive: true }); list.addEventListener('focusin', warm);
 })();

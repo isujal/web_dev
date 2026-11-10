@@ -38,7 +38,7 @@ const SITE = {
   /* ---------- Lenis ---------- */
   let lenis = null;
   if (!reduce && window.Lenis) {
-    lenis = new Lenis({ lerp: .085, wheelMultiplier: 1, smoothWheel: true, syncTouch: false });
+    lenis = new Lenis({ lerp: .085, wheelMultiplier: 1, smoothWheel: true, syncTouch: false }); window.__lenis = lenis;
     if (hasGsap) {
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add(t => lenis.raf(t * 1000));
@@ -350,20 +350,17 @@ const SITE = {
     });
   }
 
-  /* ---------- Photo lightbox (arena gallery), same viewer as the Updates page ---------- */
-  const box = $('[data-lightbox]');
-  if (box) {
-    const boxImg = $('[data-lightbox-img]'), boxCap = $('[data-lightbox-cap]');
-    $$('.ph img').forEach(img => {
-      const b = document.createElement('button');
-      b.type = 'button'; b.className = 'ph__zoom'; b.setAttribute('aria-label', 'Enlarge photo: ' + img.alt);
-      img.replaceWith(b); b.append(img);
-      b.addEventListener('click', () => { boxImg.src = img.currentSrc || img.src; boxImg.alt = img.alt; boxCap.textContent = img.alt; box.showModal(); });
-    });
-    $('[data-lightbox-close]').addEventListener('click', () => box.close());
-    box.addEventListener('click', e => { if (e.target === box) box.close(); });
-    box.addEventListener('close', () => { boxImg.removeAttribute('src'); });
-  }
+  /* ---------- Photo viewer for the arena gallery (js/lightbox.js) ---------- */
+  const shots = $$('.ph img');
+  const shotItems = () => shots.map(img => ({ src: img.currentSrc || img.src, thumb: img.currentSrc || img.src, alt: img.alt }));
+  shots.forEach((img, k) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'ph__zoom'; b.setAttribute('aria-label', 'Open photo: ' + img.alt);
+    img.replaceWith(b); b.append(img);
+    b.addEventListener('click', () => window.Lightbox?.open(shotItems(), k, b));
+    const warm = () => window.Lightbox?.prefetch(img.currentSrc || img.src);
+    b.addEventListener('pointerenter', warm); b.addEventListener('touchstart', warm, { passive: true }); b.addEventListener('focus', warm);
+  });
 
   /* ---------- Vanta NET behind "Get in touch": desktop only, no reduced motion.
      three.js (~600 KB) loads only when the section comes near, and the net stops while it is off screen. ---------- */
