@@ -89,9 +89,10 @@ const SITE = {
   const nav = $('[data-nav]');
   const bar = $('[data-progress]');
   let lastY = scrollY;
+  const settle = performance.now() + 1800; // arriving on a #section link (or a reload mid-page) is not the visitor scrolling down
   const onScroll = () => {
     const y = scrollY;
-    if (y > 500 && y > lastY + 3 && drawer.hidden && !jumping) nav.classList.add('is-hidden');
+    if (y > 500 && y > lastY + 3 && drawer.hidden && !jumping && performance.now() > settle) nav.classList.add('is-hidden');
     else if (y < lastY - 3 || y < 500) nav.classList.remove('is-hidden');
     lastY = y;
     const el = document.elementFromPoint(innerWidth / 2, 40);
@@ -397,6 +398,15 @@ const SITE = {
       label.textContent = userPaused ? 'Play background' : 'Pause background';
       run(seen && !userPaused);
     });
+  }
+
+  /* ---------- Time commitment bar: grows in when seen, "Now" marker at today's date ---------- */
+  const load = $('[data-load]');
+  if (load) {
+    const start = new Date('2026-08-01T00:00:00+05:30'), end = new Date('2027-05-01T00:00:00+05:30');
+    const f = (Date.now() - start) / (end - start), now = $('[data-load-now]');
+    if (f > 0 && f < 1) { now.style.left = (f * 100).toFixed(2) + '%'; now.hidden = false; }
+    new IntersectionObserver(([en], o) => { if (en.isIntersecting) { load.classList.add('is-in'); o.disconnect(); } }, { threshold: .4 }).observe(load);
   }
 
   /* ---------- Render loop ---------- */
