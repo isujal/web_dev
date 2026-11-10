@@ -14,11 +14,30 @@
        { src: 'assets/updates/kickoff-1.jpg', alt: 'The team watching the game reveal' },
      ],
      link: { href: 'https://…', label: 'Watch the reveal' },   // optional
+     place: 'CAJCS assembly hall',             // optional
+     stats: [{ n: '120', label: 'students' }], // optional: real numbers only, they feed the Impact record
    },
+   Photos can also have thumb: 'assets/updates/x-thumb.webp' (a ~360px copy for the small strip).
    ------------------------------------------------------------------ */
 
 const POSTS = [
-  // Empty for now. Add the first post here.
+  {
+    date: '2026-10-28',
+    type: 'outreach',
+    title: 'Recruitment day at the CAJCS Senior School',
+    place: 'CAJCS Senior School assembly hall · 8 am',
+    stats: [{ n: '120', label: 'students attended' }],
+    text: 'On Wednesday 28 October, 120 students joined us in the Senior School assembly hall. We gave an overview of the FIRST Robotics Competition, explained how The Ducktators work across our seven domains, and brought last season’s robot from our sister team, the Paraducks. Students drove it, looked inside the electronics and asked questions until the bell, and we left with a long list of names and registrations for the team.',
+    photos: [
+      { src: 'assets/updates/recruitment-crowd.webp', thumb: 'assets/updates/recruitment-crowd-thumb.webp', alt: 'Students crowding around the Paraducks robot, loaded with yellow game pieces, in the CAJCS assembly hall' },
+      { src: 'assets/updates/recruitment-overview.webp', thumb: 'assets/updates/recruitment-overview-thumb.webp', alt: 'The FRC overview on the assembly hall screen, titled "Cathedral is starting a robotics team", with the robot on stage' },
+      { src: 'assets/updates/recruitment-driving.webp', thumb: 'assets/updates/recruitment-driving-thumb.webp', alt: 'A student drives the Paraducks robot across the hall floor while others watch' },
+      { src: 'assets/updates/recruitment-electronics.webp', thumb: 'assets/updates/recruitment-electronics-thumb.webp', alt: 'Students bend down to look at the robot’s electronics board' },
+      { src: 'assets/updates/recruitment-game-piece.webp', thumb: 'assets/updates/recruitment-game-piece-thumb.webp', alt: 'A team member explains a game piece to a group of students' },
+      { src: 'assets/updates/recruitment-driver-station.webp', thumb: 'assets/updates/recruitment-driver-station-thumb.webp', alt: 'The robot glowing orange on stage beside a laptop running the driver station dashboard' },
+      { src: 'assets/updates/recruitment-hall.webp', thumb: 'assets/updates/recruitment-hall-thumb.webp', alt: 'A wide view of students gathered around the robot below the school crest' },
+    ],
+  },
 ];
 
 (() => {
@@ -82,12 +101,14 @@ const POSTS = [
     const rest = photos.slice(1);
     return `
       <li class="post" data-type="${esc(p.type)}">
-        ${lead ? `<button class="post__photo" data-photo="${esc(lead.src)}" data-cap="${esc(lead.alt)}"><img src="${esc(lead.src)}" alt="${esc(lead.alt)}" loading="${i < 2 ? 'eager' : 'lazy'}"></button>` : ''}
+        ${lead ? `<button class="post__photo" data-photo="${esc(lead.src)}" data-cap="${esc(lead.alt)}" aria-label="Enlarge photo: ${esc(lead.alt)}"><img src="${esc(lead.src)}" alt="" loading="${i < 2 ? 'eager' : 'lazy'}"></button>` : ''}
         <div class="post__body">
           <p class="post__meta"><span class="post__tag post__tag--${esc(p.type)}">${esc(TYPES[p.type] || p.type)}</span><time datetime="${esc(p.date)}">${esc(fmt(p.date))}</time></p>
           <h2 class="post__title">${esc(p.title)}</h2>
+          ${p.place ? `<p class="post__place"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>${esc(p.place)}</p>` : ''}
+          ${(p.stats || []).length ? `<dl class="post__stats">${p.stats.map(s => `<div><dt>${esc(s.label)}</dt><dd>${esc(s.n)}</dd></div>`).join('')}</dl>` : ''}
           <p class="post__text">${esc(p.text)}</p>
-          ${rest.length ? `<div class="post__strip">${rest.map(ph => `<button data-photo="${esc(ph.src)}" data-cap="${esc(ph.alt)}"><img src="${esc(ph.src)}" alt="${esc(ph.alt)}" loading="lazy"></button>`).join('')}</div>` : ''}
+          ${rest.length ? `<div class="post__strip">${rest.map(ph => `<button data-photo="${esc(ph.src)}" data-cap="${esc(ph.alt)}" aria-label="Enlarge photo: ${esc(ph.alt)}"><img src="${esc(ph.thumb || ph.src)}" alt="" loading="lazy" width="84" height="64"></button>`).join('')}</div>` : ''}
           ${p.link ? `<a class="post__link" href="${esc(p.link.href)}" rel="noopener">${esc(p.link.label || 'Read more')} →</a>` : ''}
         </div>
       </li>`;

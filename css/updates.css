@@ -62,3 +62,23 @@
 
 /* Pause control for the Vanta header: shared look in style.css (.motion-btn) */
 .up-pause { position: absolute; z-index: 3; right: max(var(--gutter), calc((100% - var(--max)) / 2)); bottom: 28px; }
+
+/* ---------- Post details: place, headline numbers ---------- */
+.post__place { margin: -2px 0 0; display: flex; align-items: center; gap: 8px; color: var(--grey); font-size: .92rem; }
+.post__place svg { width: 16px; height: 16px; flex: none; fill: none; stroke: var(--brass); stroke-width: 2; stroke-linejoin: round; }
+.post__stats { margin: 4px 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.post__stats div { display: flex; flex-direction: column-reverse; padding: 12px 18px; border-radius: 16px; background: rgba(139,61,255,.14); box-shadow: inset 0 0 0 1px rgba(139,61,255,.35); }
+.post__stats dd { margin: 0; font: 800 2.2rem/1 var(--f); letter-spacing: -.04em; color: #fff; }
+.post__stats dt { margin-top: 4px; font: 500 .74rem var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--lavender); }
+.post__strip button { transition: transform .3s var(--ease), box-shadow .3s; }
+.post__strip button:hover { transform: translateY(-2px); box-shadow: 0 0 0 2px var(--brass); }
+.post__strip button:focus-visible, .post__photo:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+
+/* ---------- The newest post is featured: wide, photo beside the story ---------- */
+@media (min-width: 900px) {
+  .posts > .post:first-child:not([hidden]) { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+  .posts > .post:first-child .post__photo { aspect-ratio: auto; height: 100%; min-height: 460px; }
+  .posts > .post:first-child .post__body { padding: 40px 44px; align-content: center; gap: 14px; }
+  .posts > .post:first-child .post__title { font-size: clamp(1.8rem, 2.4vw, 2.4rem); }
+  .posts > .post:first-child .post__strip { flex-wrap: wrap; overflow: visible; }
+}
