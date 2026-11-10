@@ -30,13 +30,13 @@ const POSTS = [
     stats: [{ n: '120', label: 'students attended' }],
     text: 'On Wednesday 28 October, 120 students joined us in the Senior School assembly hall. We gave an overview of the FIRST Robotics Competition, explained how The Ducktators work across our seven domains, and brought last season’s robot from our sister team, the Paraducks. Students drove it, looked inside the electronics and asked questions until the bell, and we left with a long list of names and registrations for the team.',
     photos: [
-      { src: 'assets/updates/recruitment-crowd.webp', card: 'assets/updates/recruitment-crowd-1600.webp', thumb: 'assets/updates/recruitment-crowd-thumb.webp', alt: 'Students crowding around the Paraducks robot, loaded with yellow game pieces, in the CAJCS assembly hall' },
-      { src: 'assets/updates/recruitment-overview.webp', card: 'assets/updates/recruitment-overview-1600.webp', thumb: 'assets/updates/recruitment-overview-thumb.webp', alt: 'The FRC overview on the assembly hall screen, titled "Cathedral is starting a robotics team", with the robot on stage' },
-      { src: 'assets/updates/recruitment-driving.webp', card: 'assets/updates/recruitment-driving-1600.webp', thumb: 'assets/updates/recruitment-driving-thumb.webp', alt: 'A student drives the Paraducks robot across the hall floor while others watch' },
-      { src: 'assets/updates/recruitment-electronics.webp', card: 'assets/updates/recruitment-electronics-1600.webp', thumb: 'assets/updates/recruitment-electronics-thumb.webp', alt: 'Students bend down to look at the robot’s electronics board' },
-      { src: 'assets/updates/recruitment-game-piece.webp', card: 'assets/updates/recruitment-game-piece-1600.webp', thumb: 'assets/updates/recruitment-game-piece-thumb.webp', alt: 'A team member explains a game piece to a group of students' },
-      { src: 'assets/updates/recruitment-driver-station.webp', card: 'assets/updates/recruitment-driver-station-1600.webp', thumb: 'assets/updates/recruitment-driver-station-thumb.webp', alt: 'The robot glowing orange on stage beside a laptop running the driver station dashboard' },
-      { src: 'assets/updates/recruitment-hall.webp', card: 'assets/updates/recruitment-hall-1600.webp', thumb: 'assets/updates/recruitment-hall-thumb.webp', alt: 'A wide view of students gathered around the robot below the school crest' },
+      { src: 'assets/updates/recruitment-crowd.webp', card: 'assets/updates/recruitment-crowd-1600.webp', thumb: 'assets/updates/recruitment-crowd-thumb.webp', strip: 'assets/updates/recruitment-crowd-strip.webp', alt: 'Students crowding around the Paraducks robot, loaded with yellow game pieces, in the CAJCS assembly hall' },
+      { src: 'assets/updates/recruitment-overview.webp', card: 'assets/updates/recruitment-overview-1600.webp', thumb: 'assets/updates/recruitment-overview-thumb.webp', strip: 'assets/updates/recruitment-overview-strip.webp', alt: 'The FRC overview on the assembly hall screen, titled "Cathedral is starting a robotics team", with the robot on stage' },
+      { src: 'assets/updates/recruitment-driving.webp', card: 'assets/updates/recruitment-driving-1600.webp', thumb: 'assets/updates/recruitment-driving-thumb.webp', strip: 'assets/updates/recruitment-driving-strip.webp', alt: 'A student drives the Paraducks robot across the hall floor while others watch' },
+      { src: 'assets/updates/recruitment-electronics.webp', card: 'assets/updates/recruitment-electronics-1600.webp', thumb: 'assets/updates/recruitment-electronics-thumb.webp', strip: 'assets/updates/recruitment-electronics-strip.webp', alt: 'Students bend down to look at the robot’s electronics board' },
+      { src: 'assets/updates/recruitment-game-piece.webp', card: 'assets/updates/recruitment-game-piece-1600.webp', thumb: 'assets/updates/recruitment-game-piece-thumb.webp', strip: 'assets/updates/recruitment-game-piece-strip.webp', alt: 'A team member explains a game piece to a group of students' },
+      { src: 'assets/updates/recruitment-driver-station.webp', card: 'assets/updates/recruitment-driver-station-1600.webp', thumb: 'assets/updates/recruitment-driver-station-thumb.webp', strip: 'assets/updates/recruitment-driver-station-strip.webp', alt: 'The robot glowing orange on stage beside a laptop running the driver station dashboard' },
+      { src: 'assets/updates/recruitment-hall.webp', card: 'assets/updates/recruitment-hall-1600.webp', thumb: 'assets/updates/recruitment-hall-thumb.webp', strip: 'assets/updates/recruitment-hall-strip.webp', alt: 'A wide view of students gathered around the robot below the school crest' },
     ],
   },
 ];
@@ -109,7 +109,7 @@ const POSTS = [
           ${p.place ? `<p class="post__place"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>${esc(p.place)}</p>` : ''}
           ${(p.stats || []).length ? `<dl class="post__stats">${p.stats.map(s => `<div><dt>${esc(s.label)}</dt><dd>${esc(s.n)}</dd></div>`).join('')}</dl>` : ''}
           <p class="post__text">${esc(p.text)}</p>
-          ${rest.length ? `<div class="post__strip">${rest.map((ph, k) => `<button type="button" data-post="${i}" data-idx="${k + 1}" aria-label="Open photo: ${esc(ph.alt)}"><img src="${esc(ph.thumb || ph.card || ph.src)}" alt="" loading="lazy" decoding="async" width="84" height="64"></button>`).join('')}</div>` : ''}
+          ${rest.length ? `<div class="post__strip">${rest.map((ph, k) => `<button type="button" data-post="${i}" data-idx="${k + 1}" aria-label="Open photo: ${esc(ph.alt)}"><img src="${esc(ph.strip || ph.thumb || ph.card || ph.src)}" alt="" loading="lazy" decoding="async" width="84" height="64"></button>`).join('')}</div>` : ''}
           ${p.link ? `<a class="post__link" href="${esc(p.link.href)}" rel="noopener">${esc(p.link.label || 'Read more')} →</a>` : ''}
         </div>
       </li>`;

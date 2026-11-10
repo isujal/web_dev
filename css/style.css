@@ -19,7 +19,7 @@
   --paper-2: #EAE5F2;
   --white: #FFFFFF;
   --grey: #A39BB2;          /* secondary text on black, 7.6:1 */
-  --grey-ink: #5E566C;      /* secondary text on paper, 6.6:1 */
+  --grey-ink: #4B4459;      /* secondary text on paper, 7.9:1 */
   --line: rgba(255,255,255,.1);
   --line-ink: rgba(11,7,18,.12);
   --err: #FF7A90;
@@ -250,7 +250,7 @@ html:not(.js) .loader, .no-anim .loader, .loader.is-done { display: none; }
 .tile--dark { background: #0B0712; color: #fff; }
 .tile--dark .tile__text, .tile--dark small { color: var(--grey); }
 .tile--purple { background: linear-gradient(135deg, var(--purple), var(--violet)); color: #fff; }
-.tile--purple .tile__text { color: rgba(255,255,255,.82); }
+.tile--purple .tile__text { color: #fff; }
 .tile__quote { margin: 0; font: 700 clamp(1.8rem, 3.4vw, 3rem)/1.05 var(--f); letter-spacing: -.045em; max-width: 16em; }
 .weeks { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; margin-top: 26px; }
 .weeks i { height: 10px; border-radius: 3px; background: var(--paper-2); }
@@ -805,3 +805,26 @@ html.lbx-open, html.lbx-open body { overflow: hidden; }
   .lbx__cap { padding-right: 140px; min-height: 76px; align-items: center; }
 }
 @media (prefers-reduced-motion: reduce) { .lbx[open] { animation: none; } .lbx__stage img { transition: none; } }
+
+/* ---------- Taste review fixes ---------- */
+/* the tilted gold ticker is wider than the screen: clip it at the page, never scroll sideways */
+html { overflow-x: clip; }
+/* the hero fits one screen on laptops too: title, badge and padding follow the screen height,
+   and the dates sit clear of the ticker that overlaps the hero's bottom edge */
+@media (min-width: 641px) {
+  .hero__inner { padding: clamp(90px, 12vh, 120px) 0 clamp(104px, 13vh, 130px); }
+  .hero__badge { width: clamp(140px, min(20vw, 22vh), 250px); }
+  .hero__meta { bottom: 66px; }
+}
+/* the glass "Sponsor us" button sits on the moving glow: give its label a calm, dark base */
+.hero__actions .btn--glass { background: linear-gradient(150deg, rgba(30,16,52,.72), rgba(14,8,26,.62)); }
+/* closing action in Get in touch */
+.contact__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+@media (min-width: 641px) { .motion-btn--hero { top: 96px; bottom: auto; } }
+/* hero dates stay readable over the moving glow */
+.hero__meta { color: rgba(255,255,255,.9); text-shadow: 0 1px 10px rgba(0,0,0,.7); }
+/* season card numbers sit on photos and art: give them a small dark plate */
+.card__no { padding: 4px 9px; border-radius: 999px; background: rgba(10,6,18,.62); color: rgba(255,255,255,.92); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+/* small lines on the glass forms: readable over the purple glow */
+.pass__sub { color: rgba(255,255,255,.82); }
+.pass__privacy { color: rgba(255,255,255,.8); }

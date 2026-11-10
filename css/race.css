@@ -13,7 +13,7 @@
 .hero__title {
   font-family: var(--f-race); font-style: italic; font-stretch: 75%; font-weight: 900;
   text-transform: uppercase; letter-spacing: -.005em;
-  font-size: clamp(3.8rem, 13vw, 12rem); line-height: .84;
+  font-size: clamp(3.8rem, min(13vw, 19vh), 12rem); line-height: .84;
 }
 .hero__title .line { padding: 0 .08em .04em; }
 .hero__grid { background-size: 80px 80px; transform: perspective(600px) rotateX(58deg) translateY(28%) scale(1.6); transform-origin: 50% 100%; opacity: .7; }
@@ -30,7 +30,7 @@
 .speed i:nth-child(8) { top: 65%; animation-delay: .6s; width: 24vw; }
 @keyframes streak { to { transform: translateX(260vw); } }
 
-.hero__meta { font-family: "Titillium Web", var(--f); font-style: italic; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.hero__meta { font-family: var(--f-race); font-stretch: 85%; font-style: italic; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
 .hero__meta p { font-size: .76rem; }
 
 /* ---------- Footer: carbon fibre + chequered flag ---------- */

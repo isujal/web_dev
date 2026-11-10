@@ -14,7 +14,7 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..900&family=Saira:ital,wdth,wght@1,75..100,700..900&family=Titillium+Web:wght@600;700&family=Geist+Mono:wght@400..600&family=Michroma&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..900&family=Saira:ital,wdth,wght@1,75..100,700..900&family=Geist+Mono:wght@400..600&family=Michroma&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/lenis.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/race.css">
@@ -37,7 +37,7 @@
 
   <header class="nav" data-nav>
     <a class="nav__brand" href="#top" aria-label="The Ducktators, back to top">
-      <img src="assets/badge.webp" alt="" width="34" height="34">
+      <img src="assets/badge-96.webp" alt="" width="34" height="34">
       <span>The Ducktators</span>
     </a>
     <nav class="nav__links" aria-label="Sections">
@@ -99,7 +99,7 @@
         <div class="hero__badge" data-tilt>
           <div class="hero__ring" aria-hidden="true"></div>
           <div class="hero__halo" aria-hidden="true"></div>
-          <img src="assets/badge.webp" alt="The Ducktators badge: a stern duck officer in a white peaked cap with a purple band, a monocle and a purple collar with stars, above the number 11745" width="800" height="800">
+          <img src="assets/badge-520.webp" srcset="assets/badge-320.webp 320w, assets/badge-520.webp 520w, assets/badge.webp 800w" sizes="250px" alt="The Ducktators badge: a stern duck officer in a white peaked cap with a purple band, a monocle and a purple collar with stars, above the number 11745" width="800" height="800">
           <span class="hero__glare" aria-hidden="true"></span>
         </div>
 
@@ -140,7 +140,7 @@
           </figure>
 
           <div class="poster__title">
-            <img class="poster__badge" src="assets/badge.webp" alt="" width="160" height="160" data-poster-part>
+            <img class="poster__badge" src="assets/badge-160.webp" alt="" width="160" height="160" loading="lazy" decoding="async" data-poster-part>
             <p class="poster__the" data-poster-part>The</p>
             <p class="poster__name" data-poster-name>Ducktators</p>
             <span class="poster__rule" aria-hidden="true" data-poster-rule></span>
@@ -156,7 +156,7 @@
       <div class="wrap affil__row">
         <figure class="affil__item">
           <div class="affil__logo affil__logo--school" data-logo>
-            <img src="assets/logos/cajcs.png" alt="Cathedral and John Connon School crest" loading="lazy" onerror="this.closest('[data-logo]').classList.add('is-text')">
+            <img src="assets/logos/cajcs-300.webp" width="300" height="300" alt="Cathedral and John Connon School crest" loading="lazy" onerror="this.closest('[data-logo]').classList.add('is-text')">
             <span class="affil__text">Cathedral &amp; John&nbsp;Connon School</span>
           </div>
           <figcaption>A team of Cathedral &amp; John Connon School, Mumbai</figcaption>
@@ -164,7 +164,7 @@
         <span class="affil__x" aria-hidden="true"></span>
         <figure class="affil__item">
           <div class="affil__logo affil__logo--first" data-logo>
-            <img src="assets/logos/first-frc.png" alt="FIRST logo" loading="lazy" onerror="this.closest('[data-logo]').classList.add('is-text')">
+            <img src="assets/logos/first-frc-300.webp" width="300" height="228" alt="FIRST logo" loading="lazy" onerror="this.closest('[data-logo]').classList.add('is-text')">
             <span class="affil__text"><i>FIRST</i>® Robotics Competition</span>
           </div>
           <figcaption>Competing in <i>FIRST</i>® Robotics Competition as Team 11745</figcaption>
@@ -271,7 +271,7 @@
         <ol class="track" data-track tabindex="0" aria-label="Season calendar. On small screens, scroll sideways for more">
           <li class="card">
             <span class="card__no">01</span>
-            <div class="card__art card__art--photo-real"><img src="assets/photos/team-makerlab.webp" alt="The founding team at the CAJCS Maker Lab" loading="lazy" decoding="async" style="object-position:50% 30%"></div>
+            <div class="card__art card__art--photo-real"><img src="assets/photos/team-makerlab.webp" width="1600" height="1200" alt="The founding team at the CAJCS Maker Lab" loading="lazy" decoding="async" style="object-position:50% 30%"></div>
             <p class="card__when">2026 <span class="pill pill--done">Done</span></p>
             <h3>The team forms</h3>
             <p>Students and mentors at the CAJCS Maker Lab register as <i>FIRST</i> Robotics Competition team 11745.</p>
@@ -531,7 +531,7 @@
             </ol>
 
             <div class="contact-card">
-              <img src="assets/badge.webp" alt="" width="52" height="52" loading="lazy">
+              <img src="assets/badge-160.webp" alt="" width="52" height="52" loading="lazy">
               <div>
                 <p class="contact-card__who">Suyog Mestry · Sujal Patil</p>
                 <p class="contact-card__role">Team mentors, FRC 11745</p>
@@ -604,7 +604,7 @@
 
         <form class="pass glass" data-enlist novalidate>
           <div class="pass__head">
-            <img src="assets/badge.webp" alt="" width="46" height="46">
+            <img src="assets/badge-160.webp" alt="" width="46" height="46" loading="lazy">
             <div><p class="pass__title">Application</p><p class="pass__sub">FRC 11745 · Season 2026–27</p></div>
           </div>
           <label class="field">
@@ -662,10 +662,11 @@
         <h2 class="h2" id="contact-title">Get in touch.</h2>
         <div class="contact__lines">
           <a class="contact__line" href="mailto:" data-mail="general" data-needs="email" hidden><span>Email</span><b data-email-text>[EMAIL]</b></a>
-          <a class="contact__line" href="#" data-social="instagram" data-needs="instagram" hidden><span>Instagram</span><b>@[HANDLE]</b></a>
+          <a class="contact__line" data-social="instagram" data-needs="instagram" hidden><span>Instagram</span><b>@[HANDLE]</b></a>
           <a class="contact__line" href="https://frc-events.firstinspires.org/team/11745" rel="noopener"><span><i>FIRST</i> team page</span><b>FRC 11745</b></a>
           <p class="contact__line"><span>Base</span><b>CAJCS Maker Lab, Mumbai</b></p>
           <p class="contact__note">Other teams: want to scrimmage, swap scouting data or share a pit tip? We are new, and we would love to hear from you.</p>
+          <div class="contact__cta"><a class="btn btn--brass" href="mailto:ducktator.frc@gmail.com" data-email-link>Email the team</a><a class="btn btn--outline" href="#enlist">Join the team</a></div>
         </div>
       </div>
     </section>
@@ -682,9 +683,9 @@
       </dl>
     </div>
     <div class="wrap footer__logos">
-      <div class="footer__logo footer__logo--school" data-logo><img src="assets/logos/cajcs.png" alt="Cathedral and John Connon School" loading="lazy" onerror="this.closest('[data-logo]').classList.add('is-text')"><span class="affil__text">Cathedral &amp; John&nbsp;Connon School</span></div>
-      <div class="footer__logo footer__logo--first" data-logo><img src="assets/logos/first-frc.png" alt="FIRST" loading="lazy" onerror="this.closest('[data-logo]').classList.add('is-text')"><span class="affil__text"><i>FIRST</i>® Robotics Competition</span></div>
-      <img class="footer__badge" src="assets/badge.webp" alt="The Ducktators badge" width="72" height="72" loading="lazy">
+      <div class="footer__logo footer__logo--school" data-logo><img src="assets/logos/cajcs-300.webp" width="300" height="300" alt="Cathedral and John Connon School" loading="lazy" onerror="this.closest('[data-logo]').classList.add('is-text')"><span class="affil__text">Cathedral &amp; John&nbsp;Connon School</span></div>
+      <div class="footer__logo footer__logo--first" data-logo><img src="assets/logos/first-frc-300.webp" width="300" height="228" alt="FIRST" loading="lazy" onerror="this.closest('[data-logo]').classList.add('is-text')"><span class="affil__text"><i>FIRST</i>® Robotics Competition</span></div>
+      <img class="footer__badge" src="assets/badge-160.webp" alt="The Ducktators badge" width="72" height="72" loading="lazy">
     </div>
     <div class="checker" aria-hidden="true"></div>
     <p class="footer__giant" aria-hidden="true" data-giant>Ducktators</p>
