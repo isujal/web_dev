@@ -71,14 +71,20 @@ const SITE = {
   /* ---------- Drawer (phone menu) ---------- */
   const menuBtn = $('[data-menu]'), drawer = $('#drawer');
   function setMenu(open) {
-    menuBtn.setAttribute('aria-expanded', String(open)); drawer.hidden = !open;
+    menuBtn.setAttribute('aria-expanded', String(open));
     document.documentElement.classList.toggle('menu-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
     if (lenis) open ? lenis.stop() : lenis.start();
-    if (open && anim) {
-      gsap.fromTo(drawer, { clipPath: 'circle(0% at calc(100% - 40px) 40px)' }, { clipPath: 'circle(150% at calc(100% - 40px) 40px)', duration: .7, ease: 'power3.inOut' });
-      gsap.from($$('.drawer__links a', drawer), { x: 40, opacity: 0, stagger: .045, duration: .7, ease: 'expo.out', delay: .15 });
-      gsap.from($$('.drawer__foot > *', drawer), { y: 20, opacity: 0, stagger: .06, duration: .6, ease: 'expo.out', delay: .35 });
+    const CIRCLE = 'calc(100% - 40px) 40px';
+    if (!anim) { drawer.hidden = !open; return; }
+    gsap.killTweensOf(drawer);
+    if (open) {
+      drawer.hidden = false;
+      gsap.fromTo(drawer, { clipPath: `circle(0% at ${CIRCLE})` }, { clipPath: `circle(150% at ${CIRCLE})`, duration: .38, ease: 'expo.out' });
+      gsap.fromTo($$('.drawer__links a', drawer), { x: 40, opacity: 0 }, { x: 0, opacity: 1, stagger: .03, duration: .4, ease: 'expo.out', delay: .06, overwrite: true });
+      gsap.fromTo($$('.drawer__foot > *', drawer), { y: 20, opacity: 0 }, { y: 0, opacity: 1, stagger: .04, duration: .4, ease: 'expo.out', delay: .12, overwrite: true });
+    } else if (!drawer.hidden) {
+      gsap.to(drawer, { clipPath: `circle(0% at ${CIRCLE})`, duration: .2, ease: 'power2.out', onComplete: () => { drawer.hidden = true; gsap.set(drawer, { clearProps: 'clipPath' }); } });
     }
   }
   menuBtn.addEventListener('click', () => setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'));
@@ -425,7 +431,7 @@ const SITE = {
   /* ---------- Magnetic buttons (cursor itself is drawn by the system via CSS) ---------- */
   if (fine) {
     $$('[data-magnetic]').forEach(el => {
-      const mx = gsap.quickTo(el, 'x', { duration: .6, ease: 'elastic.out(1,.4)' }), my = gsap.quickTo(el, 'y', { duration: .6, ease: 'elastic.out(1,.4)' });
+      const mx = gsap.quickTo(el, 'x', { duration: .5, ease: 'power3.out' }), my = gsap.quickTo(el, 'y', { duration: .5, ease: 'power3.out' });
       el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect(); mx((e.clientX - r.left - r.width / 2) * .3); my((e.clientY - r.top - r.height / 2) * .4); });
       el.addEventListener('pointerleave', () => { mx(0); my(0); });
     });
@@ -545,7 +551,7 @@ const SITE = {
   });
   gsap.to('.weeks i', { className: 'on', stagger: .14, duration: .01, scrollTrigger: { trigger: '.weeks', start: 'top 90%' } });
   gsap.from('[data-scale]', { scaleX: 0, duration: 1.8, ease: 'power3.out', scrollTrigger: { trigger: '.scale', start: 'top 92%' } });
-  gsap.from('.alliance span', { scale: 0, rotate: -30, duration: .8, stagger: .07, ease: 'back.out(2)', scrollTrigger: { trigger: '.alliance', start: 'top 90%' } });
+  gsap.from('.alliance span', { scale: .9, opacity: 0, duration: .6, stagger: .07, ease: 'expo.out', scrollTrigger: { trigger: '.alliance', start: 'top 90%' } });
   const clockEl = $('[data-clock]'), mc = { s: 150 };
   gsap.to(mc, { s: 0, duration: 9, ease: 'none', repeat: -1, repeatDelay: 1.2, onUpdate: () => { const s = Math.ceil(mc.s); clockEl.textContent = `${Math.floor(s / 60)}:${pad(s % 60)}`; },
     scrollTrigger: { trigger: clockEl, start: 'top bottom', end: 'bottom top', toggleActions: 'play pause resume pause' } });

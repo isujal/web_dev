@@ -128,6 +128,10 @@ const POSTS = [
     current = b.dataset.filter;
     $$('[data-filter]').forEach(x => x.setAttribute('aria-selected', String(x === b)));
     apply();
+    /* show what changed: the posts that remain fade up in a quick stagger */
+    if (!reduce) $$('.post:not([hidden])', list).forEach((li, k) => li.animate(
+      [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }],
+      { duration: 220, delay: k * 40, easing: 'cubic-bezier(0.23, 1, 0.32, 1)', fill: 'backwards' }));
   }));
   apply();
 
