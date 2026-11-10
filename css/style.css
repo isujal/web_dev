@@ -721,3 +721,41 @@ a, button, summary, label, select, input, textarea { touch-action: manipulation;
 .track:focus-visible { outline: 2px solid var(--brass); outline-offset: 6px; border-radius: 12px; }
 /* Lightbox close icon */
 .lightbox__close svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+
+/* ---------- Photo lightbox (homepage gallery + Updates page) ---------- */
+.lightbox { max-width: min(94vw, 1400px); max-height: 92vh; padding: 0; border: 0; border-radius: 18px; background: #000; color: #fff; overflow: visible; }
+.lightbox[open] { animation: lb-in .35s var(--ease) both; }
+.lightbox::backdrop { background: rgba(0,0,0,.85); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.lightbox img { display: block; max-width: min(94vw, 1400px); max-height: 82vh; border-radius: 18px; }
+.lightbox__cap { margin: 0; padding: 12px 6px 0; color: var(--grey); font-size: .92rem; }
+.lightbox__close { position: absolute; top: -14px; right: -14px; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; border: 0; cursor: pointer; background: #fff; color: var(--ink); font-size: 1.4rem; line-height: 1; z-index: 1; }
+@keyframes lb-in { from { opacity: 0; transform: scale(.96); } }
+.ph__zoom { display: block; width: 100%; height: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; overflow: hidden; transition: transform .6s var(--ease); touch-action: manipulation; }
+.ph__zoom:hover { transform: scale(1.03); }
+.ph__zoom:focus-visible { outline: 2px solid var(--brass); outline-offset: -4px; border-radius: 28px; }
+
+/* ---------- Motion control: pause button for anything that keeps moving ---------- */
+.motion-btn { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 0; border-radius: 999px; cursor: pointer; color: #fff; font: 500 .78rem var(--f-mono); letter-spacing: .04em; background: rgba(0,0,0,.45); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); touch-action: manipulation; transition: background-color .25s, opacity .25s; }
+.motion-btn:hover { background: rgba(255,255,255,.14); }
+.motion-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.motion-btn .i-play { display: none; fill: currentColor; stroke: none; }
+.motion-btn[aria-pressed="true"] .i-pause { display: none; }
+.motion-btn[aria-pressed="true"] .i-play { display: inline; }
+.motion-btn--hero { position: absolute; z-index: 4; right: max(var(--gutter), calc((100% - var(--max)) / 2)); bottom: 28px; opacity: .7; }
+.motion-btn--hero:hover, .motion-btn--hero:focus-visible { opacity: 1; }
+.hero.is-still *, .hero.is-still *::before, .hero.is-still *::after { animation-play-state: paused !important; }
+
+/* ---------- Vanta NET behind "Get in touch" (desktop only) ---------- */
+.contact { position: relative; overflow: hidden; }
+.contact > .wrap { position: relative; z-index: 2; }
+.contact__net { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 1.4s ease;
+  -webkit-mask: linear-gradient(90deg, #000 20%, rgba(0,0,0,.35) 55%, transparent 80%), linear-gradient(180deg, transparent, #000 18%, #000 75%, transparent);
+  -webkit-mask-composite: source-in; mask: linear-gradient(90deg, #000 20%, rgba(0,0,0,.35) 55%, transparent 80%) intersect, linear-gradient(180deg, transparent, #000 18%, #000 75%, transparent); }
+.contact__net.is-on { opacity: .85; }
+.contact__net canvas { display: block; }
+.motion-btn--net { position: absolute; z-index: 3; left: max(var(--gutter), calc((100% - var(--max)) / 2)); bottom: 28px; opacity: .7; }
+.motion-btn--net:hover, .motion-btn--net:focus-visible { opacity: 1; }
+@media (max-width: 640px) {
+  .motion-btn--hero { width: 44px; padding: 0; justify-content: center; bottom: 20px; }
+  .motion-btn--hero span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}

@@ -83,6 +83,10 @@
       <canvas class="aurora" data-aurora aria-hidden="true"></canvas>
       <div class="hero__grid" aria-hidden="true"></div>
       <div class="speed" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <button class="motion-btn motion-btn--hero" type="button" data-hero-pause aria-pressed="false" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M8 5v14M16 5v14"/><path class="i-play" d="M7 5l12 7-12 7z"/></svg>
+        <span data-hero-pause-label>Pause motion</span>
+      </button>
 
       <div class="hero__inner">
         <p class="logotype" data-scramble>The Ducktators · FRC 11745</p>
@@ -640,6 +644,11 @@
 
     <!-- ================= CONTACT ================= -->
     <section class="contact" id="contact" aria-labelledby="contact-title" data-theme="dark">
+      <div class="contact__net" data-net aria-hidden="true"></div>
+      <button class="motion-btn motion-btn--net" type="button" data-net-toggle aria-pressed="false" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M8 5v14M16 5v14"/><path class="i-play" d="M7 5l12 7-12 7z"/></svg>
+        <span data-net-label>Pause background</span>
+      </button>
       <div class="wrap contact__grid">
         <h2 class="h2" id="contact-title">Get in touch.</h2>
         <div class="contact__lines">
@@ -652,6 +661,12 @@
       </div>
     </section>
   </main>
+
+  <dialog class="lightbox" data-lightbox aria-label="Photo">
+    <button class="lightbox__close" data-lightbox-close aria-label="Close photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <img alt="" data-lightbox-img>
+    <p class="lightbox__cap" data-lightbox-cap></p>
+  </dialog>
 
   <!-- ================= FOOTER ================= -->
   <footer class="footer" data-theme="dark">

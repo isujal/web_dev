@@ -337,6 +337,71 @@ const SITE = {
     return st;
   })();
 
+  /* ---------- Hero motion pause (WCAG 2.2.2: anything moving past 5 s can be stopped) ---------- */
+  const motion = { paused: false };
+  const heroPause = $('[data-hero-pause]');
+  if (heroPause && !reduce) {
+    heroPause.hidden = false;
+    heroPause.addEventListener('click', () => {
+      motion.paused = !motion.paused;
+      heroPause.setAttribute('aria-pressed', String(motion.paused));
+      $('[data-hero-pause-label]').textContent = motion.paused ? 'Play motion' : 'Pause motion';
+      $('.hero').classList.toggle('is-still', motion.paused);
+    });
+  }
+
+  /* ---------- Photo lightbox (arena gallery), same viewer as the Updates page ---------- */
+  const box = $('[data-lightbox]');
+  if (box) {
+    const boxImg = $('[data-lightbox-img]'), boxCap = $('[data-lightbox-cap]');
+    $$('.ph img').forEach(img => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'ph__zoom'; b.setAttribute('aria-label', 'Enlarge photo: ' + img.alt);
+      img.replaceWith(b); b.append(img);
+      b.addEventListener('click', () => { boxImg.src = img.currentSrc || img.src; boxImg.alt = img.alt; boxCap.textContent = img.alt; box.showModal(); });
+    });
+    $('[data-lightbox-close]').addEventListener('click', () => box.close());
+    box.addEventListener('click', e => { if (e.target === box) box.close(); });
+    box.addEventListener('close', () => { boxImg.removeAttribute('src'); });
+  }
+
+  /* ---------- Vanta NET behind "Get in touch": desktop only, no reduced motion.
+     three.js (~600 KB) loads only when the section comes near, and the net stops while it is off screen. ---------- */
+  const net = $('[data-net]');
+  if (net && !reduce && matchMedia('(min-width: 900px)').matches) {
+    const load = src => new Promise((ok, fail) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = fail; document.head.append(s); });
+    const tog = $('[data-net-toggle]'), label = $('[data-net-label]');
+    let fx = null, seen = false, userPaused = false, running = false;
+    const run = on => {
+      if (!fx || on === running) return;
+      running = on;
+      if (on) { fx.prevNow = 0; fx.animationLoop(); } else cancelAnimationFrame(fx.req);
+    };
+    new IntersectionObserver(async ([en]) => {
+      seen = en.isIntersecting;
+      if (seen && !fx) {
+        try {
+          if (!window.THREE) await load('vendor/three.r134.min.js');
+          if (!window.VANTA?.NET) await load('vendor/vanta.net.min.js');
+          fx = window.VANTA.NET({
+            el: net, THREE: window.THREE, mouseControls: true, touchControls: false, gyroControls: false,
+            scale: 1, scaleMobile: 1, color: 0x8b3dff, backgroundColor: 0x000000, backgroundAlpha: 0,
+            points: 9, maxDistance: 22, spacing: 18, showDots: true,
+          });
+          running = true; net.classList.add('is-on');
+          if (tog) tog.hidden = false;
+        } catch { return; /* the plain black section stays */ }
+      }
+      run(seen && !userPaused);
+    }, { rootMargin: '300px 0px' }).observe(net.parentElement);
+    tog?.addEventListener('click', () => {
+      userPaused = !userPaused;
+      tog.setAttribute('aria-pressed', String(userPaused));
+      label.textContent = userPaused ? 'Play background' : 'Pause background';
+      run(seen && !userPaused);
+    });
+  }
+
   /* ---------- Render loop ---------- */
   if (reduce) { aur.draw(); robot.draw(); addEventListener('resize', () => { aur.draw(); robot.draw(); }); }
   else {
@@ -344,7 +409,7 @@ const SITE = {
     const loop = now => {
       const dt = Math.min(.05, (now - last) / 1000); last = now;
       if (!document.hidden) {
-        if (aur.visible) { aur.t += dt; aur.draw(); }
+        if (aur.visible && !motion.paused) { aur.t += dt; aur.draw(); }
         if (robot.visible) { robot.yaw += dt * .3; robot.draw(); }
       }
       requestAnimationFrame(loop);
@@ -422,8 +487,8 @@ const SITE = {
   /* ---------- Team poster: photo opens up, then the title stack assembles ----------
      The photo is only ever scaled DOWN from its full-resolution size, so it stays sharp. */
   const pName = $('[data-poster-name]');
-  pName.setAttribute('aria-label', pName.textContent);
-  pName.innerHTML = [...pName.textContent].map(c => `<span class="ch" aria-hidden="true">${c}</span>`).join('');
+  const pText = pName.textContent; // keep the word readable to screen readers; the letters are decoration
+  pName.innerHTML = `<span class="sr-only">${pText}</span>` + [...pText].map(c => `<span class="ch" aria-hidden="true">${c}</span>`).join('');
   const posterTitle = tl => tl
     .from('.poster__badge', { scale: .4, opacity: 0, rotate: -40, duration: .5, ease: 'back.out(2)' }, '>-0.05')
     .from('.poster__the', { opacity: 0, letterSpacing: '1.6em', duration: .45 }, '<0.1')
