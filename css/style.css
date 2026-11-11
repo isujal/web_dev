@@ -838,3 +838,6 @@ html { overflow-x: clip; }
 /* small lines on the glass forms: readable over the purple glow */
 .pass__sub { color: rgba(255,255,255,.82); }
 .pass__privacy { color: rgba(255,255,255,.8); }
+
+/* focus and anchor scrolling stop below the fixed menu bar (WCAG 2.4.11 focus not obscured) */
+html { scroll-padding-top: 104px; }

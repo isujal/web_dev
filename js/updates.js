@@ -94,6 +94,7 @@ const POSTS = [
   const list = $('[data-posts]'), empty = $('[data-empty]'), emptyText = $('[data-empty-text]');
   const fmt = d => new Date(d + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const safeHref = h => /^(https?:|mailto:|\/|#|[\w.-]+(\.html)?(#[\w-]*)?$)/i.test(String(h || '').trim()) ? h : '#';
   const posts = [...POSTS].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
   list.innerHTML = posts.map((p, i) => {
@@ -110,7 +111,7 @@ const POSTS = [
           ${(p.stats || []).length ? `<dl class="post__stats">${p.stats.map(s => `<div><dt>${esc(s.label)}</dt><dd>${esc(s.n)}</dd></div>`).join('')}</dl>` : ''}
           <p class="post__text">${esc(p.text)}</p>
           ${rest.length ? `<div class="post__strip">${rest.map((ph, k) => `<button type="button" data-post="${i}" data-idx="${k + 1}" aria-label="Open photo: ${esc(ph.alt)}"><img src="${esc(ph.strip || ph.thumb || ph.card || ph.src)}" alt="" loading="lazy" decoding="async" width="84" height="64"></button>`).join('')}</div>` : ''}
-          ${p.link ? `<a class="post__link" href="${esc(p.link.href)}" rel="noopener">${esc(p.link.label || 'Read more')} →</a>` : ''}
+          ${p.link ? `<a class="post__link" href="${esc(safeHref(p.link.href))}" rel="noopener">${esc(p.link.label || 'Read more')} →</a>` : ''}
         </div>
       </li>`;
   }).join('');

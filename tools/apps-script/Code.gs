@@ -17,6 +17,7 @@ function doPost(e) {
   try {
     lock.waitLock(10000);
     const d = JSON.parse((e && e.postData && e.postData.contents) || '{}');
+    if (d._honey) return json({ ok: true }); // bot filled the hidden field: pretend success, store nothing
 
     // Basic checks so random traffic cannot fill the sheet
     const name = clean(d.name, 80), grade = clean(d.grade, 20), email = clean(d.email, 120);
@@ -34,7 +35,10 @@ function doPost(e) {
       body: `A new application came in from the website.\n\nName: ${name}\nGrade: ${grade}\nEmail: ${email}\nDomains: ${clean(d.domains, 200) || 'Not sure yet'}\n\nNote:\n${clean(d.note, 1000) || '(none)'}\n\nAll applications: ${SpreadsheetApp.getActive().getUrl()}\n\nReply to this email to answer the applicant directly.`,
     });
 
-    if (SEND_CONFIRMATION) {
+    // one confirmation per address every 10 minutes, so the form cannot be used to flood someone's inbox
+    const cache = CacheService.getScriptCache(), key = 'sent:' + email.toLowerCase();
+    if (SEND_CONFIRMATION && !cache.get(key)) {
+      cache.put(key, '1', 600);
       MailApp.sendEmail({
         to: email,
         replyTo: TEAM_EMAIL,
@@ -45,7 +49,8 @@ function doPost(e) {
     }
     return json({ ok: true });
   } catch (err) {
-    return json({ ok: false, error: String(err) });
+    console.error(err); // details stay in the Apps Script logs, not in the browser
+    return json({ ok: false, error: 'server error' });
   } finally {
     lock.releaseLock();
   }
@@ -71,8 +76,11 @@ function getSheet() {
 }
 
 function clean(v, max) {
-  // Strip leading characters that spreadsheets treat as formulas, and cap the length
-  return String(v == null ? '' : v).replace(/^[=+\-@]+/, '').trim().slice(0, max);
+  // Trim and cap first, then make anything a spreadsheet would run as a formula plain text
+  // (a leading ' tells Sheets "this is text"; checking after the trim stops " =FORMULA" slipping through)
+  let s = String(v == null ? '' : v).trim().slice(0, max);
+  if (/^[=+\-@\t\r]/.test(s)) s = "'" + s;
+  return s;
 }
 
 function json(obj) {

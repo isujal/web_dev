@@ -12,6 +12,11 @@ const SITE = {
 (() => {
   const root = document.documentElement;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Logos fall back to their text name if the image fails (no inline onerror, so the security policy can stay strict)
+  document.querySelectorAll('[data-logo] img').forEach(img => {
+    const fail = () => img.closest('[data-logo]').classList.add('is-text');
+    if (img.complete && !img.naturalWidth) fail(); else img.addEventListener('error', fail, { once: true });
+  });
   const hasGsap = !!(window.gsap && window.ScrollTrigger);
   const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
   const anim = hasGsap && !reduce;
@@ -93,6 +98,8 @@ const SITE = {
 
   /* ---------- Nav: hide on scroll down, adapt to light sections, active link ---------- */
   const nav = $('[data-nav]');
+  // keyboard users tabbing back into the menu must see it, even after it hid on scroll (WCAG 2.4.11)
+  nav.addEventListener('focusin', () => nav.classList.remove('is-hidden'));
   const bar = $('[data-progress]');
   let lastY = scrollY;
   const onScroll = () => {
@@ -173,7 +180,7 @@ const SITE = {
       try {
         // text/plain keeps this a "simple" request, which Google Apps Script accepts without a CORS preflight
         const res = await fetch(SITE.formEndpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify({ type: 'join', page: location.href, ...data, domains: data.domains.join(', ') }) });
+          body: JSON.stringify({ type: 'join', page: location.href, ...data, domains: data.domains.join(', '), _honey: form._honey?.value || '' }) });
         const out = await res.json().catch(() => ({}));
         if (!res.ok || out.ok === false) throw new Error(out.error || res.status);
         form.reset(); status.textContent = `Application received, ${data.name.split(' ')[0]}. A mentor will reply to ${data.email}.`; status.classList.add('is-ok');

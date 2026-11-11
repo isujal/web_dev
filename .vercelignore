@@ -1,5 +1,12 @@
-.agents/
-.claude/
-.impeccable/
-.taste-skill/
-node_modules/
+# Publish only the website. Everything else in the repo (AI tool folders,
+# skills, docs, package files) stays private. Add new public files below.
+/*
+!index.html
+!updates.html
+!assets
+!css
+!js
+!vendor
+!robots.txt
+!sitemap.xml
+!vercel.json
