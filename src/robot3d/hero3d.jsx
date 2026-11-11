@@ -12,7 +12,7 @@ import { createRoot, extend, invalidate, useFrame, useThree } from '@react-three
 import {
   Group, Mesh, LineSegments, InstancedMesh, AmbientLight, DirectionalLight,
   MeshStandardMaterial, MeshBasicMaterial, LineBasicMaterial, CylinderGeometry, TorusGeometry, BoxGeometry,
-  TextureLoader, SRGBColorSpace, Fog, MeshPhysicalMaterial, BufferGeometry, Float32BufferAttribute,
+  TextureLoader, SRGBColorSpace, Fog, ShaderMaterial, RingGeometry, SphereGeometry, AdditiveBlending, MeshPhysicalMaterial, BufferGeometry, Float32BufferAttribute,
   CatmullRomCurve3, PMREMGenerator, Scene, PlaneGeometry, DoubleSide, MathUtils, NoToneMapping, Vector3, Color, Object3D, Plane, Raycaster, Vector2,
 } from 'three';
 import { useLayoutEffect, useMemo, useRef } from 'react';
@@ -136,8 +136,38 @@ function Halo({ I, opts }) {
   return <group ref={hg} position={[0, 0, -7]}><mesh geometry={geo} material={mat} /></group>;
 }
 
+/* glowing outer rings around a fixed badge: a fine brass line hugging the rim, then a violet line
+   with a soft light falloff either side of it. Flat to the viewer, never rotating; the glow breathes. */
+const glowRingMaterial = (color, radius, width, strength) => new ShaderMaterial({
+  transparent: true, depthWrite: false, blending: AdditiveBlending, toneMapped: false,
+  uniforms: { uColor: { value: new Color(color) }, uR: { value: radius }, uW: { value: width }, uK: { value: strength } },
+  vertexShader: 'varying vec2 vP; void main(){ vP = position.xy; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+  fragmentShader: 'uniform vec3 uColor; uniform float uR, uW, uK; varying vec2 vP; void main(){ float d = abs(length(vP) - uR); float a = exp(-d * d / (uW * uW)) * uK; gl_FragColor = vec4(uColor * a, a); }',
+});
+function GlowRings({ gref }) {
+  const parts = useMemo(() => ({
+    plane: new RingGeometry(9.6, 17, 160, 1),
+    line: glowRingMaterial('#e9b949', 10.95, 0.09, 1.2),   // brass hairline just outside the rim
+    halo: glowRingMaterial('#8b3dff', 12.6, 0.16, 1.35),   // violet line
+    soft: glowRingMaterial('#6b2fd6', 12.6, 1.5, 0.35),    // its soft glow
+  }), []);
+  useLayoutEffect(() => {
+    gref.current.userData.tick = (t, e) => {
+      const breathe = 0.82 + 0.18 * Math.sin(t * 1.4);
+      parts.line.uniforms.uK.value = 1.2 * e; parts.halo.uniforms.uK.value = 1.35 * e * breathe; parts.soft.uniforms.uK.value = 0.35 * e * breathe;
+    };
+  }, []);
+  return (
+    <group ref={gref} position={[0, 0, -0.9]}>
+      <mesh geometry={parts.plane} material={parts.soft} />
+      <mesh geometry={parts.plane} material={parts.halo} />
+      <mesh geometry={parts.plane} material={parts.line} />
+    </group>
+  );
+}
+
 function CoinScene({ T, I, opts }) {
-  const g = useRef();
+  const g = useRef(), glow = useRef();
   const mats = useMemo(() => {
     const tex = new TextureLoader().load(opts.badge || '../../assets/badge-520.webp', () => invalidate());
     tex.colorSpace = SRGBColorSpace; tex.anisotropy = 8; tex.center.set(0.5, 0.5); tex.rotation = Math.PI / 2; // cylinder cap UVs run sideways: stand the duck upright
@@ -157,6 +187,16 @@ function CoinScene({ T, I, opts }) {
     const tx = opts.tilt && inside ? Math.max(-1, Math.min(1, I.px)) * 0.42 : 0, ty = opts.tilt && inside ? Math.max(-1, Math.min(1, I.py)) * -0.32 : 0;
     const a = 1 - Math.exp(-delta * 6); I.lx = (I.lx || 0) + (tx - (I.lx || 0)) * a; I.ly = (I.ly || 0) + (ty - (I.ly || 0)) * a;
     const easing = Math.abs(tx - I.lx) > 0.001 || Math.abs(ty - I.ly) > 0.001;
+    if (opts.fixed) {
+      // the badge never turns: it fades up into place, then floats a few pixels; the halo still leans
+      const t = (performance.now() - I.t0) / 1000, float = I.reduce ? 0 : Math.sin(t * 1.1) * 0.35;
+      g.current.rotation.set(0, 0, 0);
+      g.current.position.y = float - (1 - e) * 1.5;
+      g.current.scale.setScalar(0.94 + 0.06 * e);
+      if (glow.current) { glow.current.position.y = float; glow.current.userData.tick(t, e); }
+      if (I.onScreen && (!I.reduce || easing || k < 1)) invalidate();
+      return;
+    }
     g.current.rotation.y = (1 - e) * -Math.PI * 3 + I.rotY + sway * e + I.lx;
     g.current.rotation.x = (1 - e) * 0.6 + (idle ? Math.cos((performance.now() - I.t0) / 2100) * 0.05 * e : 0) + I.ly;
     g.current.scale.setScalar(0.7 + 0.3 * e);
@@ -171,6 +211,7 @@ function CoinScene({ T, I, opts }) {
         <mesh geometry={geo.disc} material={mats.faces} rotation={[Math.PI / 2, 0, 0]} />
         <mesh geometry={geo.ring} material={mats.rim} />
       </group>
+      {opts.glow && <GlowRings gref={glow} />}
       {opts.halo && <Halo I={I} opts={opts} />}
       <FitRig center={new Vector3(0, 0, 0)} view={new Vector3(0, 0, 1)} radius={opts.halo ? 21 : 11.5} scale={opts.fit || 1} />
     </>
@@ -337,8 +378,59 @@ function FlowScene({ T, I, opts }) {
   return <group ref={grp}><group ref={mesh}><mesh geometry={geo} material={mat} /><mesh geometry={geo2} material={mat} /></group></group>;
 }
 
+/* ---------- ORBS (desktop backdrop: large dark spheres with glowing rims) ----------
+   A few big spheres sit at the edges of the screen, mostly off it, leaving the centre clear for the
+   type. Each is near-black violet with a light rim (Fresnel) and a soft key from the upper right, like
+   a studio-lit glass sphere. They rise into place once and drift a little with the pointer; no loop. */
+const orbMaterial = (base, rim, key) => new ShaderMaterial({
+  uniforms: { uBase: { value: new Color(base) }, uRim: { value: new Color(rim) }, uKey: { value: new Color(key) }, uA: { value: 0 } },
+  transparent: true, toneMapped: false,
+  vertexShader: `varying vec3 vN; varying vec3 vV;
+    void main(){ vec4 mv = modelViewMatrix * vec4(position, 1.0); vN = normalize(normalMatrix * normal); vV = normalize(-mv.xyz); gl_Position = projectionMatrix * mv; }`,
+  fragmentShader: `uniform vec3 uBase, uRim, uKey; uniform float uA; varying vec3 vN; varying vec3 vV;
+    void main(){
+      float f = 1.0 - max(dot(normalize(vN), normalize(vV)), 0.0);
+      float rim = pow(f, 3.2);                                  // the glowing edge
+      float line = smoothstep(0.86, 0.93, f) * (1.0 - smoothstep(0.95, 1.0, f)); // a crisp inner rim line
+      float key = pow(max(dot(normalize(vN), normalize(vec3(0.55, 0.6, 0.6))), 0.0), 2.0); // soft light, upper right
+      vec3 c = uBase + uKey * key * 0.55 + uRim * (rim * 1.25 + line * 0.9);
+      gl_FragColor = vec4(c, uA);
+    }`,
+});
+const ORB_THEMES = { night: { base: '#07030f', rim: '#8f4dff', key: '#3a1a8a' } };
+function OrbsScene({ T, I, opts }) {
+  const camera = useThree(s => s.camera), size = useThree(s => s.size), grp = useRef();
+  const orbs = useMemo(() => {
+    const geo = new SphereGeometry(1, 96, 64);
+    // [x, y, z, radius, delay]  — positions in a 100-unit-wide frame at z = 0
+    return [[-74, -30, -10, 34, 0], [84, 18, -18, 38, 0.12], [50, -52, 6, 15, 0.24]]
+      .map(([x, y, z, r, d]) => ({ x, y, z, r, d, geo, mat: orbMaterial(T.base, T.rim, T.key) }));
+  }, []);
+  const refs = useRef([]);
+  useLayoutEffect(() => { camera.fov = 35; camera.position.set(0, 0, 160); camera.lookAt(0, 0, 0); camera.updateProjectionMatrix(); invalidate(); }, [size.width, size.height]);
+  useFrame((_, delta) => {
+    const t = (performance.now() - I.t0) / 1000;
+    const inside = Math.abs(I.px) < 4 && Math.abs(I.py) < 4;
+    const tx = !I.reduce && inside ? MathUtils.clamp(I.px, -1, 1) : 0, ty = !I.reduce && inside ? MathUtils.clamp(I.py, -1, 1) : 0;
+    const a = 1 - Math.exp(-delta * 2.2);
+    I.ox = (I.ox || 0) + (tx - (I.ox || 0)) * a; I.oy = (I.oy || 0) + (ty - (I.oy || 0)) * a;
+    // the frame is 100 units wide at z = 0 scaled to the viewport's aspect, so the orbs stay at the edges
+    const halfW = Math.tan((camera.fov * Math.PI) / 360) * 160 * (size.width / size.height), sx = halfW / 80;
+    let busy = Math.abs(tx - I.ox) > 0.0008 || Math.abs(ty - I.oy) > 0.0008;
+    orbs.forEach((o, i) => {
+      const k = I.reduce ? 1 : clamp01((t - 0.15 - o.d) / 1.6), e = expo(k); if (k < 1) busy = true;
+      const m = refs.current[i]; if (!m) return;
+      const depth = 1 + o.z / 60; // nearer orbs drift more
+      m.position.set(o.x * sx + I.ox * 3.5 * depth, o.y + (1 - e) * -14 + I.oy * 2.5 * depth, o.z);
+      m.scale.setScalar(o.r * (0.92 + 0.08 * e)); o.mat.uniforms.uA.value = e;
+    });
+    if (busy && I.onScreen) invalidate();
+  });
+  return <group ref={grp}>{orbs.map((o, i) => <mesh key={i} ref={el => (refs.current[i] = el)} geometry={o.geo} material={o.mat} />)}</group>;
+}
+
 /* ---------- mount ---------- */
-const SCENES = { robot: [RobotScene, ROBOT_THEMES], coin: [CoinScene, COIN_THEMES], ranks: [RanksScene, RANK_THEMES], flow: [FlowScene, FLOW_THEMES] };
+const SCENES = { robot: [RobotScene, ROBOT_THEMES], coin: [CoinScene, COIN_THEMES], ranks: [RanksScene, RANK_THEMES], flow: [FlowScene, FLOW_THEMES], orbs: [OrbsScene, ORB_THEMES] };
 window.Hero3D = {
   mount(container, opts = {}) {
     const { scene = 'robot', theme = 'paper', reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, label = '' } = opts;
@@ -366,7 +458,7 @@ window.Hero3D = {
     // pointer: drag to turn (robot, coin); position for the ripple (ranks)
     const target = opts.dragTarget || container, wide = opts.pointerTarget || container;
     let lastX = 0, lastT = 0;
-    target.addEventListener('pointerdown', e => { if (scene === 'ranks') return; I.drag = true; lastX = e.clientX; lastT = e.timeStamp; target.setPointerCapture?.(e.pointerId); invalidate(); });
+    target.addEventListener('pointerdown', e => { if (scene === 'ranks' || scene === 'orbs' || opts.fixed) return; I.drag = true; lastX = e.clientX; lastT = e.timeStamp; target.setPointerCapture?.(e.pointerId); invalidate(); });
     const onMove = e => {
       const r = container.getBoundingClientRect();
       I.px = ((e.clientX - r.left) / r.width) * 2 - 1; I.py = -((e.clientY - r.top) / r.height) * 2 + 1;

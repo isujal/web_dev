@@ -387,16 +387,20 @@ const SITE = {
     s.onload = ok; s.onerror = fail; document.head.append(s);
   }));
 
-  /* the opening screen: the badge becomes a struck medallion with a liquid, iridescent ring in orbit
-     around it. Both lean toward the pointer and settle; drag the badge to spin it. Plain black
-     everywhere else. Loaded after first paint. */
-  const heroEl = $('.hero'), badgeEl = $('[data-hero-badge]');
+  /* the opening screen: the badge stays still (no rotation), floats a few pixels inside glowing
+     rings, with a liquid iridescent ring in orbit behind it that leans toward the pointer. On desktop,
+     large dark spheres with glowing rims fill the edges; phones keep plain black. Loaded after first paint. */
+  const heroEl = $('.hero'), badgeEl = $('[data-hero-badge]'), field = $('[data-hero-field]');
   if (can3D && badgeEl) {
     const start = () => loadIslands().then(() => {
       if (!window.Hero3D) return;
       const img = badgeEl.querySelector('img'), orbit = document.createElement('div');
       orbit.className = 'hero__orbit'; badgeEl.append(orbit);
-      window.Hero3D.mount(orbit, { scene: 'coin', theme: 'night', halo: true, still: true, tilt: !reduce, reduce, pointerTarget: heroEl, dragTarget: badgeEl, badge: img.currentSrc || img.src, label: img.alt });
+      window.Hero3D.mount(orbit, { scene: 'coin', theme: 'night', halo: true, glow: true, fixed: true, still: true, tilt: !reduce, reduce, pointerTarget: heroEl, badge: img.currentSrc || img.src, label: img.alt });
+      if (field && matchMedia('(min-width: 900px)').matches) {
+        window.Hero3D.mount(field, { scene: 'orbs', theme: 'night', reduce, pointerTarget: heroEl });
+        requestAnimationFrame(() => field.classList.add('is-on'));
+      }
       badgeEl.classList.add('is-3d');
     }).catch(() => {});
     if (document.readyState === 'complete') setTimeout(start, 150); else addEventListener('load', () => setTimeout(start, 150), { once: true });

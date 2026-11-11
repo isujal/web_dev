@@ -190,10 +190,13 @@ html:not(.js) .loader, .no-anim .loader, .loader.is-done { display: none; }
 .hero__badge { position: relative; width: clamp(150px, 20vw, 250px); aspect-ratio: 1; margin: clamp(-34px, -2.4vw, -18px) 0 30px; transform-style: preserve-3d; will-change: transform; z-index: 3; }
 .hero__badge img { position: relative; z-index: 2; width: 100%; height: 100%; border-radius: 50%; box-shadow: 0 0 0 3px #fff, 0 30px 60px -24px rgba(0,0,0,.9); }
 /* the badge as a 3D medallion with an iridescent ring in orbit (React Three Fiber, src/robot3d/hero3d.jsx).
-   The canvas is wider than the badge so the ring can swing past it; it ignores the pointer, and the
-   badge box underneath takes the drag. The flat image stays underneath as the fallback. */
-.hero__badge { cursor: grab; touch-action: pan-y; }
-.hero__badge:active { cursor: grabbing; }
+   The badge itself never rotates. The canvas is wider than the badge so the rings fit; it ignores the
+   pointer. The flat image stays underneath as the fallback. */
+/* desktop backdrop: large dark spheres with glowing rims at the edges (scene "orbs"); phones stay black */
+.hero__field { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 1s var(--ease); }
+.hero__field.is-on { opacity: 1; }
+.hero__field .hero3d { display: block; }
+@media (max-width: 899px) { .hero__field { display: none; } }
 .hero__orbit { position: absolute; top: -55%; left: -80%; width: 260%; height: 210%; z-index: 0; pointer-events: none; }
 /* the text sits in front of the 3D, so the halo passes behind the letters */
 .hero__title, .hero__lede, .hero__actions { position: relative; z-index: 4; }
