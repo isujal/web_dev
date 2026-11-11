@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -23,6 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..900&family=Saira:ital,wdth,wght@1,75..100,700..900&family=Geist+Mono:wght@400..600&family=Michroma&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/lenis.css">
+  <link rel="stylesheet" href="css/liquid-glass.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/race.css">
   <link rel="stylesheet" href="css/updates.css">
@@ -31,7 +32,7 @@
 <body class="page-updates">
   <a class="skip" href="#feed">Skip to updates</a>
 
-  <header class="nav" data-nav>
+  <header class="nav liquid-glass" data-liquid-glass='{"blurRadius":12}' data-nav>
     <a class="nav__brand" href="index.html" aria-label="The Ducktators, home">
       <img src="assets/badge-96.webp" alt="" width="34" height="34">
       <span>The Ducktators</span>
@@ -73,7 +74,7 @@
   <main>
     <section class="up-hero" aria-labelledby="up-title">
       <div class="up-vanta" data-vanta aria-hidden="true"></div>
-      <button class="up-pause motion-btn" type="button" data-vanta-toggle aria-pressed="false" hidden>
+      <button class="liquid-glass-chip up-pause motion-btn" type="button" data-vanta-toggle aria-pressed="false" hidden>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M8 5v14M16 5v14"/><path class="i-play" d="M7 5l12 7-12 7z"/></svg>
         <span data-vanta-label>Pause background</span>
       </button>
@@ -83,11 +84,11 @@
         <h1 class="up-title" id="up-title">Updates.</h1>
         <p class="up-lede">Outreach, events, build-season diaries and competition photos, straight from the team.</p>
         <div class="up-filters" role="tablist" aria-label="Filter updates" data-filters>
-          <button role="tab" aria-selected="true" data-filter="all">All</button>
-          <button role="tab" aria-selected="false" data-filter="outreach">Outreach</button>
-          <button role="tab" aria-selected="false" data-filter="event">Events</button>
-          <button role="tab" aria-selected="false" data-filter="build">Build</button>
-          <button role="tab" aria-selected="false" data-filter="competition">Competition</button>
+          <button class="liquid-glass-chip" role="tab" aria-selected="true" data-filter="all">All</button>
+          <button class="liquid-glass-chip" role="tab" aria-selected="false" data-filter="outreach">Outreach</button>
+          <button class="liquid-glass-chip" role="tab" aria-selected="false" data-filter="event">Events</button>
+          <button class="liquid-glass-chip" role="tab" aria-selected="false" data-filter="build">Build</button>
+          <button class="liquid-glass-chip" role="tab" aria-selected="false" data-filter="competition">Competition</button>
         </div>
       </div>
     </section>
@@ -123,6 +124,7 @@
   </footer>
 
   <script src="vendor/lenis.min.js" defer></script>
+  <script src="js/liquid-glass.js" defer></script>
   <script src="js/lightbox.js" defer></script>
   <script src="js/updates.js" defer></script>
 </body>

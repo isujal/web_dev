@@ -21,8 +21,6 @@ const SITE = {
   const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
   const anim = hasGsap && !reduce;
   if (!anim) root.classList.add('no-anim');
-  const brands = navigator.userAgentData?.brands || [];
-  if (brands.some(b => /Chromium|Google Chrome|Edge/.test(b.brand)) && fine && !reduce) root.classList.add('liquid');
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const pad = n => String(n).padStart(2, '0');
@@ -119,12 +117,6 @@ const SITE = {
   }), { rootMargin: '-45% 0px -50% 0px' });
   $$('main section[id]').forEach(s => io.observe(s));
 
-  /* ---------- Glass specular ---------- */
-  if (fine) document.addEventListener('pointermove', e => {
-    const g = e.target.closest?.('.glass'); if (!g) return;
-    const r = g.getBoundingClientRect();
-    g.style.setProperty('--mx', `${e.clientX - r.left}px`); g.style.setProperty('--my', `${e.clientY - r.top}px`);
-  }, { passive: true });
 
   /* ---------- Countdown ---------- */
   const cd = Object.fromEntries($$('[data-cd]').map(el => [el.dataset.cd, el]));

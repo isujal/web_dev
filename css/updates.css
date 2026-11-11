@@ -14,8 +14,8 @@
 }
 .up-lede { max-width: 46ch; margin: 22px 0 36px; font-size: clamp(1.1rem, .5vw + 1rem, 1.35rem); color: rgba(255,255,255,.78); }
 .up-filters { display: flex; flex-wrap: wrap; gap: 8px; }
-.up-filters button { padding: 10px 18px; border: 0; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: .92rem; color: #fff; background: rgba(255,255,255,.08); box-shadow: inset 0 0 0 1px rgba(255,255,255,.16); transition: background-color var(--dur-ui), color var(--dur-ui); }
-.up-filters button:hover { background: rgba(255,255,255,.16); }
+.up-filters button { padding: 10px 18px; border: 0; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: .92rem; color: #fff; transition: background-color var(--dur-ui), color var(--dur-ui); }
+.up-filters button:hover { background: linear-gradient(180deg, var(--glass-tint-top-hover), var(--glass-tint-bottom-hover)); }
 .up-filters button[aria-selected="true"] { background: #fff; color: var(--ink); box-shadow: none; }
 
 /* ---------- Feed ---------- */
@@ -82,3 +82,7 @@
   .posts > .post:first-child .post__title { font-size: clamp(1.8rem, 2.4vw, 2.4rem); }
   .posts > .post:first-child .post__strip { flex-wrap: wrap; overflow: visible; }
 }
+
+/* filter pills use the liquid-glass chip tier; keep the site's padding over the chip's */
+.up-filters .liquid-glass-chip { padding: 10px 18px; }
+.up-filters button[aria-selected="true"] { border-color: transparent; }

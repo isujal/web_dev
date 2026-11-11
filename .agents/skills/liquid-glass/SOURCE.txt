@@ -1,0 +1,1 @@
+Source: https://github.com/stormaref/LiquidGlassSkill (plugins/liquid-glass/skills/liquid-glass, commit a524ea8)

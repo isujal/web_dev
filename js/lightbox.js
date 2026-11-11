@@ -27,9 +27,9 @@
       <span class="lbx__spin" aria-hidden="true" data-lbx-spin></span>
     </div>
     <p class="lbx__cap"><span data-lbx-cap></span><span class="lbx__count" data-lbx-count></span></p>
-    <button class="lbx__btn lbx__close" type="button" data-lbx-close aria-label="Close photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-    <button class="lbx__btn lbx__nav lbx__prev" type="button" data-lbx-prev aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-    <button class="lbx__btn lbx__nav lbx__next" type="button" data-lbx-next aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <button class="liquid-glass lbx__btn lbx__close" type="button" data-lbx-close aria-label="Close photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <button class="liquid-glass lbx__btn lbx__nav lbx__prev" type="button" data-lbx-prev aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="liquid-glass lbx__btn lbx__nav lbx__next" type="button" data-lbx-next aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
     <p class="lbx__err" data-lbx-err hidden>This photo could not load. Check your connection and try again.</p>`;
   const q = s => el.querySelector(s);
   const stage = q('[data-lbx-stage]'), ph = q('[data-lbx-ph]'), img = q('[data-lbx-img]'), spin = q('[data-lbx-spin]');
@@ -63,7 +63,7 @@
   };
 
   const open = (list, i = 0, from = null) => {
-    if (!el.isConnected) document.body.append(el);
+    if (!el.isConnected) { document.body.append(el); el.querySelectorAll('.lbx__btn').forEach(b => window.LiquidGlass?.attach(b)); }
     items = list.filter(x => x && x.src); if (!items.length) return;
     trigger = from;
     el.classList.toggle('is-single', items.length < 2);
