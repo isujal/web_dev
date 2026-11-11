@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>The Ducktators · FRC 11745 · FIRST Robotics Team, Mumbai</title>
+  <meta name="description" content="The Ducktators, FRC team 11745: a student-led FIRST Robotics Competition rookie team from Cathedral &amp; John Connon School, Mumbai. Istanbul Regional 2027.">
+  <meta name="theme-color" content="#000000">
+  <link rel="canonical" href="https://ducktators-11745.vercel.app/">
+  <meta property="og:title" content="The Ducktators · FRC 11745 · FIRST Robotics Team, Mumbai">
+  <meta property="og:url" content="https://ducktators-11745.vercel.app/">
+  <meta property="og:site_name" content="The Ducktators · FRC 11745">
+  <meta property="og:description" content="A rookie regiment of builders from CAJCS Mumbai. First season 2026–27. Destination: the Istanbul Regional.">
+  <meta property="og:image" content="https://ducktators-11745.vercel.app/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Ducktators badge: a duck officer in a peaked cap above the number 11745">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ducktators-11745.vercel.app/assets/og.jpg">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..900&family=Saira:ital,wdth,wght@1,75..100,700..900&family=Geist+Mono:wght@400..600&family=Michroma&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/lenis.css">
+  <link rel="stylesheet" href="css/liquid-glass.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/race.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SportsTeam", "name": "The Ducktators", "alternateName": ["FRC 11745", "FRC Team 11745"], "sport": "Robotics (FIRST Robotics Competition)", "url": "https://ducktators-11745.vercel.app/", "logo": "https://ducktators-11745.vercel.app/assets/badge-520.webp", "image": "https://ducktators-11745.vercel.app/assets/og.jpg", "email": "ducktator.frc@gmail.com", "foundingDate": "2026", "description": "A student-led FIRST Robotics Competition rookie team from Cathedral & John Connon School, Mumbai.", "location": {"@type": "Place", "name": "CAJCS Maker Lab, Cathedral & John Connon School", "address": {"@type": "PostalAddress", "addressLocality": "Mumbai", "addressCountry": "IN"}}, "parentOrganization": {"@type": "EducationalOrganization", "name": "Cathedral & John Connon School"}, "coach": [{"@type": "Person", "name": "Suyog Mestry"}, {"@type": "Person", "name": "Sujal Patil"}], "sameAs": ["https://frc-events.firstinspires.org/team/11745"]}</script>
+</head>
+<body>
+  <svg class="sr-only" aria-hidden="true" focusable="false" width="0" height="0">
+    <symbol id="star" viewBox="0 0 24 24"><path d="M12 1.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 16.3 6.1 19.6l1.3-6.6L2.5 8.4l6.6-.8z"/></symbol>
+  </svg>
+
+  <a class="skip" href="#story">Skip to content</a>
+
+  <div class="progress" aria-hidden="true"><span data-progress></span></div>
+
+  <header class="nav liquid-glass" data-liquid-glass='{"blurRadius":12}' data-nav>
+    <a class="nav__brand" href="#top" aria-label="The Ducktators, back to top">
+      <img src="assets/badge-96.webp" alt="" width="34" height="34">
+      <span>The Ducktators</span>
+    </a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="#frc">FRC</a>
+      <a href="#season">Season</a>
+      <a href="#domains">Domains</a>
+      <a href="#robot">Robot</a>
+      <a href="#sponsors">Sponsors</a>
+      <a href="updates.html">Updates</a>
+    </nav>
+    <a class="btn btn--brass btn--sm" href="#enlist" data-magnetic>Join</a>
+    <button class="nav__menu" aria-expanded="false" aria-controls="drawer" data-menu>
+      <span></span><span></span><span class="sr-only">Menu</span>
+    </button>
+  </header>
+
+  <div class="drawer" id="drawer" hidden>
+    <nav class="drawer__links" aria-label="Menu">
+      <a href="#frc"><span>What is FRC</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#season"><span>The season</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#domains"><span>Domains</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#robot"><span>The robot</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#impact"><span>Impact</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#sponsors"><span>Sponsors</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="updates.html"><span>Updates</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    </nav>
+    <div class="drawer__foot">
+      <div class="drawer__dates">
+        <p><span class="dot dot--live"></span>Kickoff · 9 Jan 2027</p>
+        <p><span class="dot dot--live"></span>Istanbul · 26–28 Mar 2027</p>
+      </div>
+      <div class="drawer__cta">
+        <a class="btn btn--brass" href="#enlist">Join the team</a>
+        <a class="btn btn--outline" href="#sponsor-enquiry">Sponsor us</a>
+      </div>
+      <a class="drawer__mail" href="mailto:ducktator.frc@gmail.com">ducktator.frc@gmail.com</a>
+    </div>
+  </div>
+
+  <main id="top">
+    <!-- ================= HERO ================= -->
+    <section class="hero" aria-labelledby="hero-title" data-theme="dark">
+
+      <div class="hero__field" data-hero-field aria-hidden="true"></div>
+
+      <div class="hero__inner">
+        <p class="logotype" data-scramble>The Ducktators · FRC 11745</p>
+
+        <h1 class="hero__title" id="hero-title">
+          <span class="line"><span>Order in</span></span>
+          <span class="line"><span>the <em>ranks.</em></span></span>
+        </h1>
+
+        <div class="hero__badge" data-hero-badge>
+          <img src="assets/badge-520.webp" srcset="assets/badge-320.webp 320w, assets/badge-520.webp 520w, assets/badge.webp 800w" sizes="250px" alt="The Ducktators badge: a stern duck officer in a white peaked cap with a purple band, a monocle and a purple collar with stars, above the number 11745" width="800" height="800">
+        </div>
+
+        <p class="hero__lede">A rookie <i>FIRST</i>&nbsp;Robotics team from Cathedral &amp;&nbsp;John&nbsp;Connon School, Mumbai. Season&nbsp;one. Next&nbsp;stop:&nbsp;Istanbul.</p>
+
+        <div class="hero__actions">
+          <a class="btn btn--light" href="#enlist" data-magnetic>Join the team</a>
+          <a class="btn btn--glass liquid-glass" data-liquid-glass href="#sponsors" data-magnetic>Sponsor us <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
+      <div class="hero__meta" aria-label="Season status">
+        <p><span class="dot dot--live"></span>Istanbul Regional · 26–28 March 2027</p>
+        <p><span class="dot"></span>Kickoff · 9 January 2027</p>
+      </div>
+    </section>
+
+    <!-- ================= TICKER ================= -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track" data-ticker>
+        <span>Order in the ranks</span><svg><use href="#star" width="24" height="24"/></svg>
+        <span>FRC 11745</span><svg><use href="#star" width="24" height="24"/></svg>
+        <span>Road to Istanbul</span><svg><use href="#star" width="24" height="24"/></svg>
+        <span>Built different. Built purple.</span><svg><use href="#star" width="24" height="24"/></svg>
+        <span>Quack the code</span><svg><use href="#star" width="24" height="24"/></svg>
+      </div>
+    </div>
+
+    <!-- ================= TEAM PHOTO REVEAL ================= -->
+    <section class="reveal" id="story" aria-label="The founding team" data-theme="dark">
+      <div class="reveal__pin" data-reveal-pin>
+        <div class="poster">
+          <p class="poster__program" data-poster-part><i>FIRST</i> Robotics Competition</p>
+          <svg class="poster__stars" viewBox="0 0 84 24" aria-hidden="true" data-poster-part><use href="#star" width="24" height="24"/><use href="#star" x="30" width="24" height="24"/><use href="#star" x="60" width="24" height="24"/></svg>
+
+          <figure class="poster__photo" data-reveal-frame>
+            <img src="assets/photos/team-poster.webp" srcset="assets/photos/team-poster-1280.webp 1280w, assets/photos/team-poster.webp 2560w" sizes="(min-width: 1280px) 1280px, 100vw" alt="The founding members of The Ducktators in the CAJCS Maker Lab, with a giant 11745 glowing on the purple-lit wall behind them" width="2560" height="1716" decoding="async">
+          </figure>
+
+          <div class="poster__title">
+            <img class="poster__badge" src="assets/badge-160.webp" alt="" width="160" height="160" loading="lazy" decoding="async" data-poster-part>
+            <p class="poster__the" data-poster-part>The</p>
+            <p class="poster__name" data-poster-name>Ducktators</p>
+            <span class="poster__rule" aria-hidden="true" data-poster-rule></span>
+            <p class="poster__frc" data-poster-part>FRC&nbsp;&nbsp;11745</p>
+            <p class="poster__school" data-poster-part>Cathedral &amp; John Connon School · Mumbai · 2026–27</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= AFFILIATIONS ================= -->
+    <section class="affil" aria-label="Our school and our program" data-theme="dark">
+      <div class="wrap affil__row">
+        <figure class="affil__item">
+          <div class="affil__logo affil__logo--school" data-logo>
+            <img src="assets/logos/cajcs-300.webp" width="300" height="300" alt="Cathedral and John Connon School crest" loading="lazy">
+            <span class="affil__text">Cathedral &amp; John&nbsp;Connon School</span>
+          </div>
+          <figcaption>A team of Cathedral &amp; John Connon School, Mumbai</figcaption>
+        </figure>
+        <span class="affil__x" aria-hidden="true"></span>
+        <figure class="affil__item">
+          <div class="affil__logo affil__logo--first" data-logo>
+            <img src="assets/logos/first-frc-300.webp" width="300" height="228" alt="FIRST logo" loading="lazy">
+            <span class="affil__text"><i>FIRST</i>® Robotics Competition</span>
+          </div>
+          <figcaption>Competing in <i>FIRST</i>® Robotics Competition as Team 11745</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= MISSION + VALUES (light) ================= -->
+    <section class="story light" aria-labelledby="mission-title" data-theme="light">
+      <div class="wrap">
+        <h2 class="sr-only" id="mission-title">Our mission</h2>
+        <p class="story__text" data-fill>
+          Our mission is to give students at Cathedral a real engineering team: <b>design it,</b> <b>build it,</b> <b>compete with it,</b>
+          and share everything we learn so more young people in Mumbai can do the same.
+        </p>
+      </div>
+      <div class="wrap values">
+        <h2 class="h2 values__title">What we stand for.</h2>
+        <ol class="values__list">
+          <li data-reveal>
+            <h3>Discipline by design</h3>
+            <p>Order in the ranks means process: plan the work, document every decision, test before we trust, and finish what we start.</p>
+          </li>
+          <li data-reveal>
+            <h3>Students lead</h3>
+            <p>Mentors teach and keep us safe. Students make the calls, hold the tools and own the results, good or bad.</p>
+          </li>
+          <li data-reveal>
+            <h3>Gracious Professionalism</h3>
+            <p>Compete as hard as we can, and still lend a part, a laptop or an hour to the team across the pit.</p>
+          </li>
+          <li data-reveal>
+            <h3>Open by default</h3>
+            <p>Our code, CAD and lessons belong to the next team too. We share what worked and, more usefully, what didn't.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= WHAT IS FRC (light bento) ================= -->
+    <section class="frc light" id="frc" aria-labelledby="frc-title" data-theme="light">
+      <div class="wrap">
+        <h2 class="h2" id="frc-title">FRC is a varsity sport<br>for the mind.</h2>
+        <p class="sub">Every January, <i>FIRST</i> reveals a brand-new game to thousands of high-school teams worldwide on the same day. Then the clock starts.</p>
+
+        <div class="bento">
+          <article class="tile tile--weeks" data-reveal>
+            <p class="tile__big"><span data-count="8">8</span><small>weeks</small></p>
+            <p class="tile__text">From game reveal to first competition, roughly. Design, build, wire and code a robot in that window.</p>
+            <div class="weeks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </article>
+
+          <article class="tile tile--dark tile--alliance" data-reveal>
+            <p class="tile__big">3<small>v</small>3</p>
+            <p class="tile__text">Robots play in alliances of three. Your partner in one match is your opponent in the next.</p>
+            <div class="alliance" aria-hidden="true">
+              <span class="r"></span><span class="r"></span><span class="r"></span>
+              <b>vs</b>
+              <span class="b"></span><span class="b"></span><span class="b"></span>
+            </div>
+          </article>
+
+          <article class="tile tile--clock" data-reveal>
+            <p class="tile__big" data-clock>2:30</p>
+            <p class="tile__text">per match. A short autonomous period where the code drives alone, then the drivers take over.</p>
+          </article>
+
+          <article class="tile tile--weight" data-reveal>
+            <p class="tile__big">~<span data-count="125">125</span><small>lb</small></p>
+            <p class="tile__text">Typical robot weight limit in recent games, before bumpers and battery.</p>
+            <div class="scale" aria-hidden="true"><span data-scale></span></div>
+          </article>
+
+          <article class="tile tile--purple tile--gp" data-reveal>
+            <p class="tile__quote">“Compete like crazy. Help your rivals anyway.”</p>
+            <p class="tile__text"><i>FIRST</i> calls it Gracious Professionalism. It is the whole point.</p>
+          </article>
+        </div>
+        <p class="fine">Rules change every season. Figures are typical of recent games; the 2027 game manual is the final word.</p>
+      </div>
+
+      <div class="arena" aria-labelledby="arena-title">
+        <div class="wrap arena__head">
+          <h3 class="arena__title" id="arena-title">The arena we are walking into.</h3>
+          <p class="arena__note">Scenes from <i>FIRST</i> Robotics Competition events, featuring other teams. Our turn comes in Istanbul.</p>
+        </div>
+        <div class="arena__grid">
+          <figure class="ph ph--a" data-parallax="-8"><img src="assets/photos/arena-robots.webp" alt="Robots and game pieces on a FIRST Robotics Competition field in front of a packed arena" width="1600" height="1066" loading="lazy" decoding="async"></figure>
+          <figure class="ph ph--b" data-parallax="10"><img src="assets/photos/arena-shot.webp" alt="A robot launching yellow balls during a FIRST Robotics Competition match" width="1000" height="1129" loading="lazy" decoding="async"></figure>
+          <figure class="ph ph--c" data-parallax="-4"><img src="assets/photos/arena-match.webp" alt="A full match in progress under stadium lights, with yellow balls in the air" width="1400" height="920" loading="lazy" decoding="async"></figure>
+          <figure class="ph ph--d" data-parallax="14"><img src="assets/photos/arena-field.webp" alt="A robot on the competition field with spectators in the stands behind" width="943" height="1061" loading="lazy" decoding="async"></figure>
+          <figure class="ph ph--e" data-parallax="-12"><img src="assets/photos/arena-confetti.webp" alt="Confetti falling over a celebrating crowd at a FIRST championship" width="1080" height="1226" loading="lazy" decoding="async"></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SEASON (horizontal) ================= -->
+    <section class="season" id="season" aria-labelledby="season-title" data-theme="dark">
+      <div class="season__pin" data-season>
+        <div class="season__head wrap">
+          <h2 class="h2" id="season-title">Season one.<br><span class="muted">Frame by frame.</span></h2>
+          <div class="season__progress" aria-hidden="true"><span data-season-bar></span></div>
+        </div>
+        <ol class="track" data-track tabindex="0" aria-label="Season calendar. On small screens, scroll sideways for more">
+          <li class="card">
+            <span class="card__no">01</span>
+            <div class="card__art card__art--photo-real"><img src="assets/photos/team-makerlab.webp" width="1600" height="1200" alt="The founding team at the CAJCS Maker Lab" loading="lazy" decoding="async" style="object-position:50% 30%"></div>
+            <p class="card__when">2026 <span class="pill pill--done">Done</span></p>
+            <h3>The team forms</h3>
+            <p>Students and mentors at the CAJCS Maker Lab register as <i>FIRST</i> Robotics Competition team 11745.</p>
+          </li>
+          <li class="card">
+            <span class="card__no">02</span>
+            <div class="card__art card__art--grid card__art--skills" aria-hidden="true"><span>CAD</span><span>Code</span><span>Wiring</span><span>Machining</span></div>
+            <p class="card__when">Autumn 2026 <span class="pill pill--live">Now</span></p>
+            <h3>Training camp</h3>
+            <p>A structured training programme for every member across CAD, code, electrical and fabrication, so everyone is ready before Kickoff.</p>
+          </li>
+          <li class="card card--sealed">
+            <span class="card__no">03</span>
+            <div class="card__art card__art--sealed">
+              <div class="sealed" aria-label="Season game details are sealed until Kickoff">
+                <p>Game <span class="redact"></span></p>
+                <p>Field <span class="redact redact--s"></span></p>
+                <p>Scoring <span class="redact redact--l"></span></p>
+                <strong>Sealed</strong>
+              </div>
+            </div>
+            <p class="card__when">9 Jan 2027 <span class="pill pill--live">Confirmed</span></p>
+            <h3>Kickoff</h3>
+            <p><i>FIRST</i> reveals the 2027 game worldwide. We read the manual, break it down and choose a strategy in week one.</p>
+          </li>
+          <li class="card">
+            <span class="card__no">04</span>
+            <div class="card__art card__art--build" aria-hidden="true">
+              <svg viewBox="0 0 200 120"><g fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 100h160M30 100V60h50v40M80 75h40v25M120 50h50v50"/><path d="M45 60V35h20v25M135 50V20h20v30" stroke-dasharray="3 3"/><circle cx="40" cy="104" r="6"/><circle cx="70" cy="104" r="6"/><circle cx="130" cy="104" r="6"/><circle cx="160" cy="104" r="6"/></g></svg>
+            </div>
+            <p class="card__when">Jan – Mar 2027 <span class="pill">Planned</span></p>
+            <h3>Build season</h3>
+            <p>Concept, CAD, prototype, build, tune. Programming starts driving the day the drivetrain rolls.</p>
+          </li>
+          <li class="card card--brass">
+            <span class="card__no">05</span>
+            <div class="card__art card__art--route" aria-hidden="true">
+              <svg viewBox="0 0 240 120"><path class="route" d="M200 96 C 160 20, 70 10, 36 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-dasharray="4 5"/><circle cx="200" cy="96" r="4" fill="currentColor"/><circle cx="36" cy="40" r="5" fill="#fff"/><text x="200" y="114" text-anchor="middle">BOM</text><text x="36" y="28" text-anchor="middle">IST</text></svg>
+            </div>
+            <p class="card__when">26–28 Mar 2027 <span class="pill pill--live">Confirmed</span></p>
+            <h3>Istanbul Regional</h3>
+            <p>Our first competition: three days of qualification and playoff matches, 26–28 March 2027, about 4,800&nbsp;km from Mumbai.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= KICKOFF COUNTDOWN ================= -->
+    <section class="kickoff" aria-labelledby="kickoff-title" data-theme="dark">
+      <img class="kickoff__bg" src="assets/photos/arena-crowd.webp" alt="" loading="lazy" decoding="async" data-parallax="-14">
+      <div class="wrap kickoff__inner">
+        <p class="kickoff__date" data-kickoff-label>Kickoff · Saturday 9 January 2027</p>
+        <h2 class="kickoff__title" id="kickoff-title">Orders sealed<br>until Kickoff.</h2>
+        <div class="clock" data-countdown aria-live="off" hidden>
+          <div><span data-cd="d">--</span><small>Days</small></div>
+          <div><span data-cd="h">--</span><small>Hours</small></div>
+          <div><span data-cd="m">--</span><small>Minutes</small></div>
+          <div><span data-cd="s">--</span><small>Seconds</small></div>
+        </div>
+        <p class="kickoff__note" data-countdown-note>On Saturday 9 January 2027, <i>FIRST</i> reveals the 2027 game to every team in the world at once. The countdown runs to the start of Kickoff day in Mumbai (IST).</p>
+      </div>
+    </section>
+
+    <!-- ================= DOMAINS (stacking cards) ================= -->
+    <section class="domains" id="domains" aria-labelledby="div-title" data-theme="dark">
+      <div class="wrap">
+        <h2 class="h2" id="div-title">Seven domains.<br><span class="muted">One robot.</span></h2>
+        <p class="sub sub--dark">Students run the team. Every member picks a main domain plus extras, and every domain owns a piece of the robot or the organisation.</p>
+      </div>
+
+      <div class="stack wrap">
+        <article class="dcard" style="--c1:#8B3DFF;--c2:#5B47FF">
+          <div class="dcard__copy">
+            <p class="dcard__n">Domain 1 / 7</p>
+            <h3>Programming</h3>
+            <p class="dcard__motto">Quack the code.</p>
+            <p>Robot code in Java, autonomous routines, vision, sensors and control loops. You make the robot do exactly what it is told.</p>
+            <ul><li>Java &amp; WPILib</li><li>Autonomous</li><li>Vision</li><li>PID tuning</li></ul>
+          </div>
+          <svg class="dcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6 2 12l6 6M16 6l6 6-6 6"/></svg>
+        </article>
+        <article class="dcard" style="--c1:#5E2A84;--c2:#2A0F57">
+          <div class="dcard__copy">
+            <p class="dcard__n">Domain 2 / 7</p>
+            <h3>Mechanical</h3>
+            <p class="dcard__motto">Built different. Built purple.</p>
+            <p>Fabrication, prototyping and assembly: drivetrain, intakes, arms, elevators and climbers. If it moves, it went through your hands.</p>
+            <ul><li>Fabrication</li><li>Prototyping</li><li>Drivetrain</li><li>Mechanisms</li></ul>
+          </div>
+          <svg class="dcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>
+        </article>
+        <article class="dcard dcard--brass" style="--c1:#E9B949;--c2:#B7832A">
+          <div class="dcard__copy">
+            <p class="dcard__n">Domain 3 / 7</p>
+            <h3>Electrical</h3>
+            <p class="dcard__motto">Power to the ranks.</p>
+            <p>Wiring, power distribution, CAN bus, batteries, the roboRIO and the radio. A clean electrical board wins matches nobody notices.</p>
+            <ul><li>Wiring</li><li>CAN &amp; power</li><li>Batteries</li><li>roboRIO</li></ul>
+          </div>
+          <svg class="dcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+        </article>
+        <article class="dcard dcard--light" style="--c1:#F4F0FA;--c2:#DAC1FF">
+          <div class="dcard__copy">
+            <p class="dcard__n">Domain 4 / 7</p>
+            <h3>CAD</h3>
+            <p class="dcard__motto">Measure twice. Model once.</p>
+            <p>The whole robot is designed in 3D before metal is cut: assemblies, drawings, 3D printing and renders for the portfolio.</p>
+            <ul><li>3D modelling</li><li>Assemblies</li><li>Drawings</li><li>3D printing</li></ul>
+          </div>
+          <svg class="dcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7zM3 7l9 5 9-5M12 12v10"/></svg>
+        </article>
+        <article class="dcard" style="--c1:#3A2380;--c2:#0B0712">
+          <div class="dcard__copy">
+            <p class="dcard__n">Domain 5 / 7</p>
+            <h3>Strategy &amp; Scouting</h3>
+            <p class="dcard__motto">Know the field first.</p>
+            <p>Game analysis, scouting data, match strategy and alliance selection. You decide what the robot should be good at, and who we pick.</p>
+            <ul><li>Game analysis</li><li>Scouting data</li><li>Match strategy</li><li>Drive team</li></ul>
+          </div>
+          <svg class="dcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zM12 11a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>
+        </article>
+        <article class="dcard" style="--c1:#7434C2;--c2:#3D1B56">
+          <div class="dcard__copy">
+            <p class="dcard__n">Domain 6 / 7</p>
+            <h3>Business &amp; Outreach</h3>
+            <p class="dcard__motto">Leading from the front.</p>
+            <p>Sponsors, budgets, community outreach, the Impact Award and team documentation. The domain that keeps the team funded and known.</p>
+            <ul><li>Sponsorship</li><li>Outreach</li><li>Impact Award</li><li>Budget</li></ul>
+          </div>
+          <svg class="dcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10v4h4l7 5V5L7 10zM18 8a5 5 0 0 1 0 8"/></svg>
+        </article>
+        <article class="dcard" style="--c1:#5B47FF;--c2:#22083E">
+          <div class="dcard__copy">
+            <p class="dcard__n">Domain 7 / 7</p>
+            <h3>Media</h3>
+            <p class="dcard__motto">Lights. Camera. Robot.</p>
+            <p>Photos, video, social media, graphics and branding. You are the reason anyone outside the Maker Lab knows what happened inside it.</p>
+            <ul><li>Photo &amp; video</li><li>Social</li><li>Design</li><li>Branding</li></ul>
+          </div>
+          <svg class="dcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zM12 10a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg>
+        </article>
+      </div>
+
+      <div class="wrap people">
+        <div class="person">
+          <span class="person__mono" aria-hidden="true">SM</span>
+          <div><h3>Suyog Mestry</h3><p>Mechanical mentor · Drive coach</p></div>
+        </div>
+        <div class="person">
+          <span class="person__mono" aria-hidden="true">SP</span>
+          <div><h3>Sujal Patil</h3><p>Programming mentor</p></div>
+        </div>
+        <p class="people__note">Our student roster goes up once every family has signed the photo and name consent form.</p>
+      </div>
+    </section>
+
+    <!-- ================= ROBOT (pinned scrollytelling) ================= -->
+    <section class="robot" id="robot" aria-labelledby="robot-title" data-theme="dark">
+      <div class="robot__pin" data-robot-pin>
+        <div class="robot__copy">
+          <h2 class="h2" id="robot-title">Robot 001.<br><span class="muted">Assembling soon.</span></h2>
+          <ol class="stages" data-stages>
+            <li class="is-on"><b>Concept</b><span>Read the manual, sketch every idea, pick a strategy.</span></li>
+            <li><b>CAD</b><span>Model the whole robot in 3D before cutting metal.</span></li>
+            <li><b>Prototype</b><span>Wood, polycarbonate and zip ties. Test, break, learn.</span></li>
+            <li><b>Built</b><span>Machine, assemble and wire the real thing.</span></li>
+            <li><b>Tuned</b><span>Code, drive practice and hundreds of test runs.</span></li>
+            <li><b>Ready</b><span>Inspected, bumpered and packed for Istanbul.</span></li>
+          </ol>
+          <p class="robot__now"><span class="dot dot--live"></span>Current stage: Concept. Nobody can design an FRC robot before the game is revealed.</p>
+        </div>
+        <div class="robot__visual">
+          <div class="robot__view">
+            <canvas data-robot role="img" aria-label="3D model of a generic FIRST Robotics Competition robot that assembles as you scroll: frame, swerve wheels, elevator, electronics and bumpers numbered 11745. A placeholder until our robot is designed"></canvas>
+          </div>
+          <dl class="robot__specs">
+            <div><dt>Name</dt><dd>Chosen at Kickoff</dd></div>
+            <div><dt>Code</dt><dd>Java · WPILib</dd></div>
+            <div><dt>Drivetrain</dt><dd>After the reveal</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= IMPACT (light) ================= -->
+    <section class="impact light" id="impact" aria-labelledby="impact-title" data-theme="light">
+      <div class="wrap">
+        <h2 class="h2" id="impact-title">Leading from the front.<br><span class="muted">Lifting others up.</span></h2>
+        <p class="sub">Robotics changed how we learn. This season we are committing to three things that pass it on, and we will report each one here with photos and numbers.</p>
+        <ul class="plans">
+          <li data-reveal><span class="plans__when">At school</span><span class="plans__what">Robot demos and hands-on sessions for the junior and middle school at CAJCS</span></li>
+          <li data-reveal><span class="plans__when">In Mumbai</span><span class="plans__what">Help other schools in the city start <i>FIRST</i> teams of their own</span></li>
+          <li data-reveal><span class="plans__when">Online</span><span class="plans__what">Open-source our robot code, CAD and training material after the season</span></li>
+        </ul>
+        <a class="report" href="updates.html" data-reveal>
+          <img src="assets/updates/recruitment-crowd-thumb.webp" alt="" width="360" height="203" loading="lazy" decoding="async">
+          <span class="report__body">
+            <span class="report__tag">Latest report · 28 Oct 2026</span>
+            <span class="report__title">Recruitment day at the CAJCS Senior School</span>
+            <span class="report__meta"><b>120</b> students · FRC overview · Paraducks robot demo</span>
+          </span>
+          <svg class="report__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ================= SPONSORS ================= -->
+    <section class="sponsors" id="sponsors" aria-labelledby="sponsors-title" data-theme="dark">
+      <div class="wrap">
+        <h2 class="h2 h2--xl" id="sponsors-title">Partner <em>with us.</em></h2>
+        <p class="sub sub--dark">A first season is the most expensive one. Partners decide how far a new team gets, and put their name in front of the engineers of tomorrow.</p>
+
+        <div class="partner">
+          <div class="partner__photo" data-parallax="-6">
+            <img src="assets/photos/arena-robots.webp" alt="" loading="lazy" decoding="async">
+          </div>
+
+          <div class="partner__col">
+            <h3 class="partner__h">Where your support goes</h3>
+            <ul class="uses">
+              <li><b>Robot</b><span>Motors, electronics, aluminium, tools and spares to build a competitive machine.</span></li>
+              <li><b>Competition</b><span>Event registration for the Istanbul Regional, 26–28 March 2027.</span></li>
+              <li><b>Travel</b><span>Getting the team and the robot from Mumbai to Istanbul.</span></li>
+              <li><b>Outreach</b><span>Demos, workshops and open-source material for other schools.</span></li>
+            </ul>
+          </div>
+
+          <div class="partner__col partner__col--get liquid-glass" data-liquid-glass>
+            <h3 class="partner__h">What partners get</h3>
+            <ul class="gets">
+              <li>Your logo on the robot, team jerseys and pit banner</li>
+              <li>Recognition on this website and our social channels</li>
+              <li>A feature in our engineering portfolio and award submissions</li>
+              <li>A robot demonstration at your office</li>
+              <li>Season updates straight from the students</li>
+            </ul>
+            <p class="gets__note">Financial and in-kind support are both welcome: machining, 3D printing, electronics, software licences, transport or an engineer's time.</p>
+          </div>
+        </div>
+
+        <div class="enquiry" id="sponsor-enquiry">
+          <div class="enquiry__intro">
+            <h3 class="enquiry__title">Start a conversation.</h3>
+            <p>Tell us a little about your organisation and how you would like to help. A mentor will reply within a few days with our sponsorship details.</p>
+
+            <ol class="steps" aria-label="What happens next">
+              <li>
+                <span class="steps__n" aria-hidden="true">1</span>
+                <div><h4>You send an enquiry</h4><p>Takes a minute. Tell us what kind of support fits your organisation.</p></div>
+              </li>
+              <li>
+                <span class="steps__n" aria-hidden="true">2</span>
+                <div><h4>A mentor replies</h4><p>Within a few days, with our season plan, budget and sponsorship options.</p></div>
+              </li>
+              <li>
+                <span class="steps__n" aria-hidden="true">3</span>
+                <div><h4>We agree a partnership</h4><p>Your logo goes on the robot, jerseys and pit banner, and the students keep you updated all season.</p></div>
+              </li>
+            </ol>
+
+            <div class="contact-card">
+              <img src="assets/badge-160.webp" alt="" width="52" height="52" loading="lazy">
+              <div>
+                <p class="contact-card__who">Suyog Mestry · Sujal Patil</p>
+                <p class="contact-card__role">Team mentors, FRC 11745</p>
+                <a href="mailto:ducktator.frc@gmail.com" data-email-link>ducktator.frc@gmail.com</a>
+              </div>
+            </div>
+          </div>
+
+          <form class="pass liquid-glass enquiry__form" data-liquid-glass data-sponsor novalidate>
+            <div class="field-row">
+              <label class="field">
+                <span>Company or organisation</span>
+                <input name="company" autocomplete="organization" required>
+                <small class="field__err" data-err="company">Tell us which organisation you represent.</small>
+              </label>
+              <label class="field">
+                <span>Your name</span>
+                <input name="contact" autocomplete="name" required>
+                <small class="field__err" data-err="contact">Tell us who to reply to.</small>
+              </label>
+            </div>
+            <div class="field-row">
+              <label class="field">
+                <span>Email</span>
+                <input name="email" type="email" autocomplete="email" required>
+                <small class="field__err" data-err="email">That email does not look right. Check for a missing @ or dot.</small>
+              </label>
+              <label class="field">
+                <span>Phone <em>(optional)</em></span>
+                <input name="phone" type="tel" autocomplete="tel">
+              </label>
+            </div>
+            <fieldset class="field">
+              <legend>How would you like to support us?</legend>
+              <div class="picks">
+                <label><input type="checkbox" name="support" value="Financial sponsorship"><span>Financial sponsorship</span></label>
+                <label><input type="checkbox" name="support" value="Parts or materials"><span>Parts or materials</span></label>
+                <label><input type="checkbox" name="support" value="Machining or manufacturing"><span>Machining or manufacturing</span></label>
+                <label><input type="checkbox" name="support" value="Mentoring or expertise"><span>Mentoring or expertise</span></label>
+                <label><input type="checkbox" name="support" value="Travel or logistics"><span>Travel or logistics</span></label>
+                <label><input type="checkbox" name="support" value="Other"><span>Other</span></label>
+              </div>
+            </fieldset>
+            <label class="field">
+              <span>Message <em>(optional)</em></span>
+              <textarea name="message" rows="3"></textarea>
+            </label>
+            <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn btn--brass btn--block" type="submit" data-sponsor-submit>Send enquiry</button>
+            <p class="pass__status" data-sponsor-status role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ENLIST (purple) ================= -->
+    <section class="enlist" id="enlist" aria-labelledby="enlist-title" data-theme="dark">
+      <div class="capband" aria-hidden="true"></div>
+      <div class="wrap enlist__grid">
+        <div>
+          <h2 class="h2 h2--xl" id="enlist-title">Join<br>the team.</h2>
+          <p class="sub sub--dark">No robotics experience needed. If you are a CAJCS student who likes building, coding, designing, filming or organising, there is a domain for you.</p>
+          <div class="faq">
+            <details><summary>Who can join?</summary><p>CAJCS students. Our mentors confirm the grades for each intake; tell us yours in the form and we will tell you if this intake fits.</p></details>
+            <details><summary>How much time does it take?</summary><p>Regular sessions in the Maker Lab through the year, with more during build season (January to March). Exact times are shared with members.</p></details>
+            <details><summary>Do I need to know how to code or build?</summary><p>No. Our training programme starts from the basics, and you learn by doing, with mentors beside you.</p></details>
+            <details><summary>For parents: is it safe?</summary><p>Work happens in the school Maker Lab under mentor supervision, with safety glasses and training before any power tool. We never publish a student's name or photo without your written consent.</p></details>
+          </div>
+        </div>
+
+        <form class="pass liquid-glass" data-liquid-glass data-enlist novalidate>
+          <div class="pass__head">
+            <img src="assets/badge-160.webp" alt="" width="46" height="46" loading="lazy">
+            <div><p class="pass__title">Application</p><p class="pass__sub">FRC 11745 · Season 2026–27</p></div>
+          </div>
+          <label class="field">
+            <span>Your name</span>
+            <input name="name" autocomplete="name" required>
+            <small class="field__err" data-err="name">Tell us your name so we know who is reporting.</small>
+          </label>
+          <div class="field-row">
+            <label class="field">
+              <span>Grade</span>
+              <select name="grade" required>
+                <option value="">Select</option>
+                <option>Grade 8</option><option>Grade 9</option><option>Grade 10</option><option>Grade 11</option><option>Other</option>
+              </select>
+              <small class="field__err" data-err="grade">Pick your grade.</small>
+            </label>
+            <label class="field">
+              <span>Email</span>
+              <input name="email" type="email" autocomplete="email" required>
+              <small class="field__err" data-err="email">That email does not look right. Check for a missing @ or dot.</small>
+            </label>
+          </div>
+          <fieldset class="field">
+            <legend>Domains you would like to try</legend>
+            <div class="picks">
+              <label><input type="checkbox" name="div" value="Programming"><span>Programming</span></label>
+              <label><input type="checkbox" name="div" value="Mechanical"><span>Mechanical</span></label>
+              <label><input type="checkbox" name="div" value="Electrical"><span>Electrical</span></label>
+              <label><input type="checkbox" name="div" value="CAD"><span>CAD</span></label>
+              <label><input type="checkbox" name="div" value="Strategy"><span>Strategy</span></label>
+              <label><input type="checkbox" name="div" value="Business &amp; Outreach"><span>Business</span></label>
+              <label><input type="checkbox" name="div" value="Media"><span>Media</span></label>
+            </div>
+          </fieldset>
+          <label class="field">
+            <span>Anything we should know? <em>(optional)</em></span>
+            <textarea name="note" rows="3"></textarea>
+          </label>
+          <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn--brass btn--block" type="submit" data-submit>Submit application</button>
+          <p class="pass__status" data-status role="status" aria-live="polite"></p>
+          <p class="pass__privacy">We use these details only to contact you about joining the team. They are emailed to our mentors and never shared or published.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="contact" id="contact" aria-labelledby="contact-title" data-theme="dark">
+      <div class="contact__net" data-net aria-hidden="true"></div>
+      <button class="liquid-glass-chip motion-btn motion-btn--net" type="button" data-net-toggle aria-pressed="false" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M8 5v14M16 5v14"/><path class="i-play" d="M7 5l12 7-12 7z"/></svg>
+        <span data-net-label>Pause background</span>
+      </button>
+      <div class="wrap contact__grid">
+        <h2 class="h2" id="contact-title">Get in touch.</h2>
+        <div class="contact__lines">
+          <a class="contact__line" href="mailto:" data-mail="general" data-needs="email" hidden><span>Email</span><b data-email-text>[EMAIL]</b></a>
+          <a class="contact__line" data-social="instagram" data-needs="instagram" hidden><span>Instagram</span><b>@[HANDLE]</b></a>
+          <a class="contact__line" href="https://frc-events.firstinspires.org/team/11745" rel="noopener"><span><i>FIRST</i> team page</span><b>FRC 11745</b></a>
+          <p class="contact__line"><span>Base</span><b>CAJCS Maker Lab, Mumbai</b></p>
+          <p class="contact__note">Other teams: want to scrimmage, swap scouting data or share a pit tip? We are new, and we would love to hear from you.</p>
+          <div class="contact__cta"><a class="btn btn--brass" href="mailto:ducktator.frc@gmail.com" data-email-link>Email the team</a><a class="btn btn--outline" href="#enlist">Join the team</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer" data-theme="dark">
+    <div class="credits wrap">
+      <dl>
+        <div><dt>A team of</dt><dd>Cathedral &amp; John Connon School, Mumbai</dd></div>
+        <div><dt>Mentors</dt><dd>Suyog Mestry · Sujal Patil</dd></div>
+        <div><dt>Starring</dt><dd>The students of FRC 11745</dd></div>
+        <div><dt>Based at</dt><dd>The CAJCS Maker Lab</dd></div>
+      </dl>
+    </div>
+    <div class="wrap footer__logos">
+      <div class="footer__logo footer__logo--school" data-logo><img src="assets/logos/cajcs-300.webp" width="300" height="300" alt="Cathedral and John Connon School" loading="lazy"><span class="affil__text">Cathedral &amp; John&nbsp;Connon School</span></div>
+      <div class="footer__logo footer__logo--first" data-logo><img src="assets/logos/first-frc-300.webp" width="300" height="228" alt="FIRST" loading="lazy"><span class="affil__text"><i>FIRST</i>® Robotics Competition</span></div>
+      <img class="footer__badge" src="assets/badge-160.webp" alt="The Ducktators badge" width="72" height="72" loading="lazy">
+    </div>
+    <div class="checker" aria-hidden="true"></div>
+    <p class="footer__giant" aria-hidden="true" data-giant>Ducktators</p>
+    <div class="capband" aria-hidden="true"></div>
+    <div class="wrap footer__row">
+      <p>The Ducktators · FRC 11745 · Mumbai · 2026–27</p>
+      <p class="footer__legal"><i>FIRST</i>® and <i>FIRST</i>® Robotics Competition are registered trademarks of <i>FIRST</i>. This site is run by the team and is not endorsed by <i>FIRST</i>.</p>
+      <a href="updates.html" class="footer__top">Team updates →</a>
+      <a href="#top" class="footer__top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="vendor/lenis.min.js" defer></script>
+  <script src="js/lightbox.js" defer></script>
+  <script src="js/liquid-glass.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

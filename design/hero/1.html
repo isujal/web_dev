@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Hero 1 · Drawing · The Ducktators</title>
+  <link rel="icon" href="../../assets/badge-96.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..900&family=Saira:ital,wdth,wght@1,75..100,700..900&family=Geist+Mono:wght@400..600&family=Michroma&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hero.css">
+  <style>
+.d { min-height: 100svh; display: grid; grid-template-columns: 5fr 7fr; gap: clamp(24px, 4vw, 64px); align-items: center; padding: 96px var(--gutter) 72px; }
+.d__copy { display: grid; gap: 28px; align-content: center; }
+.sheet { position: relative; border: 1px solid var(--ink); height: min(74svh, 720px); display: grid; grid-template-rows: auto 1fr auto; background: #F8F7F3; }
+.sheet::before, .sheet::after { content: ""; position: absolute; inset: 10px; border: 1px solid var(--line); pointer-events: none; }
+.sheet::after { inset: auto; }
+.sheet__top { display: flex; justify-content: space-between; padding: 22px 26px 0; color: var(--muted); }
+.sheet .stage { min-height: 0; }
+.dim { position: absolute; left: 22%; right: 22%; bottom: 10px; display: flex; align-items: center; gap: 10px; color: var(--muted); }
+.dim i { flex: 1; height: 1px; background: currentColor; position: relative; }
+.dim i:first-child::before, .dim i:last-child::after { content: ""; position: absolute; top: -4px; width: 1px; height: 9px; background: currentColor; }
+.dim i:first-child::before { left: 0; } .dim i:last-child::after { right: 0; }
+.tb { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); }
+.tb div { padding: 12px 16px; border-left: 1px solid var(--line); display: grid; gap: 4px; }
+.tb div:first-child { border-left: 0; }
+.tb span { color: var(--muted); font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; }
+.tb b { font: 500 14px var(--f-sans); }
+@media (max-width: 900px) { .d { grid-template-columns: 1fr; padding-top: 88px; } .sheet { height: 62svh; } .tb { grid-template-columns: 1fr 1fr; } .tb div:nth-child(3) { border-left: 0; } .tb div:nth-child(n+3) { border-top: 1px solid var(--line); } }
+</style>
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="../../js/islands.js" defer></script>
+  <script src="hero.js" defer></script>
+</head>
+<body>
+<header class="hn"><a class="hn__brand" href="../../index.html"><img src="../../assets/badge-96.webp" alt="" width="30" height="30">The Ducktators</a>
+    <nav class="hn__links" aria-label="Main"><a href="../../index.html#frc">FRC</a><a href="../../index.html#season">Season</a><a href="../../index.html#domains">Domains</a><a href="../../index.html#robot">Robot</a><a href="../../index.html#sponsors">Sponsors</a><a href="../../updates.html">Updates</a></nav>
+    <a class="btn btn--solid btn--sm" href="../../index.html#enlist">Join the team</a></header>
+<main class="d" data-in>
+  <div class="d__copy">
+    <h1 class="h1 rise">Order in<br>the <em>ranks.</em></h1>
+    <p class="lede rise" style="--i:1">A rookie <i>FIRST</i>&nbsp;Robotics team from Cathedral &amp;&nbsp;John&nbsp;Connon School, Mumbai. Season&nbsp;one. Next&nbsp;stop:&nbsp;Istanbul.</p>
+    <div class="actions rise" style="--i:3"><a class="btn btn--solid" href="../../index.html#enlist">Join the team <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn--line" href="../../index.html#sponsors">Sponsor us</a></div>
+  </div>
+  <figure class="sheet rise" style="--i:2">
+    <div class="sheet__top mono"><span>ROBOT 001 · ISOMETRIC</span><span>SCALE 1:20 · REV A</span></div>
+    <div class="stage" data-hero3d='{"scene":"robot","theme":"paper","fit":1.12,"label":"Rotating 3D model of the team’s FRC robot"}'><div class="dim mono"><i></i>34 in<i></i></div></div>
+    <div class="tb mono">
+      <div><span>Team</span><b>11745</b></div>
+      <div><span>Season</span><b>2027 · Rookie</b></div>
+      <div><span>Event</span><b>Istanbul · 26–28 Mar</b></div>
+      <div><span>Kickoff</span><b>9 Jan 2027</b></div>
+    </div>
+  </figure>
+</main>
+<nav class="switch" aria-label="Design options"><a href="1.html" title="Drawing" aria-current="page">1</a><a href="2.html" title="Pit">2</a><a href="3.html" title="Medallion">3</a><a href="4.html" title="Ranks">4</a><a href="5.html" title="Poster">5</a><a href="6.html" title="Photo">6</a></nav>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Hero 4 · Ranks · The Ducktators</title>
+  <link rel="icon" href="../../assets/badge-96.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..900&family=Saira:ital,wdth,wght@1,75..100,700..900&family=Geist+Mono:wght@400..600&family=Michroma&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hero.css">
+  <style>
+:root { --bg: #F6F5F2; }
+.r { position: relative; min-height: 100svh; display: grid; grid-template-rows: auto 1fr; padding-top: 96px; overflow: hidden; }
+.r__copy { position: relative; z-index: 2; display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: end; padding: 0 var(--gutter); pointer-events: none; }
+.r__copy > * { pointer-events: auto; }
+.r__right { display: grid; gap: 24px; justify-items: start; }
+.r .stage { position: relative; min-height: 52svh; cursor: default; touch-action: auto; }
+.r .legend { position: absolute; left: var(--gutter); bottom: 28px; display: flex; gap: 18px; color: var(--muted); }
+.r .legend i { display: inline-block; width: 9px; height: 9px; margin-right: 7px; background: #E9B949; vertical-align: 0; }
+@media (max-width: 900px) { .r__copy { grid-template-columns: 1fr; } .r .stage { min-height: 46svh; } }
+</style>
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="../../js/islands.js" defer></script>
+  <script src="hero.js" defer></script>
+</head>
+<body>
+<header class="hn"><a class="hn__brand" href="../../index.html"><img src="../../assets/badge-96.webp" alt="" width="30" height="30">The Ducktators</a>
+    <nav class="hn__links" aria-label="Main"><a href="../../index.html#frc">FRC</a><a href="../../index.html#season">Season</a><a href="../../index.html#domains">Domains</a><a href="../../index.html#robot">Robot</a><a href="../../index.html#sponsors">Sponsors</a><a href="../../updates.html">Updates</a></nav>
+    <a class="btn btn--solid btn--sm" href="../../index.html#enlist">Join the team</a></header>
+<main class="r" data-in>
+  <div class="r__copy">
+    <h1 class="h1 rise">Order in<br>the <em>ranks.</em></h1>
+    <div class="r__right"><p class="lede rise" style="--i:1">A rookie <i>FIRST</i>&nbsp;Robotics team from Cathedral &amp;&nbsp;John&nbsp;Connon School, Mumbai. Season&nbsp;one. Next&nbsp;stop:&nbsp;Istanbul.</p><div class="actions rise" style="--i:3"><a class="btn btn--solid" href="../../index.html#enlist">Join the team <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn--line" href="../../index.html#sponsors">Sponsor us</a></div></div>
+  </div>
+  <div class="stage" data-hero3d='{"scene":"ranks","theme":"paper","cols":28,"rows":11}'>
+    <p class="legend mono"><span><i></i>11745 · ROOKIE, SEASON ONE</span></p>
+  </div>
+</main>
+<nav class="switch" aria-label="Design options"><a href="1.html" title="Drawing">1</a><a href="2.html" title="Pit">2</a><a href="3.html" title="Medallion">3</a><a href="4.html" title="Ranks" aria-current="page">4</a><a href="5.html" title="Poster">5</a><a href="6.html" title="Photo">6</a></nav>
+</body>
+</html>

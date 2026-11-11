@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Hero 6 · Photo · The Ducktators</title>
+  <link rel="icon" href="../../assets/badge-96.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..900&family=Saira:ital,wdth,wght@1,75..100,700..900&family=Geist+Mono:wght@400..600&family=Michroma&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/liquid-glass.css">
+  <link rel="stylesheet" href="hero.css">
+  <style>
+:root { --bg: #0C0B0E; --ink: #fff; --muted: rgba(255,255,255,.8); --line: rgba(255,255,255,.3); --accent: #E9B949; --btn: #fff; --btn-ink: #0C0B0E; }
+.hn--glass { padding-top: 16px; } .hn__pill { display: flex; align-items: center; gap: 28px; width: 100%; padding: 10px 10px 10px 18px; border-radius: 999px; }
+.ph { position: relative; min-height: 100svh; display: grid; align-items: end; overflow: hidden; color: #fff; }
+.ph__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; transform: scale(1.04); transition: transform 2.4s var(--ease); }
+.is-in .ph__img { transform: none; }
+.ph::after { content: ""; position: absolute; inset: 0; background: rgba(10, 8, 14, .52); }
+.ph__copy { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; padding: 0 var(--gutter) 84px; }
+.ph__copy > div { display: grid; gap: 24px; }
+.ph .lede { color: var(--muted); }
+.ph .stage { width: clamp(150px, 15vw, 230px); aspect-ratio: 1; }
+.ph__cap { position: absolute; z-index: 2; top: 92px; right: var(--gutter); color: rgba(255,255,255,.75); }
+@media (max-width: 900px) { .ph::after { background: rgba(10,8,14,.62); } .ph__copy { grid-template-columns: 1fr; } .ph .stage { width: 120px; order: -1; } .ph__cap { display: none; } .hn__pill .hn__links { display: none; } .hn__pill .btn { margin-left: auto; } }
+</style>
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="../../js/islands.js" defer></script>
+  <script src="../../js/liquid-glass.js" defer></script>
+  <script src="hero.js" defer></script>
+</head>
+<body>
+<header class="hn hn--glass"><div class="hn__pill liquid-glass" data-liquid-glass='{"blurRadius":10}'><a class="hn__brand" href="../../index.html"><img src="../../assets/badge-96.webp" alt="" width="30" height="30">The Ducktators</a>
+    <nav class="hn__links" aria-label="Main"><a href="../../index.html#frc">FRC</a><a href="../../index.html#season">Season</a><a href="../../index.html#domains">Domains</a><a href="../../index.html#robot">Robot</a><a href="../../index.html#sponsors">Sponsors</a><a href="../../updates.html">Updates</a></nav>
+    <a class="btn btn--solid btn--sm" href="../../index.html#enlist">Join the team</a></div></header>
+<main class="ph" data-in>
+  <img class="ph__img" src="../../assets/updates/recruitment-crowd.webp" alt="Students crowding around the Paraducks robot in the CAJCS assembly hall on recruitment day" width="2560" height="1440">
+  <p class="ph__cap mono">CAJCS ASSEMBLY HALL · 28 OCT 2026</p>
+  <div class="ph__copy">
+    <div>
+      <h1 class="h1 rise">Order in the <em>ranks.</em></h1>
+      <p class="lede rise" style="--i:1">A rookie <i>FIRST</i>&nbsp;Robotics team from Cathedral &amp;&nbsp;John&nbsp;Connon School, Mumbai. Season&nbsp;one. Next&nbsp;stop:&nbsp;Istanbul.</p>
+      <div class="actions rise" style="--i:3"><a class="btn btn--solid" href="../../index.html#enlist">Join the team <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn--line" href="../../index.html#sponsors">Sponsor us</a></div>
+    </div>
+    <div class="stage rise" style="--i:2" data-hero3d='{"scene":"coin","theme":"night","fit":1.0,"label":"The Ducktators badge as a 3D medallion"}'></div>
+  </div>
+</main>
+<nav class="switch" aria-label="Design options"><a href="1.html" title="Drawing">1</a><a href="2.html" title="Pit">2</a><a href="3.html" title="Medallion">3</a><a href="4.html" title="Ranks">4</a><a href="5.html" title="Poster">5</a><a href="6.html" title="Photo" aria-current="page">6</a></nav>
+</body>
+</html>
