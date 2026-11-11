@@ -1,0 +1,62 @@
+/* Hero design options: shared base. Each page sets its own colours with the tokens below.
+   Buttons and focus follow shadcn/ui's conventions (solid + outline, 8px radius, 2px offset ring). */
+:root {
+  --bg: #F3F1EC; --ink: #141118; --muted: #5E5867; --line: rgba(20,17,24,.14);
+  --accent: #5E2A84; --brass: #E9B949; --btn: var(--ink); --btn-ink: #fff;
+  --f-sans: "Geist", ui-sans-serif, system-ui, sans-serif; --f-mono: "Geist Mono", ui-monospace, monospace;
+  --f-logo: "Michroma", "Geist", sans-serif; --f-display: "Saira", "Geist", sans-serif;
+  --gutter: clamp(16px, 4vw, 56px); --ease: cubic-bezier(.16, 1, .3, 1);
+}
+* { box-sizing: border-box; margin: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body { background: var(--bg); color: var(--ink); font: 400 16px/1.5 var(--f-sans); -webkit-font-smoothing: antialiased; min-height: 100svh; }
+::selection { background: var(--accent); color: #fff; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+/* nav */
+.hn { position: absolute; z-index: 5; top: 0; left: 0; right: 0; display: flex; align-items: center; gap: 28px; padding: 20px var(--gutter); }
+.hn__brand { white-space: nowrap; display: flex; align-items: center; gap: 10px; font: 400 12px var(--f-logo); letter-spacing: .08em; text-transform: uppercase; }
+.hn__brand img { width: 30px; height: 30px; }
+.hn__links { display: flex; gap: 26px; margin-left: auto; font-size: 14px; color: var(--muted); }
+.hn__links a { position: relative; transition: color .2s; }
+.hn__links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease); }
+.hn__links a:hover { color: var(--ink); } .hn__links a:hover::after { transform: scaleX(1); }
+@media (max-width: 860px) { .hn__links { display: none; } .hn .btn { margin-left: auto; } }
+
+/* buttons (shadcn: default + outline) */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 18px; border-radius: 8px; font: 500 15px var(--f-sans); white-space: nowrap; cursor: pointer; border: 1px solid transparent;
+  transition: transform .16s var(--ease), background-color .2s, border-color .2s, color .2s; }
+.btn:active { transform: scale(.97); }
+.btn--solid { background: var(--btn); color: var(--btn-ink); }
+.btn--solid:hover { background: color-mix(in srgb, var(--btn) 88%, var(--bg)); }
+.btn--line { border-color: var(--line); color: inherit; background: transparent; }
+.btn--line:hover { border-color: currentColor; }
+.btn--sm { height: 36px; padding: 0 14px; font-size: 14px; }
+.btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .3s var(--ease); }
+.btn:hover svg { transform: translateX(3px); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* type */
+.h1 { font: 650 clamp(52px, 7.4vw, 116px)/.9 var(--f-sans); letter-spacing: -.045em; text-wrap: balance; }
+.h1 em { font-style: normal; color: var(--accent); }
+.lede { font-size: clamp(16px, 1.25vw, 19px); line-height: 1.55; color: var(--muted); max-width: 40ch; }
+.mono { font: 500 12px/1.3 var(--f-mono); letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+
+/* 3D stage */
+.stage { position: relative; touch-action: pan-y; cursor: grab; }
+.stage:active { cursor: grabbing; }
+.stage .hero3d { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hint { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); }
+.hint svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; }
+
+/* entrance: one authored moment, visible by default (only hidden once JS is confirmed) */
+.js .rise { opacity: 0; transform: translateY(18px); }
+.js .is-in .rise { opacity: 1; transform: none; transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: calc(var(--i, 0) * 80ms + 120ms); }
+@media (prefers-reduced-motion: reduce) { .js .rise { opacity: 1; transform: none; } }
+
+/* option switcher shown on every design page */
+.switch { position: fixed; z-index: 20; left: 50%; bottom: 16px; transform: translateX(-50%); display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: #141118; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+.switch a { display: grid; place-items: center; min-width: 36px; height: 32px; padding: 0 10px; border-radius: 999px; color: rgba(255,255,255,.7); font: 500 13px var(--f-mono); }
+.switch a:hover { color: #fff; } .switch a[aria-current="page"] { background: #fff; color: #141118; }
