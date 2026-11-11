@@ -420,11 +420,30 @@ const SITE = {
       const dt = Math.min(.05, (now - last) / 1000); last = now;
       if (!document.hidden) {
         if (aur.visible && !motion.paused) { aur.t += dt; aur.draw(); }
-        if (robot.visible) { robot.yaw += dt * .3; robot.draw(); }
+        if (robot.visible && !robot.off) { robot.yaw += dt * .3; robot.draw(); }
       }
       requestAnimationFrame(loop);
     };
     requestAnimationFrame(loop);
+  }
+
+  /* ---------- Robot 001 in 3D: React Three Fiber island (src/robot3d -> js/robot3d.js).
+     Loads only when the section comes near; the 2D wireframe above stays as the fallback. ---------- */
+  const robotView = $('.robot__view');
+  const hasGL = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; } })();
+  if (robotView && hasGL && !navigator.connection?.saveData) {
+    new IntersectionObserver(([en], o) => {
+      if (!en.isIntersecting) return; o.disconnect();
+      const s = document.createElement('script'); s.src = 'js/robot3d.js'; s.async = true;
+      s.onload = () => {
+        const flat = $('[data-robot]');
+        if (!window.Robot3D?.mount(robotView, { reduce, label: flat.getAttribute('aria-label') })) return;
+        robot.off = true; robotView.classList.add('is-3d');
+        flat.removeAttribute('role'); flat.removeAttribute('aria-label'); flat.setAttribute('aria-hidden', 'true');
+        window.Robot3D.setProgress(robot.p);
+      };
+      document.head.append(s);
+    }, { rootMargin: '900px 0px' }).observe(robotView);
   }
 
   if (!anim) { $('[data-loader]')?.classList.add('is-done'); root.classList.add('no-hscroll'); return; }
@@ -594,7 +613,7 @@ const SITE = {
   /* ---------- Robot: pinned assembly ---------- */
   const stages = $$('[data-stages] li');
   const setStage = p => {
-    robot.p = p; robot.spin = p * Math.PI * 1.5;
+    robot.p = p; robot.spin = p * Math.PI * 1.5; window.Robot3D?.setProgress(p);
     const idx = Math.min(stages.length - 1, Math.floor(p * stages.length));
     stages.forEach((li, i) => li.classList.toggle('is-on', i <= idx));
   };

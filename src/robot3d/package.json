@@ -1,0 +1,17 @@
+{
+  "name": "ducktators-robot3d",
+  "private": true,
+  "description": "React Three Fiber island for the Robot 001 section. Build: npm run build (writes ../../js/robot3d.js).",
+  "scripts": {
+    "build": "esbuild robot3d.jsx --bundle --minify --format=iife --jsx=automatic --target=es2020 --legal-comments=none --define:process.env.NODE_ENV='\"production\"' --outfile=../../js/robot3d.js"
+  },
+  "dependencies": {
+    "@react-three/fiber": "9.8.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "three": "0.187.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

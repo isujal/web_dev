@@ -841,3 +841,7 @@ html { overflow-x: clip; }
 
 /* focus and anchor scrolling stop below the fixed menu bar (WCAG 2.4.11 focus not obscured) */
 html { scroll-padding-top: 104px; }
+
+/* Robot 001 in 3D (React Three Fiber island): replaces the 2D wireframe once it has loaded */
+.robot__view .robot3d { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.robot__view.is-3d canvas[data-robot] { display: none; }
