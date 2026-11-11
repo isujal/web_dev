@@ -1,5 +1,5 @@
 /* The Ducktators · FRC 11745 · site behaviour (v2)
-   Lenis smooth scroll + GSAP/ScrollTrigger choreography + canvas aurora and robot. */
+   Lenis smooth scroll + GSAP/ScrollTrigger choreography + React Three Fiber hero field and robot. */
 
 /* ---------- EDIT ME: team details (leave '' until confirmed) ---------- */
 const SITE = {
@@ -260,35 +260,6 @@ const SITE = {
   };
   const watch = (el, st) => new IntersectionObserver(([en]) => { st.visible = en.isIntersecting; }).observe(el);
 
-  /* ---------- Aurora (hero background) ---------- */
-  const aur = (() => {
-    const cv = $('[data-aurora]'), ctx = cv.getContext('2d');
-    const st = { visible: true, t: 0, mx: .5, my: .5 };
-    const size = () => Object.assign(st, fit(cv, ctx, .5)); size(); addEventListener('resize', size); watch(cv, st);
-    const blobs = [
-      { c: [139, 61, 255], r: .55, x: .3, y: .35, sx: .13, sy: .1, p: 0 },
-      { c: [91, 71, 255], r: .5, x: .72, y: .3, sx: .1, sy: .14, p: 2 },
-      { c: [233, 185, 73], r: .32, x: .62, y: .78, sx: .16, sy: .08, p: 4 },
-      { c: [94, 42, 132], r: .6, x: .2, y: .85, sx: .08, sy: .1, p: 1 },
-      { c: [201, 166, 255], r: .22, x: .5, y: .5, sx: .2, sy: .16, p: 3 },
-    ];
-    st.draw = () => {
-      const { w, h, t } = st; const m = Math.max(w, h);
-      ctx.globalCompositeOperation = 'source-over'; ctx.fillStyle = '#000'; ctx.fillRect(0, 0, w, h);
-      ctx.globalCompositeOperation = 'lighter';
-      blobs.forEach((b, i) => {
-        const x = (b.x + Math.sin(t * .23 + b.p) * b.sx + (st.mx - .5) * .06 * (i % 2 ? 1 : -1)) * w;
-        const y = (b.y + Math.cos(t * .19 + b.p) * b.sy + (st.my - .5) * .06) * h;
-        const r = b.r * m;
-        const g = ctx.createRadialGradient(x, y, 0, x, y, r);
-        g.addColorStop(0, `rgba(${b.c},.42)`); g.addColorStop(.5, `rgba(${b.c},.12)`); g.addColorStop(1, `rgba(${b.c},0)`);
-        ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
-      });
-    };
-    $('.hero').addEventListener('pointermove', e => { st.mx = e.clientX / innerWidth; st.my = e.clientY / innerHeight; });
-    return st;
-  })();
-
   /* ---------- Robot: wireframe that assembles with progress 0..1 ---------- */
   const robot = (() => {
     const cv = $('[data-robot]'), ctx = cv.getContext('2d');
@@ -342,19 +313,6 @@ const SITE = {
     return st;
   })();
 
-  /* ---------- Hero motion pause (WCAG 2.2.2: anything moving past 5 s can be stopped) ---------- */
-  const motion = { paused: false };
-  const heroPause = $('[data-hero-pause]');
-  if (heroPause && !reduce) {
-    heroPause.hidden = false;
-    heroPause.addEventListener('click', () => {
-      motion.paused = !motion.paused;
-      heroPause.setAttribute('aria-pressed', String(motion.paused));
-      $('[data-hero-pause-label]').textContent = motion.paused ? 'Play motion' : 'Pause motion';
-      $('.hero').classList.toggle('is-still', motion.paused);
-    });
-  }
-
   /* ---------- Photo viewer for the arena gallery (js/lightbox.js) ---------- */
   const shots = $$('.ph img');
   const shotItems = () => shots.map(img => ({ src: img.currentSrc || img.src, thumb: img.currentSrc || img.src, alt: img.alt }));
@@ -405,13 +363,12 @@ const SITE = {
   }
 
   /* ---------- Render loop ---------- */
-  if (reduce) { aur.draw(); robot.draw(); addEventListener('resize', () => { aur.draw(); robot.draw(); }); }
+  if (reduce) { robot.draw(); addEventListener('resize', () => robot.draw()); }
   else {
     let last = performance.now();
     const loop = now => {
       const dt = Math.min(.05, (now - last) / 1000); last = now;
       if (!document.hidden) {
-        if (aur.visible && !motion.paused) { aur.t += dt; aur.draw(); }
         if (robot.visible && !robot.off) { robot.yaw += dt * .3; robot.draw(); }
       }
       requestAnimationFrame(loop);
@@ -419,22 +376,43 @@ const SITE = {
     requestAnimationFrame(loop);
   }
 
-  /* ---------- Robot 001 in 3D: React Three Fiber island (src/robot3d -> js/robot3d.js).
-     Loads only when the section comes near; the 2D wireframe above stays as the fallback. ---------- */
-  const robotView = $('.robot__view');
+  /* ---------- React Three Fiber islands (src/robot3d -> js/islands.js), loaded once for both:
+     the opening screen's field and badge medallion, and Robot 001. Without WebGL, or on Save-Data,
+     the hero stays flat black with the flat badge and the robot keeps its 2D wireframe. ---------- */
   const hasGL = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; } })();
-  if (robotView && hasGL && !navigator.connection?.saveData) {
+  const can3D = hasGL && !navigator.connection?.saveData;
+  let islands;
+  const loadIslands = () => islands || (islands = new Promise((ok, fail) => {
+    const s = document.createElement('script'); s.src = 'js/islands.js'; s.async = true;
+    s.onload = ok; s.onerror = fail; document.head.append(s);
+  }));
+
+  /* the opening screen: units fall into rank and file on a dark field; the badge becomes a struck
+     medallion that turns toward the pointer and spins when dragged. Loaded after first paint. */
+  const heroEl = $('.hero'), field = $('[data-hero-field]'), badgeEl = $('[data-hero-badge]');
+  if (can3D && field) {
+    const start = () => loadIslands().then(() => {
+      if (!window.Hero3D) return;
+      window.Hero3D.mount(field, { scene: 'ranks', theme: 'field', view: 'floor', cols: 44, rows: 34, gap: 3.4, zShift: -42, reach: 11, lift: 1.5, fog: '#000000', fogNear: 50, fogFar: 150, reduce, pointerTarget: heroEl });
+      requestAnimationFrame(() => field.classList.add('is-on'));
+      const img = badgeEl.querySelector('img');
+      window.Hero3D.mount(badgeEl, { scene: 'coin', theme: 'night', still: true, tilt: !reduce, reduce, pointerTarget: heroEl, badge: img.currentSrc || img.src, label: img.alt });
+      badgeEl.classList.add('is-3d');
+    }).catch(() => {});
+    if (document.readyState === 'complete') setTimeout(start, 150); else addEventListener('load', () => setTimeout(start, 150), { once: true });
+  }
+
+  const robotView = $('.robot__view');
+  if (robotView && can3D) {
     new IntersectionObserver(([en], o) => {
       if (!en.isIntersecting) return; o.disconnect();
-      const s = document.createElement('script'); s.src = 'js/robot3d.js'; s.async = true;
-      s.onload = () => {
+      loadIslands().then(() => {
         const flat = $('[data-robot]');
         if (!window.Robot3D?.mount(robotView, { reduce, label: flat.getAttribute('aria-label') })) return;
         robot.off = true; robotView.classList.add('is-3d');
         flat.removeAttribute('role'); flat.removeAttribute('aria-label'); flat.setAttribute('aria-hidden', 'true');
         window.Robot3D.setProgress(robot.p);
-      };
-      document.head.append(s);
+      }).catch(() => {});
     }, { rootMargin: '900px 0px' }).observe(robotView);
   }
 
@@ -468,8 +446,7 @@ const SITE = {
   /* ---------- Hero intro (after loader) ---------- */
   const heroIntro = () => {
     const tl = gsap.timeline({ defaults: { ease: EASE } });
-    tl.from('.aurora', { opacity: 0, duration: 2 }, 0)
-      .add(scramble($('[data-scramble]'), 1.1), .1)
+    tl.add(scramble($('[data-scramble]'), 1.1), .1)
       .from('.hero__title .line > span', { yPercent: 115, rotate: 4, duration: 1.4, stagger: .1 }, .15)
       .from('.hero__badge', { scale: .4, opacity: 0, rotateY: -70, rotateX: 20, filter: 'blur(14px)', duration: 1.8 }, .35)
       .from(['.hero__lede', '.hero__actions'], { y: 30, opacity: 0, duration: 1.2, stagger: .1 }, .8)
@@ -480,21 +457,12 @@ const SITE = {
 
   heroIntro();
 
-  /* ---------- Hero: badge tilt + scroll-away ---------- */
-  const badge = $('[data-tilt]');
-  if (fine) {
-    const tx = gsap.quickTo(badge, 'rotateY', { duration: .9, ease: 'power3' }), ty = gsap.quickTo(badge, 'rotateX', { duration: .9, ease: 'power3' });
-    $('.hero').addEventListener('pointermove', e => {
-      const nx = e.clientX / innerWidth - .5, ny = e.clientY / innerHeight - .5;
-      tx(nx * 30); ty(-ny * 24);
-      badge.style.setProperty('--gx', `${50 - nx * 80}%`); badge.style.setProperty('--gy', `${40 - ny * 80}%`);
-    });
-  }
+  /* ---------- Hero: scroll-away ---------- */
   gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } })
     .to('.hero__title', { yPercent: -40, opacity: 0, ease: 'none' }, 0)
     .to('.hero__badge', { y: 160, scale: 1.25, ease: 'none' }, 0)
     .to(['.hero__lede', '.hero__actions', '.logotype'], { y: -80, opacity: 0, ease: 'none' }, 0)
-    .to('.aurora', { opacity: .3, ease: 'none' }, 0);
+    .to('.hero__field', { yPercent: 18, ease: 'none' }, 0);
 
   /* ---------- Ticker: endless, speeds up with scroll velocity ---------- */
   const tickerTrack = $('[data-ticker]');

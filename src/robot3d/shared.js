@@ -1,5 +1,5 @@
 /* Shared robot model: geometry, assembly stages and the bumper number texture.
-   Used by robot3d.jsx (Robot 001 section) and hero3d.jsx (homepage hero designs). */
+   Used by robot3d.jsx (Robot 001 section) and hero3d.jsx (opening screen and hero design pages). */
 import { BoxGeometry, CylinderGeometry, PlaneGeometry, EdgesGeometry, CanvasTexture, SRGBColorSpace } from 'three';
 
 /* ---------- geometry, built once ---------- */

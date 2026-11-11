@@ -12,7 +12,7 @@ import { createRoot, extend, invalidate, useFrame, useThree } from '@react-three
 import {
   Group, Mesh, LineSegments, InstancedMesh, AmbientLight, DirectionalLight,
   MeshStandardMaterial, MeshBasicMaterial, LineBasicMaterial, CylinderGeometry, TorusGeometry, BoxGeometry,
-  TextureLoader, SRGBColorSpace, NoToneMapping, Vector3, Color, Object3D, Plane, Raycaster, Vector2,
+  TextureLoader, SRGBColorSpace, Fog, NoToneMapping, Vector3, Color, Object3D, Plane, Raycaster, Vector2,
 } from 'three';
 import { useLayoutEffect, useMemo, useRef } from 'react';
 import { G, PARTS, edgesOf, numberTexture } from './shared.js';
@@ -122,11 +122,17 @@ function CoinScene({ T, I, opts }) {
   useFrame((_, delta) => {
     const k = I.reduce ? 1 : clamp01((performance.now() - I.t0 - 150) / 1600), e = expo(k);
     const moving = turn(I, delta, 0);
-    const sway = I.reduce ? 0 : Math.sin((performance.now() - I.t0) / 1600) * 0.16;
-    g.current.rotation.y = (1 - e) * -Math.PI * 3 + I.rotY + sway * e;
-    g.current.rotation.x = (1 - e) * 0.6 + Math.cos((performance.now() - I.t0) / 2100) * 0.05 * e * (I.reduce ? 0 : 1);
+    const idle = !(I.reduce || opts.still);
+    const sway = idle ? Math.sin((performance.now() - I.t0) / 1600) * 0.16 : 0;
+    // look toward the pointer (opts.tilt), eased so it settles and stops drawing
+    const inside = Math.abs(I.px) < 4 && Math.abs(I.py) < 4;
+    const tx = opts.tilt && inside ? Math.max(-1, Math.min(1, I.px)) * 0.42 : 0, ty = opts.tilt && inside ? Math.max(-1, Math.min(1, I.py)) * -0.32 : 0;
+    const a = 1 - Math.exp(-delta * 6); I.lx = (I.lx || 0) + (tx - (I.lx || 0)) * a; I.ly = (I.ly || 0) + (ty - (I.ly || 0)) * a;
+    const easing = Math.abs(tx - I.lx) > 0.001 || Math.abs(ty - I.ly) > 0.001;
+    g.current.rotation.y = (1 - e) * -Math.PI * 3 + I.rotY + sway * e + I.lx;
+    g.current.rotation.x = (1 - e) * 0.6 + (idle ? Math.cos((performance.now() - I.t0) / 2100) * 0.05 * e : 0) + I.ly;
     g.current.scale.setScalar(0.7 + 0.3 * e);
-    if (I.onScreen && !I.reduce) invalidate(); else if (moving || k < 1) invalidate();
+    if (I.onScreen && (idle || moving || easing || k < 1)) invalidate();
   });
   return (
     <>
@@ -144,18 +150,20 @@ function CoinScene({ T, I, opts }) {
 
 /* ---------- RANKS (rank and file) ---------- */
 const RANK_THEMES = {
+  field: { unit: '#1c1924', hot: '#8B3DFF', lead: '#E9B949', amb: 0.55, key: 2.4 },
   paper: { unit: '#17141d', hot: '#6B2FD6', lead: '#E9B949', amb: 1.0, key: 1.7 },
   night: { unit: '#2a2631', hot: '#8B3DFF', lead: '#E9B949', amb: 0.7, key: 2.2 },
 };
 function RanksScene({ T, I, opts }) {
   const mesh = useRef(), size = useThree(s => s.size), camera = useThree(s => s.camera);
-  const cols = opts.cols || 26, rows = opts.rows || 12, N = cols * rows, gap = 3.2;
+  const cols = opts.cols || 26, rows = opts.rows || 12, N = cols * rows, gap = opts.gap || 3.2, zShift = opts.zShift || 0;
+  const scene = useThree(s => s.scene);
   const data = useMemo(() => {
     const rnd = (a, b) => a + Math.random() * (b - a);
     return Array.from({ length: N }, (_, i) => {
       const c = i % cols, r = Math.floor(i / cols);
       return {
-        x: (c - (cols - 1) / 2) * gap, z: (r - (rows - 1) / 2) * gap,
+        x: (c - (cols - 1) / 2) * gap, z: (r - (rows - 1) / 2) * gap + zShift,
         sx: rnd(-50, 50), sy: rnd(18, 60), sz: rnd(-40, 30), rx: rnd(-3, 3), ry: rnd(-3, 3),
         delay: r * 0.07 + c * 0.012 + rnd(0, 0.08), h: 0,
       };
@@ -166,7 +174,15 @@ function RanksScene({ T, I, opts }) {
   const geo = useMemo(() => new BoxGeometry(1.7, 1.1, 1.7), []);
   const mat = useMemo(() => new MeshStandardMaterial({ roughness: 0.6, metalness: 0.1 }), []);
   useLayoutEffect(() => {
-    camera.position.set(0, 52, 46); camera.lookAt(0, 0, 3); camera.fov = size.width < 700 ? 52 : 34; camera.updateProjectionMatrix(); invalidate();
+    if (opts.view === 'floor') {
+      // low camera over a field that runs to the horizon; fog (the page colour) swallows the far ranks
+      const narrow = size.width < 700;
+      camera.position.set(0, narrow ? 20 : 16, narrow ? 26 : 40); camera.lookAt(0, 0, narrow ? -44 : -30); camera.fov = narrow ? 58 : 40;
+      scene.fog = new Fog(opts.fog || '#000000', opts.fogNear || 40, opts.fogFar || 128);
+    } else {
+      camera.position.set(0, 52, 46); camera.lookAt(0, 0, 3); camera.fov = size.width < 700 ? 52 : 34;
+    }
+    camera.updateProjectionMatrix(); invalidate();
   }, [size.width, size.height]);
   useFrame(() => {
     const t = (performance.now() - I.t0) / 1000 - 0.2;
@@ -177,7 +193,7 @@ function RanksScene({ T, I, opts }) {
       const k = I.reduce ? 1 : clamp01((t - d.delay) / 0.9), e = expo(k);
       if (k < 1) busy = true;
       const dist = Math.hypot(d.x - tmp.hit.x, d.z - tmp.hit.z);
-      const target = Math.max(0, 1 - dist / 9) * 2.2;
+      const reach = opts.reach || 9, target = Math.max(0, 1 - dist / reach) * (opts.lift || 2.2);
       d.h += (target - d.h) * 0.16; if (Math.abs(target - d.h) > 0.01) busy = true;
       tmp.o.position.set(d.sx + (d.x - d.sx) * e, d.sy * (1 - e) + 0.55 + d.h, d.sz + (d.z - d.sz) * e);
       tmp.o.rotation.set(d.rx * (1 - e), d.ry * (1 - e), 0);
@@ -225,18 +241,20 @@ window.Hero3D = {
     new ResizeObserver(size).observe(container);
     new IntersectionObserver(([en]) => { I.onScreen = en.isIntersecting; if (I.onScreen) invalidate(); }).observe(container);
     // pointer: drag to turn (robot, coin); position for the ripple (ranks)
-    const target = opts.pointerTarget || container;
+    const target = container, wide = opts.pointerTarget || container;
     let lastX = 0, lastT = 0;
     target.addEventListener('pointerdown', e => { if (scene === 'ranks') return; I.drag = true; lastX = e.clientX; lastT = e.timeStamp; target.setPointerCapture?.(e.pointerId); invalidate(); });
-    target.addEventListener('pointermove', e => {
+    const onMove = e => {
       const r = container.getBoundingClientRect();
       I.px = ((e.clientX - r.left) / r.width) * 2 - 1; I.py = -((e.clientY - r.top) / r.height) * 2 + 1;
       if (I.drag) { const dx = e.clientX - lastX, dt = Math.max(1, e.timeStamp - lastT) / 1000; I.rotY += dx * 0.01; I.vx = (dx * 0.01) / dt; lastX = e.clientX; lastT = e.timeStamp; }
       invalidate();
-    });
+    };
+    wide.addEventListener('pointermove', onMove);
+    if (wide !== target) target.addEventListener('pointermove', onMove);
     const up = () => { I.drag = false; invalidate(); };
     target.addEventListener('pointerup', up); target.addEventListener('pointercancel', up);
-    target.addEventListener('pointerleave', () => { I.px = 9; I.py = 9; invalidate(); });
+    wide.addEventListener('pointerleave', () => { I.px = 9; I.py = 9; invalidate(); });
     document.fonts?.ready.then(() => invalidate());
     return true;
   },

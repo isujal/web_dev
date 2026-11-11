@@ -1,11 +1,9 @@
 {
   "name": "ducktators-robot3d",
   "private": true,
-  "description": "React Three Fiber islands: robot3d (Robot 001 section) and hero3d (homepage hero). Build: npm run build (writes ../../js/robot3d.js and ../../js/hero3d.js).",
+  "description": "React Three Fiber islands: robot3d (Robot 001 section) and hero3d (opening screen and hero design options). Build: npm run build (writes ../../js/islands.js).",
   "scripts": {
-    "build": "npm run build:robot && npm run build:hero",
-    "build:robot": "esbuild robot3d.jsx --bundle --minify --format=iife --jsx=automatic --target=es2020 --legal-comments=none --define:process.env.NODE_ENV='\"production\"' --outfile=../../js/robot3d.js",
-    "build:hero": "esbuild hero3d.jsx --bundle --minify --format=iife --jsx=automatic --target=es2020 --legal-comments=none --define:process.env.NODE_ENV='\"production\"' --outfile=../../js/hero3d.js"
+    "build": "esbuild islands.jsx --bundle --minify --format=iife --jsx=automatic --target=es2020 --legal-comments=none --define:process.env.NODE_ENV='\"production\"' --outfile=../../js/islands.js"
   },
   "dependencies": {
     "@react-three/fiber": "9.8.2",

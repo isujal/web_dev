@@ -182,24 +182,22 @@ html:not(.js) .loader, .no-anim .loader, .loader.is-done { display: none; }
    HERO
    ========================================================= */
 .hero { position: relative; min-height: 100svh; overflow: hidden; display: grid; place-items: center; background: #000; }
-.aurora { position: absolute; inset: 0; width: 100%; height: 100%; }
-.hero__grid { position: absolute; inset: 0; pointer-events: none;
-  background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
-  background-size: 64px 64px; -webkit-mask: radial-gradient(70% 60% at 50% 45%, #000, transparent); mask: radial-gradient(70% 60% at 50% 45%, #000, transparent); }
+/* the field: a React Three Fiber scene of units falling into rank and file (src/robot3d/hero3d.jsx).
+   Flat black until it loads; nothing else paints behind the badge */
+.hero__field { position: absolute; inset: 0; z-index: 0; opacity: 0; transition: opacity 1.2s var(--ease); }
+.hero__field.is-on { opacity: 1; }
+.hero__field .hero3d { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .hero__inner { position: relative; z-index: 2; width: min(100% - var(--gutter) * 2, 1200px); padding: 120px 0 130px; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .logotype { margin: 0 0 28px; font: 400 clamp(.62rem, .9vw, .78rem)/1 var(--f-logo); letter-spacing: .34em; text-transform: uppercase; color: rgba(255,255,255,.75); }
 .hero__title { margin: 0; font: 800 clamp(3.4rem, 11.5vw, 10.5rem)/.9 var(--f); letter-spacing: -.06em; }
 .hero__title .line { display: block; overflow: hidden; padding: 0 .04em .06em; }
 .hero__title .line > span { display: inline-block; }
 .hero__badge { position: relative; width: clamp(150px, 20vw, 250px); aspect-ratio: 1; margin: clamp(-34px, -2.4vw, -18px) 0 30px; transform-style: preserve-3d; will-change: transform; z-index: 3; }
-.hero__badge img { position: relative; z-index: 2; width: 100%; height: 100%; border-radius: 50%; box-shadow: 0 0 0 3px #fff, 0 30px 80px -10px rgba(139,61,255,.6), 0 50px 90px -30px rgba(0,0,0,.9); }
-.hero__ring { position: absolute; inset: -14px; border-radius: 50%; z-index: 1;
-  background: conic-gradient(from 0deg, var(--purple), transparent 25%, var(--brass) 45%, transparent 65%, #fff 85%, var(--purple));
-  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px)); mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px));
-  animation: spin 7s linear infinite; }
-.hero__halo { position: absolute; inset: -40%; z-index: 0; border-radius: 50%; background: radial-gradient(circle, rgba(139,61,255,.55), rgba(91,71,255,.18) 40%, transparent 68%); filter: blur(10px); }
-.hero__glare { position: absolute; inset: 0; z-index: 3; border-radius: 50%; pointer-events: none; mix-blend-mode: soft-light;
-  background: radial-gradient(circle at var(--gx, 30%) var(--gy, 25%), rgba(255,255,255,.75), transparent 45%); }
+.hero__badge img { position: relative; z-index: 2; width: 100%; height: 100%; border-radius: 50%; box-shadow: 0 0 0 3px #fff, 0 30px 60px -24px rgba(0,0,0,.9); }
+/* the badge as a 3D medallion: the flat image stays underneath as the fallback */
+.hero__badge .hero3d { position: absolute; inset: -9%; width: 118%; height: 118%; z-index: 3; cursor: grab; touch-action: pan-y; }
+.hero__badge .hero3d:active { cursor: grabbing; }
+.hero__badge.is-3d img { visibility: hidden; }
 @keyframes spin { to { transform: rotate(1turn); } }
 .hero__lede { max-width: 34ch; margin: 0 0 32px; font-size: clamp(1.1rem, .6vw + 1rem, 1.4rem); line-height: 1.4; color: rgba(255,255,255,.78); font-weight: 450; letter-spacing: -.02em; text-wrap: balance; }
 .hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
@@ -727,9 +725,6 @@ a, button, summary, label, select, input, textarea { touch-action: manipulation;
 .motion-btn .i-play { display: none; fill: currentColor; stroke: none; }
 .motion-btn[aria-pressed="true"] .i-pause { display: none; }
 .motion-btn[aria-pressed="true"] .i-play { display: inline; }
-.motion-btn--hero { position: absolute; z-index: 4; right: max(var(--gutter), calc((100% - var(--max)) / 2)); bottom: 28px; opacity: .7; }
-.motion-btn--hero:hover, .motion-btn--hero:focus-visible { opacity: 1; }
-.hero.is-still *, .hero.is-still *::before, .hero.is-still *::after { animation-play-state: paused !important; }
 
 /* ---------- Vanta NET behind "Get in touch" (desktop only) ---------- */
 .contact { position: relative; overflow: hidden; }
@@ -742,8 +737,6 @@ a, button, summary, label, select, input, textarea { touch-action: manipulation;
 .motion-btn--net { position: absolute; z-index: 3; left: max(var(--gutter), calc((100% - var(--max)) / 2)); bottom: 28px; opacity: .7; }
 .motion-btn--net:hover, .motion-btn--net:focus-visible { opacity: 1; }
 @media (max-width: 640px) {
-  .motion-btn--hero { width: 44px; padding: 0; justify-content: center; bottom: 20px; }
-  .motion-btn--hero span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 }
 
 /* ---------- Latest impact report link (Impact section, light) ---------- */
@@ -816,7 +809,6 @@ html { overflow-x: clip; }
 .hero__actions .btn--glass { background: linear-gradient(150deg, rgba(30,16,52,.72), rgba(14,8,26,.62)); }
 /* closing action in Get in touch */
 .contact__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
-@media (min-width: 641px) { .motion-btn--hero { top: 96px; bottom: auto; } }
 /* hero dates stay readable over the moving glow */
 .hero__meta { color: rgba(255,255,255,.9); text-shadow: 0 1px 10px rgba(0,0,0,.7); }
 /* season card numbers sit on photos and art: give them a small dark plate */

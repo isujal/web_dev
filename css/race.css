@@ -1,6 +1,5 @@
 /* The Ducktators · race accents
-   Kept from the motorsport experiment: the opening screen's speed lines and italic condensed
-   headline, and the chequered flag on a carbon-fibre footer. Buttons and the ticker keep
+   Kept from the motorsport experiment: the opening screen's italic condensed headline, and the chequered flag on a carbon-fibre footer. Buttons and the ticker keep
    the main site style. Scoped to .hero and .footer so the rest of the site is unchanged. */
 
 :root {
@@ -16,20 +15,6 @@
   font-size: clamp(3.8rem, min(13vw, 19vh), 12rem); line-height: .84;
 }
 .hero__title .line { padding: 0 .08em .04em; }
-.hero__grid { background-size: 80px 80px; transform: perspective(600px) rotateX(58deg) translateY(28%) scale(1.6); transform-origin: 50% 100%; opacity: .7; }
-
-.speed { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 1; }
-.speed i { position: absolute; left: -40%; height: 2px; width: 34vw; border-radius: 2px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.55)); animation: streak 2.6s linear infinite; opacity: .6; }
-.speed i:nth-child(1) { top: 18%; animation-delay: 0s; }
-.speed i:nth-child(2) { top: 31%; animation-delay: .9s; width: 22vw; background: linear-gradient(90deg, transparent, rgba(139,61,255,.9)); }
-.speed i:nth-child(3) { top: 44%; animation-delay: 1.6s; }
-.speed i:nth-child(4) { top: 58%; animation-delay: .4s; width: 28vw; background: linear-gradient(90deg, transparent, rgba(233,185,73,.8)); }
-.speed i:nth-child(5) { top: 71%; animation-delay: 2.1s; }
-.speed i:nth-child(6) { top: 83%; animation-delay: 1.2s; width: 40vw; background: linear-gradient(90deg, transparent, rgba(139,61,255,.8)); }
-.speed i:nth-child(7) { top: 24%; animation-delay: 1.9s; width: 18vw; }
-.speed i:nth-child(8) { top: 65%; animation-delay: .6s; width: 24vw; }
-@keyframes streak { to { transform: translateX(260vw); } }
-
 .hero__meta { font-family: var(--f-race); font-stretch: 85%; font-style: italic; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
 .hero__meta p { font-size: .76rem; }
 
@@ -51,7 +36,4 @@
 @media (max-width: 640px) {
   .hero__title { font-size: 16vw; }
   .checker { height: 40px; background-size: 20px 20px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .speed { display: none; }
 }
