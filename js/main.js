@@ -452,7 +452,7 @@ const SITE = {
     const tl = gsap.timeline({ defaults: { ease: EASE } });
     tl.add(scramble($('[data-scramble]'), 1.1), .1)
       .from('.hero__title .line > span', { yPercent: 115, rotate: 4, duration: 1.4, stagger: .1 }, .15)
-      .from('.hero__badge', { scale: .4, opacity: 0, rotateY: -70, rotateX: 20, filter: 'blur(14px)', duration: 1.8 }, .35)
+      .from('.hero__badge', { opacity: 0, duration: 1.2, ease: 'power2.out' }, .35) // fades only: the badge never moves or scales
       .from(['.hero__lede', '.hero__actions'], { y: 30, opacity: 0, duration: 1.2, stagger: .1 }, .8)
       .from('.hero__meta p', { y: 20, opacity: 0, duration: 1, stagger: .1 }, 1)
       .from('.ticker', { yPercent: 120, rotate: 0, duration: 1.4 }, .9);
@@ -464,7 +464,7 @@ const SITE = {
   /* ---------- Hero: scroll-away ---------- */
   gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } })
     .to('.hero__title', { yPercent: -40, opacity: 0, ease: 'none' }, 0)
-    .to('.hero__badge', { y: 160, scale: 1.25, ease: 'none' }, 0)
+    .to('.hero__badge', { opacity: 0, ease: 'none' }, 0)
     .to(['.hero__lede', '.hero__actions', '.logotype'], { y: -80, opacity: 0, ease: 'none' }, 0);
 
   /* ---------- Ticker: endless, speeds up with scroll velocity ---------- */

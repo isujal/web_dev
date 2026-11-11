@@ -403,7 +403,7 @@ function OrbsScene({ T, I, opts }) {
   const orbs = useMemo(() => {
     const geo = new SphereGeometry(1, 96, 64);
     // [x, y, z, radius, delay]  — positions in a 100-unit-wide frame at z = 0
-    return [[-74, -30, -10, 34, 0], [84, 18, -18, 38, 0.12], [50, -52, 6, 15, 0.24]]
+    return [[-62, -24, -10, 34, 0], [64, 22, -18, 38, 0.12], [40, -46, 6, 18, 0.24], [-46, 40, -26, 22, 0.3]]
       .map(([x, y, z, r, d]) => ({ x, y, z, r, d, geo, mat: orbMaterial(T.base, T.rim, T.key) }));
   }, []);
   const refs = useRef([]);
@@ -442,7 +442,9 @@ window.Hero3D = {
     container.prepend(canvas);
     const root = createRoot(canvas);
     const size = () => {
-      const r = container.getBoundingClientRect();
+      // layout size, not getBoundingClientRect: a CSS transform on an ancestor (an intro scale, a scroll
+      // effect) must never shrink or shift the canvas, or the scene lands somewhere new on each load
+      const r = { width: container.offsetWidth, height: container.offsetHeight };
       root.configure({
         size: { width: r.width, height: r.height, top: 0, left: 0 },
         dpr: Math.min(window.devicePixelRatio || 1, 2), frameloop: 'demand', flat: true,
