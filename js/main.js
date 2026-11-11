@@ -387,16 +387,16 @@ const SITE = {
     s.onload = ok; s.onerror = fail; document.head.append(s);
   }));
 
-  /* the opening screen: units fall into rank and file on a dark field; the badge becomes a struck
-     medallion that turns toward the pointer and spins when dragged. Loaded after first paint. */
-  const heroEl = $('.hero'), field = $('[data-hero-field]'), badgeEl = $('[data-hero-badge]');
-  if (can3D && field) {
+  /* the opening screen: the badge becomes a struck medallion with a liquid, iridescent ring in orbit
+     around it. Both lean toward the pointer and settle; drag the badge to spin it. Plain black
+     everywhere else. Loaded after first paint. */
+  const heroEl = $('.hero'), badgeEl = $('[data-hero-badge]');
+  if (can3D && badgeEl) {
     const start = () => loadIslands().then(() => {
       if (!window.Hero3D) return;
-      window.Hero3D.mount(field, { scene: 'ranks', theme: 'field', view: 'floor', cols: 44, rows: 34, gap: 3.4, zShift: -42, reach: 11, lift: 1.5, fog: '#000000', fogNear: 50, fogFar: 150, reduce, pointerTarget: heroEl });
-      requestAnimationFrame(() => field.classList.add('is-on'));
-      const img = badgeEl.querySelector('img');
-      window.Hero3D.mount(badgeEl, { scene: 'coin', theme: 'night', still: true, tilt: !reduce, reduce, pointerTarget: heroEl, badge: img.currentSrc || img.src, label: img.alt });
+      const img = badgeEl.querySelector('img'), orbit = document.createElement('div');
+      orbit.className = 'hero__orbit'; badgeEl.append(orbit);
+      window.Hero3D.mount(orbit, { scene: 'coin', theme: 'night', halo: true, still: true, tilt: !reduce, reduce, pointerTarget: heroEl, dragTarget: badgeEl, badge: img.currentSrc || img.src, label: img.alt });
       badgeEl.classList.add('is-3d');
     }).catch(() => {});
     if (document.readyState === 'complete') setTimeout(start, 150); else addEventListener('load', () => setTimeout(start, 150), { once: true });
@@ -461,8 +461,7 @@ const SITE = {
   gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } })
     .to('.hero__title', { yPercent: -40, opacity: 0, ease: 'none' }, 0)
     .to('.hero__badge', { y: 160, scale: 1.25, ease: 'none' }, 0)
-    .to(['.hero__lede', '.hero__actions', '.logotype'], { y: -80, opacity: 0, ease: 'none' }, 0)
-    .to('.hero__field', { yPercent: 18, ease: 'none' }, 0);
+    .to(['.hero__lede', '.hero__actions', '.logotype'], { y: -80, opacity: 0, ease: 'none' }, 0);
 
   /* ---------- Ticker: endless, speeds up with scroll velocity ---------- */
   const tickerTrack = $('[data-ticker]');
