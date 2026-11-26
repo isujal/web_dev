@@ -1,0 +1,633 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-07T11:31:39+00:00",
+  "title": "Design System: The Ducktators · FRC 11745",
+  "extensions": {
+    "colorMeta": {
+      "electric": {
+        "role": "primary",
+        "displayName": "Electric Purple",
+        "canonical": "#8B3DFF",
+        "tonalRamp": [
+          "#0F0128",
+          "#2D025E",
+          "#4E019C",
+          "#6E21D2",
+          "#8E49FE",
+          "#A786F9",
+          "#C8B8FC",
+          "#EFEBFF"
+        ],
+        "oklch": "oklch(57.5% 0.263 294.9)",
+        "source": "design bible (pinned)"
+      },
+      "ducktator": {
+        "role": "primary",
+        "displayName": "Ducktator Purple",
+        "canonical": "#5E2A84",
+        "tonalRamp": [
+          "#130122",
+          "#301346",
+          "#502B6D",
+          "#724597",
+          "#9464BD",
+          "#B28AD8",
+          "#D5B4F5",
+          "#F4EAFE"
+        ],
+        "oklch": "oklch(40.3% 0.147 307.6)",
+        "source": "design bible (pinned)"
+      },
+      "violet": {
+        "role": "secondary",
+        "displayName": "Blue-Violet",
+        "canonical": "#5B47FF",
+        "tonalRamp": [
+          "#08002F",
+          "#1D0769",
+          "#331CA4",
+          "#4C38DC",
+          "#6762FD",
+          "#8B93F9",
+          "#B7BFFC",
+          "#EAEDFF"
+        ],
+        "oklch": "oklch(54.4% 0.257 278.4)",
+        "source": "design bible (pinned)"
+      },
+      "lavender": {
+        "role": "tertiary",
+        "displayName": "Lavender",
+        "canonical": "#C9A6FF",
+        "tonalRamp": [
+          "#100321",
+          "#2C1844",
+          "#4A316B",
+          "#6A4B94",
+          "#8B6AB9",
+          "#AA8FD5",
+          "#CEB8F2",
+          "#F1EBFE"
+        ],
+        "oklch": "oklch(78.9% 0.128 301.6)",
+        "source": "design bible (pinned)"
+      },
+      "mist": {
+        "role": "tertiary",
+        "displayName": "Mist",
+        "canonical": "#D9CDF2",
+        "tonalRamp": [
+          "#0D0914",
+          "#262032",
+          "#433B52",
+          "#625875",
+          "#827797",
+          "#A299B5",
+          "#C7C0D8",
+          "#F1EBFE"
+        ],
+        "oklch": "oklch(87.0% 0.052 300.1)",
+        "source": "design bible (pinned)"
+      },
+      "night": {
+        "role": "neutral",
+        "displayName": "Night",
+        "canonical": "#22083E",
+        "tonalRamp": [
+          "#0F061C",
+          "#291C3C",
+          "#463661",
+          "#655287",
+          "#8671AB",
+          "#A694C8",
+          "#CABBE7",
+          "#F1EBFE"
+        ],
+        "oklch": "oklch(21.7% 0.095 300.3)",
+        "source": "design bible (pinned)"
+      },
+      "charcoal": {
+        "role": "neutral",
+        "displayName": "Charcoal",
+        "canonical": "#131313",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#242424",
+          "#404040",
+          "#5D5D5D",
+          "#7D7D7D",
+          "#9E9E9E",
+          "#C4C4C4",
+          "#EEEEEE"
+        ],
+        "oklch": "oklch(18.7% 0.000 89.9)",
+        "source": "design bible (pinned)"
+      },
+      "stage-0": {
+        "role": "neutral",
+        "displayName": "Stage 0 (page)",
+        "canonical": "#05020A",
+        "tonalRamp": [
+          "#0C0A10",
+          "#26222B",
+          "#423D49",
+          "#615A69",
+          "#817A8A",
+          "#A19BAA",
+          "#C7C1CE",
+          "#F0ECF6"
+        ],
+        "oklch": "oklch(10.2% 0.028 304.4)",
+        "source": "site extension"
+      },
+      "stage-1": {
+        "role": "neutral",
+        "displayName": "Stage 1 (reel band)",
+        "canonical": "#0B0614",
+        "tonalRamp": [
+          "#0C0A11",
+          "#25222C",
+          "#423D4B",
+          "#605A6C",
+          "#80798D",
+          "#A19BAD",
+          "#C6C1D0",
+          "#F0ECF8"
+        ],
+        "oklch": "oklch(13.9% 0.032 300.0)",
+        "source": "site extension"
+      },
+      "stage-2": {
+        "role": "neutral",
+        "displayName": "Stage 2 (cards)",
+        "canonical": "#140A24",
+        "tonalRamp": [
+          "#0D0914",
+          "#262032",
+          "#423B52",
+          "#615875",
+          "#817797",
+          "#A199B6",
+          "#C7C0D8",
+          "#F0EBFE"
+        ],
+        "oklch": "oklch(17.6% 0.052 298.6)",
+        "source": "site extension"
+      },
+      "stage-3": {
+        "role": "neutral",
+        "displayName": "Stage 3",
+        "canonical": "#1D0F33",
+        "tonalRamp": [
+          "#0D0817",
+          "#271F36",
+          "#433A58",
+          "#62567C",
+          "#82759F",
+          "#A297BD",
+          "#C7BEDE",
+          "#F0EBFE"
+        ],
+        "oklch": "oklch(21.1% 0.068 298.2)",
+        "source": "site extension"
+      },
+      "projector": {
+        "role": "neutral",
+        "displayName": "Projector White",
+        "canonical": "#F6F1FF",
+        "tonalRamp": [
+          "#0C0A0F",
+          "#252329",
+          "#413E46",
+          "#5F5B66",
+          "#7F7B87",
+          "#A09CA7",
+          "#C5C2CB",
+          "#EFEDF4"
+        ],
+        "oklch": "oklch(96.6% 0.019 302.2)",
+        "source": "site extension"
+      },
+      "spill": {
+        "role": "tertiary",
+        "displayName": "Ceiling Spill",
+        "canonical": "#A064FF",
+        "tonalRamp": [
+          "#100127",
+          "#2F015C",
+          "#4E1B8B",
+          "#6E34BD",
+          "#8F56E7",
+          "#AD82FE",
+          "#CBB7FB",
+          "#F0EBFE"
+        ],
+        "oklch": "oklch(64.4% 0.221 297.7)",
+        "source": "site extension"
+      },
+      "specular": {
+        "role": "tertiary",
+        "displayName": "Glass Specular",
+        "canonical": "#E8D6FF",
+        "tonalRamp": [
+          "#0E0815",
+          "#281F32",
+          "#453A53",
+          "#655676",
+          "#857598",
+          "#A597B7",
+          "#CABED9",
+          "#F3EAFE"
+        ],
+        "oklch": "oklch(90.3% 0.058 305.1)",
+        "source": "site extension"
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Body Text",
+        "canonical": "#E4DAF7",
+        "tonalRamp": [
+          "#0D0912",
+          "#26212F",
+          "#423C4E",
+          "#615970",
+          "#817891",
+          "#A29AB0",
+          "#C7C0D3",
+          "#F1ECFA"
+        ],
+        "oklch": "oklch(90.5% 0.041 301.3)",
+        "source": "site extension"
+      },
+      "text-dim": {
+        "role": "neutral",
+        "displayName": "Text Dim",
+        "canonical": "#A898C6",
+        "tonalRamp": [
+          "#0E0817",
+          "#271F36",
+          "#443957",
+          "#63567C",
+          "#83759E",
+          "#A497BC",
+          "#C8BEDD",
+          "#F1EBFE"
+        ],
+        "oklch": "oklch(71.0% 0.068 300.6)",
+        "source": "site extension"
+      },
+      "ok": {
+        "role": "status",
+        "displayName": "Signal Green",
+        "canonical": "#3EE08A",
+        "tonalRamp": [
+          "#010F05",
+          "#012D16",
+          "#004D29",
+          "#04703F",
+          "#079555",
+          "#41B875",
+          "#82DBA2",
+          "#C8FED9"
+        ],
+        "oklch": "oklch(80.4% 0.180 154.9)",
+        "source": "site extension"
+      },
+      "err": {
+        "role": "status",
+        "displayName": "Signal Coral",
+        "canonical": "#FF7A90",
+        "tonalRamp": [
+          "#1D0106",
+          "#490117",
+          "#73172E",
+          "#9F2E48",
+          "#C74E65",
+          "#E37989",
+          "#FDAAB4",
+          "#FFE8EA"
+        ],
+        "oklch": "oklch(74.0% 0.163 11.6)",
+        "source": "site extension"
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(201, 166, 255, .16)",
+        "source": "site extension"
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "canonical": "rgba(201, 166, 255, .32)",
+        "source": "site extension"
+      },
+      "glass-fill": {
+        "role": "neutral",
+        "displayName": "Glass Tint",
+        "canonical": "rgba(14, 8, 26, .46)",
+        "source": "site extension"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Section headlines, Projector White with purple text glow."
+      },
+      "title-card": {
+        "displayName": "Title Card",
+        "purpose": "Team name in hero and credits lead; uppercase, optical-centre padding."
+      },
+      "giant": {
+        "displayName": "Giant",
+        "purpose": "Outline 11745 numerals behind the hero only."
+      },
+      "script": {
+        "displayName": "Script",
+        "purpose": "Narration paragraphs that brighten word by word on scroll."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Division names in the roll-call."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Frame, officer and card titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running copy, 60-70ch."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Section intros in Text Dim, 56ch."
+      },
+      "label-wide": {
+        "displayName": "Label Wide",
+        "purpose": "Credit-style uppercase labels: ranks, countdown, spec terms, stamps."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Dates, amounts, counts, team number."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Timecode, tags, placeholders, utility links."
+      }
+    },
+    "glass": {
+      "name": "liquid-glass",
+      "fill": "linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.02) 38%, rgba(139,61,255,.06)), rgba(14, 8, 26, .46)",
+      "backdropFilter": "blur(16px) saturate(170%)",
+      "backdropFilterLiquid": "blur(4px) url(#liquid) saturate(180%)",
+      "liquidFilter": "SVG feTurbulence fractalNoise baseFrequency 0.008 0.012, numOctaves 2, seed 11 -> feDisplacementMap scale 38; enabled only on Chromium with a fine pointer and no reduced motion (html.liquid)",
+      "edge": "1px masked gradient border: linear-gradient(140deg, rgba(232,214,255,.55), rgba(255,255,255,.04) 40%, rgba(91,71,255,.35))",
+      "specular": "radial-gradient(240px circle at var(--mx) var(--my), rgba(232,214,255,.18), transparent 60%); follows pointer; opacity var(--spec, .7), 1 on hover",
+      "navVariant": "rgba(10,5,20,.35) fill, blur(18px) saturate(180%) (liquid: blur(6px) url(#liquid) saturate(190%))"
+    },
+    "shadows": [
+      {
+        "name": "glass-plate",
+        "value": "inset 0 1px 0 rgba(255,255,255,.22), inset 0 -1px 0 rgba(139,61,255,.25), inset 1px 0 0 rgba(255,255,255,.06), 0 18px 40px -18px rgba(0,0,0,.8)",
+        "purpose": "All liquid-glass plates."
+      },
+      {
+        "name": "electric-glow",
+        "value": "0 10px 30px -8px rgba(139,61,255,.75), inset 0 1px 0 rgba(255,255,255,.35)",
+        "purpose": "Primary button at rest."
+      },
+      {
+        "name": "electric-glow-hover",
+        "value": "0 16px 40px -10px rgba(139,61,255,.9), inset 0 1px 0 rgba(255,255,255,.45)",
+        "purpose": "Primary button hover."
+      },
+      {
+        "name": "nav",
+        "value": "inset 0 1px 0 rgba(255,255,255,.14), inset 0 0 0 1px rgba(201,166,255,.12), 0 20px 50px -25px #000",
+        "purpose": "Floating nav pill."
+      },
+      {
+        "name": "inset-ring",
+        "value": "inset 0 0 0 1px rgba(201,166,255,.16)",
+        "purpose": "Cards, tags, HUD, needs pills."
+      },
+      {
+        "name": "inset-ring-strong",
+        "value": "inset 0 0 0 1px rgba(201,166,255,.32)",
+        "purpose": "Fields, ghost button, picks, open tiles."
+      },
+      {
+        "name": "focus-halo",
+        "value": "inset 0 0 0 1.5px #8B3DFF, 0 0 0 4px rgba(139,61,255,.22)",
+        "purpose": "Field focus."
+      },
+      {
+        "name": "text-glow-display",
+        "value": "0 0 40px rgba(139,61,255,.35)",
+        "purpose": "Display headlines."
+      },
+      {
+        "name": "text-glow-title-card",
+        "value": "0 0 22px rgba(139,61,255,.95), 0 0 60px rgba(139,61,255,.5)",
+        "purpose": "Hero team name."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.2, .8, .2, 1)",
+        "purpose": "All CSS transitions (buttons .35s, division open .6-.7s, glass specular .4s)."
+      },
+      {
+        "name": "gsap-entrance",
+        "value": "expo.out",
+        "purpose": "Default GSAP entrance easing (intro timeline, divisions, tiers, pipeline)."
+      },
+      {
+        "name": "wipe",
+        "value": "power3.inOut, 0.9-1.2s",
+        "purpose": "Letterbox close, cap-band scaleX wipe, call-sheet clip-path reveal."
+      },
+      {
+        "name": "scrub",
+        "value": "scrub .5-.8 with pin",
+        "purpose": "Hero push-in (+=70%), filmstrip horizontal travel, credits roll."
+      },
+      {
+        "name": "lenis",
+        "value": "duration 1.15, easing t => min(1, 1.001 - 2^(-10t))",
+        "purpose": "Smooth scroll; anchor jumps duration 1.6, offset -70."
+      },
+      {
+        "name": "letter-assemble",
+        "value": "from opacity 0, y 14, scale 1.4, blur 12px; 1.1s, stagger .045",
+        "purpose": "Hero title letters."
+      },
+      {
+        "name": "ambient",
+        "value": "badge ring spin 6s linear; glow pulse 3.2s; grain steps(6) 1.2s; rec blink steps(2) 1.6s",
+        "purpose": "Idle life; all disabled under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tablet",
+        "value": "1020px"
+      },
+      {
+        "name": "phone",
+        "value": "640px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main action (Enlist, Back the regiment).",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Enlist</button>",
+      "css": ".ds-btn{--electric:#8B3DFF;--violet:#5B47FF;--lavender:#C9A6FF;--projector:#F6F1FF;--text:#E4DAF7;--text-dim:#A898C6;--line:rgba(201,166,255,.16);--line-strong:rgba(201,166,255,.32);--ease:cubic-bezier(.2,.8,.2,1);display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:999px;border:0;cursor:pointer;font:600 .98rem/1 Outfit,system-ui,sans-serif;letter-spacing:.01em;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}.ds-btn-primary{color:#fff;background:linear-gradient(120deg,var(--electric),var(--violet));box-shadow:0 10px 30px -8px rgba(139,61,255,.75),inset 0 1px 0 rgba(255,255,255,.35)}.ds-btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px -10px rgba(139,61,255,.9),inset 0 1px 0 rgba(255,255,255,.45)}.ds-btn-primary:active{transform:scale(.98)}.ds-btn:focus-visible{outline:2px solid var(--lavender);outline-offset:3px}"
+    },
+    {
+      "name": "Glass Button",
+      "kind": "button",
+      "refersTo": "button-glass",
+      "description": "Secondary action on stage backgrounds.",
+      "html": "<button class=\"ds-btn-glass\">Back the regiment</button>",
+      "css": ".ds-btn-glass{--electric:#8B3DFF;--violet:#5B47FF;--lavender:#C9A6FF;--projector:#F6F1FF;--text:#E4DAF7;--text-dim:#A898C6;--line:rgba(201,166,255,.16);--line-strong:rgba(201,166,255,.32);--ease:cubic-bezier(.2,.8,.2,1);position:relative;display:inline-flex;align-items:center;padding:16px 26px;border-radius:999px;border:0;cursor:pointer;color:var(--projector);font:600 .98rem/1 Outfit,system-ui,sans-serif;background: linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.02) 38%, rgba(139,61,255,.06)), rgba(14,8,26,.46); backdrop-filter: blur(16px) saturate(170%); box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 -1px 0 rgba(139,61,255,.25), inset 1px 0 0 rgba(255,255,255,.06), 0 18px 40px -18px rgba(0,0,0,.8);transition:transform .35s var(--ease)}.ds-btn-glass::before{content:''; position:absolute; inset:0; border-radius:inherit; padding:1px; pointer-events:none; background: linear-gradient(140deg, rgba(232,214,255,.55), rgba(255,255,255,.04) 40%, rgba(91,71,255,.35)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;}.ds-btn-glass:hover{transform:translateY(-2px)}.ds-btn-glass:focus-visible{outline:2px solid var(--lavender);outline-offset:3px}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Tertiary action; ring only.",
+      "html": "<button class=\"ds-btn-ghost\">Download the deck</button>",
+      "css": ".ds-btn-ghost{--electric:#8B3DFF;--violet:#5B47FF;--lavender:#C9A6FF;--projector:#F6F1FF;--text:#E4DAF7;--text-dim:#A898C6;--line:rgba(201,166,255,.16);--line-strong:rgba(201,166,255,.32);--ease:cubic-bezier(.2,.8,.2,1);padding:16px 26px;border-radius:999px;border:0;cursor:pointer;background:transparent;color:var(--lavender);font:600 .98rem/1 Outfit,system-ui,sans-serif;box-shadow:inset 0 0 0 1px var(--line-strong);transition:box-shadow .35s var(--ease),color .3s}.ds-btn-ghost:hover{box-shadow:inset 0 0 0 1px var(--lavender);color:#fff}.ds-btn-ghost:focus-visible{outline:2px solid var(--lavender);outline-offset:3px}"
+    },
+    {
+      "name": "Nav Pill",
+      "kind": "nav",
+      "refersTo": "nav-pill",
+      "description": "Floating frosted pill with brand, links and small primary CTA.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-name\">The Ducktators <b>11745</b></span><a href=\"#\" class=\"is-active\">Season</a><a href=\"#\">Regiment</a><a href=\"#\">Sponsors</a><a href=\"#\" class=\"ds-nav-cta\">Enlist</a></nav>",
+      "css": ".ds-nav{--electric:#8B3DFF;--violet:#5B47FF;--lavender:#C9A6FF;--projector:#F6F1FF;--text:#E4DAF7;--text-dim:#A898C6;--line:rgba(201,166,255,.16);--line-strong:rgba(201,166,255,.32);--ease:cubic-bezier(.2,.8,.2,1);display:flex;align-items:center;gap:4px;padding:8px 8px 8px 16px;border-radius:999px;background:rgba(10,5,20,.35);backdrop-filter:blur(18px) saturate(180%);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(201,166,255,.12),0 20px 50px -25px #000;font-family:Outfit,system-ui,sans-serif}.ds-nav-name{font:400 .72rem/1 Michroma,Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--projector);margin-right:auto;padding-right:18px}.ds-nav-name b{font:700 .72rem Orbitron,Arial,sans-serif;color:var(--lavender);letter-spacing:.12em}.ds-nav a{padding:10px 14px;border-radius:999px;font-size:.92rem;color:var(--text-dim);text-decoration:none;transition:color .25s,background-color .25s}.ds-nav a:hover,.ds-nav a.is-active{color:#fff;background:rgba(201,166,255,.1)}.ds-nav a.ds-nav-cta{color:#fff;font-weight:600;padding:11px 18px;background:linear-gradient(120deg,var(--electric),var(--violet))}.ds-nav a:focus-visible{outline:2px solid var(--lavender);outline-offset:3px}"
+    },
+    {
+      "name": "Hero Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Glass fact chip with gradient icon tile.",
+      "html": "<div class=\"ds-chip\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z\"/><circle cx=\"12\" cy=\"9.5\" r=\"2.5\"/></svg><span><small>Registered for</small>Istanbul Regional</span></div>",
+      "css": ".ds-chip{--electric:#8B3DFF;--violet:#5B47FF;--lavender:#C9A6FF;--projector:#F6F1FF;--text:#E4DAF7;--text-dim:#A898C6;--line:rgba(201,166,255,.16);--line-strong:rgba(201,166,255,.32);--ease:cubic-bezier(.2,.8,.2,1);position:relative;display:inline-flex;align-items:center;gap:12px;padding:10px 16px 10px 10px;border-radius:14px;color:#fff;font:600 .92rem Outfit,system-ui,sans-serif;background: linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.02) 38%, rgba(139,61,255,.06)), rgba(14,8,26,.46); backdrop-filter: blur(16px) saturate(170%); box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 -1px 0 rgba(139,61,255,.25), inset 1px 0 0 rgba(255,255,255,.06), 0 18px 40px -18px rgba(0,0,0,.8);}.ds-chip svg{width:34px;height:34px;padding:7px;border-radius:10px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;background:linear-gradient(120deg,var(--electric),var(--violet));box-shadow:0 0 16px rgba(139,61,255,.6)}.ds-chip small{display:block;font-weight:400;font-size:.74rem;color:var(--text-dim)}"
+    },
+    {
+      "name": "Status Tags",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Mono status pills on frames and call-sheet rows.",
+      "html": "<span class=\"ds-tag ds-tag-done\">Done</span> <span class=\"ds-tag ds-tag-live\">Now showing</span> <span class=\"ds-tag\">Planned</span>",
+      "css": ".ds-tag{--electric:#8B3DFF;--violet:#5B47FF;--lavender:#C9A6FF;--projector:#F6F1FF;--text:#E4DAF7;--text-dim:#A898C6;--line:rgba(201,166,255,.16);--line-strong:rgba(201,166,255,.32);--ease:cubic-bezier(.2,.8,.2,1);display:inline-block;font:500 .66rem/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;padding:6px 9px;border-radius:999px;color:var(--text-dim);box-shadow:inset 0 0 0 1px var(--line-strong)}.ds-tag-done{color:#BFF5D6;box-shadow:inset 0 0 0 1px rgba(62,224,138,.45)}.ds-tag-live{color:#fff;background:rgba(139,61,255,.3);box-shadow:inset 0 0 0 1px rgba(201,166,255,.5)}"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Enlistment pass text field.",
+      "html": "<label class=\"ds-field\"><span>Your name</span><input placeholder=\"First name\"></label>",
+      "css": ".ds-field{--electric:#8B3DFF;--violet:#5B47FF;--lavender:#C9A6FF;--projector:#F6F1FF;--text:#E4DAF7;--text-dim:#A898C6;--line:rgba(201,166,255,.16);--line-strong:rgba(201,166,255,.32);--ease:cubic-bezier(.2,.8,.2,1);display:grid;gap:7px;font-family:Outfit,system-ui,sans-serif}.ds-field span{font-size:.85rem;color:#D9CDF2}.ds-field input{padding:13px 14px;border-radius:12px;border:0;background:rgba(5,2,10,.55);box-shadow:inset 0 0 0 1px var(--line-strong);color:#fff;caret-color:var(--electric);font:inherit;transition:box-shadow .25s}.ds-field input:hover{box-shadow:inset 0 0 0 1px rgba(201,166,255,.5)}.ds-field input:focus{outline:0;box-shadow:inset 0 0 0 1.5px var(--electric),0 0 0 4px rgba(139,61,255,.22)}"
+    },
+    {
+      "name": "Filmstrip Frame",
+      "kind": "custom",
+      "refersTo": "filmstrip-frame",
+      "description": "One frame of the season reel with sprockets, 4:3 still and meta row.",
+      "html": "<div class=\"ds-strip\"><div class=\"ds-frame\"><div class=\"ds-still\"><span>8</span></div><div class=\"ds-meta\"><time>Jan 2027</time><span class=\"ds-ftag\">Date TBA</span></div><h3>Kickoff: orders unsealed</h3><p>The game is revealed worldwide.</p></div></div>",
+      "css": ".ds-strip{--electric:#8B3DFF;--violet:#5B47FF;--lavender:#C9A6FF;--projector:#F6F1FF;--text:#E4DAF7;--text-dim:#A898C6;--line:rgba(201,166,255,.16);--line-strong:rgba(201,166,255,.32);--ease:cubic-bezier(.2,.8,.2,1);position:relative;padding:34px 14px;background:#07040C;border-block:1px solid rgba(201,166,255,.1);font-family:Outfit,system-ui,sans-serif}.ds-strip::before,.ds-strip::after{content:'';position:absolute;left:0;right:0;height:12px;background:repeating-linear-gradient(90deg,transparent 0 10px,rgba(232,214,255,.13) 10px 26px,transparent 26px 36px);border-radius:3px}.ds-strip::before{top:11px}.ds-strip::after{bottom:11px}.ds-frame{width:300px}.ds-still{aspect-ratio:4/3;border-radius:6px;margin-bottom:18px;display:grid;place-items:center;background-image:linear-gradient(rgba(201,166,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(201,166,255,.08) 1px,transparent 1px),radial-gradient(120% 100% at 50% 0%,#2A0F57,#0D0420 60%,#000);background-size:22px 22px,22px 22px,auto;box-shadow:inset 0 0 0 1px rgba(201,166,255,.14),inset 0 0 60px rgba(0,0,0,.6)}.ds-still span{font:800 4rem/1 Orbitron,Arial,sans-serif;color:transparent;-webkit-text-stroke:1.5px var(--lavender);text-shadow:0 0 30px rgba(139,61,255,.5)}.ds-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.ds-meta time{font:700 .82rem Orbitron,Arial,sans-serif;letter-spacing:.12em;color:var(--lavender);text-transform:uppercase}.ds-ftag{font:500 .66rem/1 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;padding:6px 9px;border-radius:999px;color:var(--text-dim);box-shadow:inset 0 0 0 1px var(--line-strong)}.ds-frame h3{margin:0 0 8px;font:600 1.25rem/1.2 Outfit,sans-serif;color:#fff}.ds-frame p{margin:0;font-size:.95rem;color:var(--text-dim)}"
+    },
+    {
+      "name": "Division Roll-call Row",
+      "kind": "custom",
+      "refersTo": "division-row",
+      "description": "Accordion row keyed by a division colour --c.",
+      "html": "<div class=\"ds-div is-open\" style=\"--c:#8B3DFF\"><button class=\"ds-div-head\"><span class=\"ds-div-name\">Programming</span><span class=\"ds-div-motto\">The code drives alone</span></button><ul><li>Autonomous</li><li>Vision</li></ul></div>",
+      "css": ".ds-div{--electric:#8B3DFF;--violet:#5B47FF;--lavender:#C9A6FF;--projector:#F6F1FF;--text:#E4DAF7;--text-dim:#A898C6;--line:rgba(201,166,255,.16);--line-strong:rgba(201,166,255,.32);--ease:cubic-bezier(.2,.8,.2,1);position:relative;border-block:1px solid var(--line);font-family:Outfit,system-ui,sans-serif}.ds-div::before{content:'';position:absolute;left:0;top:-1px;height:1px;width:100%;background:var(--c);box-shadow:0 0 12px var(--c)}.ds-div-head{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:14px 1fr auto;gap:18px;align-items:baseline;padding:24px 4px}.ds-div-head::before{content:'';width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c)}.ds-div-head:focus-visible{outline:2px solid var(--lavender);outline-offset:2px;border-radius:8px}.ds-div-name{font:300 2rem/1.1 Outfit,sans-serif;letter-spacing:-.02em;color:#fff;transform:translateX(6px);transition:transform .5s var(--ease)}.ds-div-motto{font:400 .7rem/1.4 Michroma,Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim)}.ds-div ul{list-style:none;margin:0;padding:0 0 26px 36px;display:flex;gap:8px}.ds-div li{font-size:.82rem;padding:6px 12px;border-radius:999px;color:var(--text);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 55%,transparent);background:color-mix(in srgb,var(--c) 10%,transparent)}"
+    },
+    {
+      "name": "Sponsor Tier",
+      "kind": "card",
+      "refersTo": "tier",
+      "description": "Glass column rising with rank; top tier tinted.",
+      "html": "<div class=\"ds-tier ds-tier-top\" style=\"--h:4\"><p class=\"ds-rank\">General</p><p class=\"ds-amt\">[AMOUNT]</p><ul><li>Logo on the robot</li><li>Pit banner</li></ul></div>",
+      "css": ".ds-tier{--electric:#8B3DFF;--violet:#5B47FF;--lavender:#C9A6FF;--projector:#F6F1FF;--text:#E4DAF7;--text-dim:#A898C6;--line:rgba(201,166,255,.16);--line-strong:rgba(201,166,255,.32);--ease:cubic-bezier(.2,.8,.2,1);position:relative;width:240px;min-height:calc(260px + var(--h) * 40px);display:flex;flex-direction:column;padding:26px 22px;border-radius:18px;font-family:Outfit,system-ui,sans-serif;background: linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.02) 38%, rgba(139,61,255,.06)), rgba(14,8,26,.46); backdrop-filter: blur(16px) saturate(170%); box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 -1px 0 rgba(139,61,255,.25), inset 1px 0 0 rgba(255,255,255,.06), 0 18px 40px -18px rgba(0,0,0,.8);}.ds-tier::before{content:''; position:absolute; inset:0; border-radius:inherit; padding:1px; pointer-events:none; background: linear-gradient(140deg, rgba(232,214,255,.55), rgba(255,255,255,.04) 40%, rgba(91,71,255,.35)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;}.ds-tier-top{background:linear-gradient(160deg,rgba(139,61,255,.4),rgba(91,71,255,.18) 50%,rgba(14,8,26,.5))}.ds-rank{margin:0;font:400 .78rem Michroma,Arial,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#fff}.ds-rank::after{content:'';display:block;margin-top:12px;height:12px;width:calc(var(--h) * 22px);background:radial-gradient(circle,var(--electric) 0 3px,transparent 4px) 0 50%/22px 12px repeat-x;filter:drop-shadow(0 0 4px var(--electric))}.ds-amt{margin:18px 0;font:700 1.3rem Orbitron,Arial,sans-serif;color:#fff;letter-spacing:.04em}.ds-tier ul{list-style:none;margin:auto 0 0;padding:0;display:grid;gap:9px;font-size:.9rem;color:var(--text-dim)}.ds-tier li{padding-left:18px;position:relative}.ds-tier li::before{content:'';position:absolute;left:0;top:.62em;width:8px;height:1.5px;background:var(--lavender)}"
+    },
+    {
+      "name": "Enlistment Pass",
+      "kind": "card",
+      "refersTo": "enlistment-pass",
+      "description": "Glass ticket form with badge header and dashed tear line.",
+      "html": "<form class=\"ds-pass\"><div class=\"ds-pass-head\"><span class=\"ds-pass-badge\"></span><div><p class=\"ds-pass-title\">Enlistment pass</p><p class=\"ds-pass-sub\">FRC 11745 · Season 2026–27</p></div></div><label class=\"ds-pick\"><input type=\"checkbox\" checked><span>Programming</span></label></form>",
+      "css": ".ds-pass{--electric:#8B3DFF;--violet:#5B47FF;--lavender:#C9A6FF;--projector:#F6F1FF;--text:#E4DAF7;--text-dim:#A898C6;--line:rgba(201,166,255,.16);--line-strong:rgba(201,166,255,.32);--ease:cubic-bezier(.2,.8,.2,1);position:relative;width:360px;display:grid;gap:16px;padding:30px;border-radius:26px;font-family:Outfit,system-ui,sans-serif;background: linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.02) 38%, rgba(139,61,255,.06)), rgba(14,8,26,.46); backdrop-filter: blur(16px) saturate(170%); box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 -1px 0 rgba(139,61,255,.25), inset 1px 0 0 rgba(255,255,255,.06), 0 18px 40px -18px rgba(0,0,0,.8);}.ds-pass::before{content:''; position:absolute; inset:0; border-radius:inherit; padding:1px; pointer-events:none; background: linear-gradient(140deg, rgba(232,214,255,.55), rgba(255,255,255,.04) 40%, rgba(91,71,255,.35)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;}.ds-pass-head{display:flex;align-items:center;gap:14px;padding-bottom:18px;border-bottom:1px dashed var(--line-strong)}.ds-pass-badge{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 25%,var(--electric),#5E2A84 70%);box-shadow:0 0 0 1.5px #fff}.ds-pass-title{margin:0;font:400 .8rem Michroma,Arial,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#fff}.ds-pass-sub{margin:4px 0 0;font:500 .72rem 'JetBrains Mono',monospace;letter-spacing:.1em;color:var(--text-dim)}.ds-pick input{position:absolute;opacity:0}.ds-pick span{display:inline-block;padding:8px 13px;border-radius:999px;font-size:.85rem;color:var(--text);box-shadow:inset 0 0 0 1px var(--line-strong);transition:background-color .25s,box-shadow .25s}.ds-pick:hover span{box-shadow:inset 0 0 0 1px var(--lavender)}.ds-pick input:checked+span{background:linear-gradient(120deg,var(--electric),var(--violet));color:#fff;box-shadow:0 0 16px -2px rgba(139,61,255,.7)}.ds-pick input:focus-visible+span{outline:2px solid var(--lavender);outline-offset:2px}"
+    },
+    {
+      "name": "Credits Roll",
+      "kind": "custom",
+      "refersTo": "credits-roll",
+      "description": "End-credits block with open bracketed slots.",
+      "html": "<div class=\"ds-credits\"><p class=\"ds-credits-lead\">The Ducktators</p><dl><dt>Drive team</dt><dd class=\"open\">Your name here</dd><dt>Filmed on location at</dt><dd>The CAJCS Maker Lab</dd></dl></div>",
+      "css": ".ds-credits{--electric:#8B3DFF;--violet:#5B47FF;--lavender:#C9A6FF;--projector:#F6F1FF;--text:#E4DAF7;--text-dim:#A898C6;--line:rgba(201,166,255,.16);--line-strong:rgba(201,166,255,.32);--ease:cubic-bezier(.2,.8,.2,1);background:#000;padding:48px 20px;text-align:center;font-family:Outfit,system-ui,sans-serif}.ds-credits-lead{margin:0 0 40px;font:400 1.6rem/1 Michroma,Arial,sans-serif;letter-spacing:.3em;padding-left:.3em;text-transform:uppercase;color:#fff;text-shadow:0 0 24px rgba(139,61,255,.9)}.ds-credits dl{margin:0;display:grid;gap:10px}.ds-credits dt{font:400 .7rem/1 Michroma,Arial,sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--text-dim);margin-top:24px}.ds-credits dd{margin:0;font:300 1.3rem/1.3 Outfit,sans-serif;color:#fff}.ds-credits dd.open{color:var(--lavender)}.ds-credits dd.open::before{content:'[';color:var(--electric);margin-right:.2em}.ds-credits dd.open::after{content:']';color:var(--electric);margin-left:.2em}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Premiere Night",
+    "overview": "The site is a film premiere for a regiment that has not fought yet. The set is stage black tinted purple; the only light is purple light (a ceiling spill, a projector beam, rim glow on type and badge). Film grammar does the structural work: a running timecode HUD with scene slates, letterbox bars that close in on the title sequence, a sprocketed filmstrip for the season, call-sheet rows, and a scroll-scrubbed end-credits roll with open `[Your name here]` slots.\n\nDensity is low and cinematic: one idea per scene, generous section padding, long light Outfit lines. Liquid-glass plates (real SVG displacement on Chromium with a fine pointer, frosted blur elsewhere) hold the interactive pieces. The regimental motifs (cap band, three collar stars, ranks, stamps) are punctuation, never wallpaper.\n\nThe bible palette and glow are pinned (Ducktator Purple, Electric, Blue-Violet, Lavender, Mist, Night). This site extends them with four stage tones, a projector white, a spill and a specular highlight for glass.",
+    "keyCharacteristics": [
+      "Stage-black ground (`stage-0`) with purple vignettes; never flat grey or pure white panels.",
+      "Purple light as material: glow is emitted by type, badge, beam and active states.",
+      "Film grammar: timecode, scene slates in the HUD, letterbox, filmstrip, credits.",
+      "Liquid glass with gradient edge and pointer-following specular.",
+      "Wide Michroma for credits-style labels, light Outfit for everything you read."
+    ],
+    "rules": [
+      {
+        "name": "The One Light Rule",
+        "body": "Every glow, highlight and accent is purple light from the bible palette. No second accent hue; green and coral exist only as status.",
+        "section": "colors"
+      },
+      {
+        "name": "The Stage Not Black Rule",
+        "body": "Surfaces are purple-tinted stage tones; `#000` appears only where the film frame itself is black (letterbox, credits).",
+        "section": "colors"
+      },
+      {
+        "name": "The Numbers Wear Orbitron Rule",
+        "body": "Any figure the reader should notice (dates, counts, amounts, 11745) is set in Orbitron, tabular where it ticks.",
+        "section": "typography"
+      },
+      {
+        "name": "The Optical Centre Rule",
+        "body": "Wide-tracked centred caps add `padding-left` equal to their tracking so the line centres optically.",
+        "section": "typography"
+      },
+      {
+        "name": "The Light Has A Source Rule",
+        "body": "Glows sit on things that emit (type, badge, active state, stars); passive containers get inset rings, not halos.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** pair Electric with Blue-Violet in a 120deg gradient for anything primary or selected.",
+      "**Do** set every notable figure in Orbitron and every credit-style label in wide-tracked Michroma caps.",
+      "**Do** mark missing people, photos, dates and sponsors as open slots (brackets, dashed rings, \"developing\") rather than filling them.",
+      "**Do** use `ease` `cubic-bezier(.2, .8, .2, 1)` for CSS transitions and `expo.out` for GSAP entrances; scrub scroll scenes.",
+      "**Do** keep every effect optional: reduced motion removes grain, scrubs and word reveals and leaves all content readable."
+    ],
+    "donts": [
+      "**Don't** introduce an accent hue outside the bible purples; green and coral are status only.",
+      "**Don't** put glows on passive containers; rings and tone steps separate planes.",
+      "**Don't** use pure `#000` as a section surface outside letterbox and credits.",
+      "**Don't** use glyph or emoji icons; icons are stroked inline SVG (1.8 stroke, round caps).",
+      "**Don't** use real politics, flags, salutes or insignia; regimental play stays at cap, stars, ranks and stamps."
+    ]
+  }
+}

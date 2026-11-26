@@ -1,0 +1,39 @@
+/* The Ducktators · race accents
+   Kept from the motorsport experiment: the opening screen's italic condensed headline, and the chequered flag on a carbon-fibre footer. Buttons and the ticker keep
+   the main site style. Scoped to .hero and .footer so the rest of the site is unchanged. */
+
+:root {
+  --f-race: "Saira", "Geist", sans-serif;
+  --kerb: repeating-linear-gradient(-60deg, var(--purple) 0 16px, #fff 16px 32px);
+  --carbon: #0A0A0D;
+}
+
+/* ---------- Opening screen ---------- */
+.hero__title {
+  font-family: var(--f-race); font-style: italic; font-stretch: 75%; font-weight: 900;
+  text-transform: uppercase; letter-spacing: -.005em;
+  font-size: clamp(3.8rem, min(13vw, 19vh), 12rem); line-height: .84;
+}
+.hero__title .line { padding: 0 .08em .04em; }
+.hero__meta { font-family: var(--f-race); font-stretch: 85%; font-style: italic; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.hero__meta p { font-size: .76rem; }
+
+/* ---------- Footer: carbon fibre + chequered flag ---------- */
+.footer {
+  background-color: var(--carbon);
+  background-image:
+    repeating-linear-gradient(45deg, rgba(255,255,255,.022) 0 2px, transparent 2px 5px),
+    repeating-linear-gradient(-45deg, rgba(255,255,255,.016) 0 2px, transparent 2px 5px);
+}
+.checker {
+  height: 56px; margin-top: 30px;
+  background: conic-gradient(#fff 25%, #0A0A0D 0 50%, #fff 0 75%, #0A0A0D 0) 0 0 / 28px 28px;
+  -webkit-mask: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+  mask: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+  transform: skewX(-12deg);
+}
+
+@media (max-width: 640px) {
+  .hero__title { font-size: 16vw; }
+  .checker { height: 40px; background-size: 20px 20px; }
+}

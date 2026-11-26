@@ -1,65 +1,119 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "design-taste-frontend": {
       "source": "Leonxlnx/taste-skill",
       "sourceType": "github",
       "skillPath": "skills/taste-skill/SKILL.md",
-      "computedHash": "ac769e17340097d1d1e4fe8c8baf543324c81ce94d600283d70b6546ccd4d51d"
+      "computedHash": ""
     },
     "gsap-core": {
       "source": "greensock/gsap-skills",
       "sourceType": "github",
       "skillPath": "skills/gsap-core/SKILL.md",
-      "computedHash": "b891c9ed42d9319685250231085ebe21538f2c844613b277b9dd2b3ff529a542"
+      "computedHash": ""
     },
     "gsap-frameworks": {
       "source": "greensock/gsap-skills",
       "sourceType": "github",
       "skillPath": "skills/gsap-frameworks/SKILL.md",
-      "computedHash": "08b3917649997d53f94a9831b5db21afafafc89ee3a9a020d2471c69c336bdd6"
+      "computedHash": ""
     },
     "gsap-performance": {
       "source": "greensock/gsap-skills",
       "sourceType": "github",
       "skillPath": "skills/gsap-performance/SKILL.md",
-      "computedHash": "da73dbf11663abb1a880e1796367f84b19877db4a16186b36d1dce96fe0ce983"
+      "computedHash": ""
     },
     "gsap-plugins": {
       "source": "greensock/gsap-skills",
       "sourceType": "github",
       "skillPath": "skills/gsap-plugins/SKILL.md",
-      "computedHash": "50a320904c3053a1a7d01ea95235944814d18c0b5958f17e38046504aa6078a8"
+      "computedHash": ""
     },
     "gsap-react": {
       "source": "greensock/gsap-skills",
       "sourceType": "github",
       "skillPath": "skills/gsap-react/SKILL.md",
-      "computedHash": "255206fb6a4a079ad73b4a12e7c63197dc451a8549c7ac4e852b50ff74ef3bd6"
+      "computedHash": ""
     },
     "gsap-scrolltrigger": {
       "source": "greensock/gsap-skills",
       "sourceType": "github",
       "skillPath": "skills/gsap-scrolltrigger/SKILL.md",
-      "computedHash": "358dd3381c74fc4be8db5a94e0cd008bf0fa7c1ccd45999671b0d61b9d9ffd9b"
+      "computedHash": ""
     },
     "gsap-timeline": {
       "source": "greensock/gsap-skills",
       "sourceType": "github",
       "skillPath": "skills/gsap-timeline/SKILL.md",
-      "computedHash": "e7c07909bb427f74e1bda1ff716bd97ae166269382f7abbd649c0d1ba8f6e0ec"
+      "computedHash": ""
     },
     "gsap-utils": {
       "source": "greensock/gsap-skills",
       "sourceType": "github",
       "skillPath": "skills/gsap-utils/SKILL.md",
-      "computedHash": "72af4a036d417d6eaef7478eca2f28e760631fb78db822ba34a9c706797aab62"
+      "computedHash": ""
+    },
+    "higgsfield-brandkit": {
+      "source": "higgsfield-ai/skills",
+      "sourceType": "github",
+      "skillPath": "higgsfield-brandkit/SKILL.md",
+      "computedHash": "e7647cd6f6e20426eeafc11b737c0ff4bbcc33776efc29131b2e728500845c33"
+    },
+    "higgsfield-faceless-video": {
+      "source": "higgsfield-ai/skills",
+      "sourceType": "github",
+      "skillPath": "higgsfield-faceless-video/SKILL.md",
+      "computedHash": "95c4288e64c35e561f8bf6afea57ff52289b8da4c71a519144d9de8a4e2fa125"
+    },
+    "higgsfield-generate": {
+      "source": "higgsfield-ai/skills",
+      "sourceType": "github",
+      "skillPath": "higgsfield-generate/SKILL.md",
+      "computedHash": "20fb9cdafbea6900609e4a7f5e0091ed439ba65131dd59b915ff8202a008ca57"
+    },
+    "higgsfield-marketplace-cards": {
+      "source": "higgsfield-ai/skills",
+      "sourceType": "github",
+      "skillPath": "higgsfield-marketplace-cards/SKILL.md",
+      "computedHash": "dc920d81d0842e0f5dfb0c22ab3b96b16fb75ae62d33b1b8a3a9529d48d2af6f"
+    },
+    "higgsfield-product-photoshoot": {
+      "source": "higgsfield-ai/skills",
+      "sourceType": "github",
+      "skillPath": "higgsfield-product-photoshoot/SKILL.md",
+      "computedHash": "cd9bf8f795be535a96852b6d5c5207ddf7238fe4ada06bb226086cac721f741a"
+    },
+    "higgsfield-soul-id": {
+      "source": "higgsfield-ai/skills",
+      "sourceType": "github",
+      "skillPath": "higgsfield-soul-id/SKILL.md",
+      "computedHash": "be1abb8875552d0e8a2aa2fb4ac9fd6a3edf55aab55ab4ceb65b611ef037ddf4"
+    },
+    "higgsfield-video-explainer": {
+      "source": "higgsfield-ai/skills",
+      "sourceType": "github",
+      "skillPath": "higgsfield-video-explainer/SKILL.md",
+      "computedHash": "22e3132222b7120768530d385d1513bf678be59677f9363a5177adbbe323a518"
+    },
+    "higgsfield-websites": {
+      "source": "higgsfield-ai/skills",
+      "sourceType": "github",
+      "skillPath": "higgsfield-websites/SKILL.md",
+      "computedHash": "03f247a262133675f6a573fb6c66f1be8950f4addde18c5fa3499c39dd32ea64"
+    },
+    "higgsfield-youtube-thumbnail": {
+      "source": "higgsfield-ai/skills",
+      "sourceType": "github",
+      "skillPath": "higgsfield-youtube-thumbnail/SKILL.md",
+      "computedHash": "e95fdabc5eb58b61ef75cc844ccde91e0162082a907d5164d260ba201cab2b71"
     },
     "implement_lenis_scroll": {
       "source": "jerrar670/surf-website",
       "sourceType": "github",
       "skillPath": ".agent/skills/implement_lenis_scroll/SKILL.md",
-      "computedHash": "b2428185f177862cbea3070b7e365eaa2dffa75c17ce1c6adc6c419b44bc1b98"
+      "computedHash": ""
     }
   }
 }

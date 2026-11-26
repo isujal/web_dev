@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /design/
+
+Sitemap: https://ducktators-11745.vercel.app/sitemap.xml
